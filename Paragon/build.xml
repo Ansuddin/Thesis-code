@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="matrix" default="usage" basedir=".">
+  <description>Builds Matrix project.</description>
+  <property name="build.dir" value="./" />
+  <property name="src.dir" location="${build.dir}/src" />
+  <property name="bin.dir" location="${build.dir}/bin" />
+  <property name="lib.dir" location="${build.dir}/lib" />
+
+  <!-- Path to find standard .pi files -->
+  <property name="pipath.base" location="${build.dir}/libPI" />  <!-- specify location -->
+
+  <path id="javac-classpath">
+    <fileset dir="${lib.dir}">
+      <include name="*.jar" />
+    </fileset>
+  </path>
+
+  <target name="usage">
+    <echo message="Available targets are:" />
+    <echo message="clean            - Cleans up." />
+    <echo message="build            - Compiles Matrix (=parac+javac)." />
+    <echo message="parac            - Compiles Paragon files only." />
+    <echo message="javac            - Compiles generated Java files only." />
+  </target>
+
+  <target name="clean" description="Remove .java, .pi and .class files">
+    <delete includeEmptyDirs="true" failonerror="false">
+      <fileset dir="${src.dir}">
+        <include name="**/*.java" />
+        <include name="**/*.pi" />
+        <include name="**/*.orig" />
+        <include name="**/*.rej" />
+        <exclude name="**/runtime/*.pi" />
+        <exclude name="**/runtime/*.java" />
+      </fileset>
+      <fileset dir="${bin.dir}" />
+    </delete>
+  </target>
+
+  <target name="parac">
+    <exec executable="parac"> <!-- specify location -->
+      <arg value="-p" />
+      <arg value="${pipath.base};{src.dir}" />
+      <arg value="${src.dir}/HelloWorld.para"/>
+      <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
+    </exec>
+  </target>
+
+  <target name="javac">
+    <mkdir dir="${bin.dir}" />
+    <javac srcdir="${src.dir}" destdir="${bin.dir}" debug="true" includeAntRuntime="false">
+      <classpath refid="javac-classpath" />
+      <include name="**/*.java" />
+    </javac>
+  </target>
+  
+  <target name="build" depends="parac, javac">
+  </target>
+</project>
