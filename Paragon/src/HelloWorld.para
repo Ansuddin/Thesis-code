@@ -1,9 +1,11 @@
 import java.lang.*;
-
+import io.kamax.matrix.client.regular.*;
 public class HelloWorld {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
+        String domain = "test";
+        MatrixHttpClient client = new MatrixHttpClient(domain);
         System.out.println("Hello, World!");
     }
 
