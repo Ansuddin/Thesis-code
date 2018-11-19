@@ -21,6 +21,7 @@
     <echo message="build            - Compiles Matrix (=parac+javac)." />
     <echo message="parac            - Compiles Paragon files only." />
     <echo message="javac            - Compiles generated Java files only." />
+    <ehco message="run              - Run compiled file." />
   </target>
 
   <target name="clean" description="Remove .java, .pi and .class files">
@@ -54,6 +55,16 @@
     </javac>
   </target>
   
-  <target name="build" depends="parac, javac">
+  <target name="compile" depends="parac, javac">
+  </target>
+
+  <target name="run">
+    <java classname="HelloWorld" fork="true">
+      <arg value="-h"/>
+      <classpath> 
+        <path refid="javac-classpath"/> <!-- not working -->
+        <path location="${bin.dir}"/>
+      </classpath>
+    </java>
   </target>
 </project>

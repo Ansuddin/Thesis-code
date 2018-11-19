@@ -3,4 +3,5 @@ package io.kamax.matrix.client.regular;
 public native class MatrixHttpClient {
 	
 	public MatrixHttpClient(String domain){}
+	public String toString(){}
 }
