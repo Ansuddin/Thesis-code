@@ -1,13 +1,18 @@
 
 import java.lang.*;
+import io.kamax.matrix.client.*;
 import io.kamax.matrix.client.regular.*;
+import java.net.*;
+
 public class HelloWorld {
 
-    public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        String domain = "test";
-        MatrixHttpClient client = new MatrixHttpClient(domain);
-        System.out.println(client.toString());
-    }
+	public static void main(String[] args) throws MalformedURLException{
+	    URL hsBaseUrl = new URL("https://ansuddin.xyz");
+		MatrixClientContext context = new MatrixClientContext();
+		context.setHsBaseUrl(hsBaseUrl);
+		MatrixHttpClient client = new MatrixHttpClient(context);
+	    System.out.println(client.getContext().getHsBaseUrl());
 
+ 	}
+	 	
 }
