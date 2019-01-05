@@ -1,6 +1,6 @@
 
-javac -cp "/home/ans/jpy_test/jpy.jar" Test.java
+javac -cp "/home/ans/Thesis-code/jpy_test/jpy.jar" Test.java
 
 
-java -Djpy.config=/home/ans/jpy/build/lib.linux-x86_64-3.6/jpyconfig.properties -cp "./:/home/ans/jpy_test/jpy.jar" Test
+java -Djpy.config=/home/ans/jpy/build/lib.linux-x86_64-3.6/jpyconfig.properties -cp "./:/home/ans/Thesis-code/jpy_test/jpy.jar" Test
 
