@@ -1,0 +1,6 @@
+
+javac -cp "jpy/build/lib.linux-x86_64-3.6/jpy.jar" -d bin src/Test.java
+
+
+java -Djpy.config=jpy/build/lib.linux-x86_64-3.6/jpyconfig.properties -cp "./:jpy/build/lib.linux-x86_64-3.6/jpy.jar:bin" Test
+

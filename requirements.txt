@@ -1,0 +1,11 @@
+- Hospitals needs shared access to patient journal. 
+- Each hospital has a homeserver running.
+- A room represents a patient journal with the participants in the room being the respective hospitals that share the journal. 
+- The global Patient journal state is stored in matrix.
+- Employees in a hospital shares the same login.
+- Patient journals are by law append only.
+- A hospital has to principals: Doctor and Secretary.
+- A doctor can see full patient journal.
+- A secretary can only see some parts of the journal.
+
+-Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
