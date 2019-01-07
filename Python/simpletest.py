@@ -1,4 +1,5 @@
 from matrix_client.client import MatrixClient
+from matrix_client.crypto.olm_device import OlmDevice
 import time
 
 host = "https://ansuddin.xyz"
@@ -17,20 +18,26 @@ def on_message(room, event):
     else:
         print(event['type'])
 
-client = MatrixClient(host)
+#client = MatrixClient(host)
+client = MatrixClient(host, encryption=True)
 
 token = client.login_with_password(username="ans", password="test")
 
 #rooms = client.get_rooms()
 
 room = client.join_room(room_id)
-room.add_listener(on_message)
-client.start_listener_thread()
+#room.add_listener(on_message)
+#client.start_listener_thread()
+#room.send_text("test")
 
-room.send_text("test")
+if not room.encrypted:
+    room.send_text("Unencrypted!")
+    room.enable_encryption()
+    room.send_text("Encrypted, if we had the required power level.")
 
-
-time.sleep(1)
+if room.encrypted:
+	room.send_text("Success!")
+#time.sleep(1)
 #while True:
 #        try:
 #            get_input = raw_input
