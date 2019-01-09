@@ -1,10 +1,11 @@
 public class Hospital{
 	private String matrixUser;
 	private String matrixPassword;
-	private String[] roomIdsForPatientJournals;
+	//private String[] roomIdsForPatientJournals;
+	private String[] hospitalMatrixIds;
 	private String name;
 	private ArrayList<Employees> employees;
-	private ArrayList<PatientJournals> PatientJournals;
+	private ArrayList<String> PatientJournalRoomIds;
 
 
 	public Hospital(String matrixUser, String matrixPassword, String roomIds){

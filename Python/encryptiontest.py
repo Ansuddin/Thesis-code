@@ -1,5 +1,7 @@
-from matrix_client.client import MatrixClient
+
 from matrix_client.crypto.olm_device import OlmDevice
+from matrix_client.client import MatrixClient
+from matrix_client.client import CACHE
 
 host = "https://ansuddin.xyz"
 user_id = "@ans:ansuddin.xyz"
@@ -7,7 +9,7 @@ password = "test"
 #device_id = "device_id"
 room_id = "!fLhiSuTZAupSQpcEXs:ansuddin.xyz"
 
-client = MatrixClient(host, encryption=True)
+client = MatrixClient(host, None, None,True,20,CACHE.ALL,True,None)
 
 token = client.login_with_password(username="ans", password="test")
 

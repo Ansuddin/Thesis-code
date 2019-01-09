@@ -4,6 +4,8 @@ import org.jpy.PyLib;
 import org.jpy.PyModule;
 import org.jpy.PyObject;
 import org.jpy.PyInputMode;
+import java.util.Map;
+import java.util.HashMap;
 	
 public class Test {
 
@@ -13,17 +15,13 @@ public class Test {
 			PyLib.startPython();
 			System.out.println("Python started");
 			try{
-				/*PyObject.executeCode("print('this is from python')", PyInputMode.SCRIPT);
-				PyModule matrix_client = PyModule.importModule("matrix_client.client");
-				PyObject MatrixClient = matrix_client.call("MatrixClient", "https://ansuddin.xyz");
-				MatrixClient.callMethod("login_with_password", "ans","test");
-				PyObject Room = MatrixClient.callMethod("join_room","!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
-				Room.callMethod("send_text", "jpy");*/
-				MatrixApi api = new MatrixApi();
-				PyObject client = api.getMatrixClient();
-				//PyObject room = api.join(client, "!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
-				//api.send(room, "test");
-
+				
+				MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test");
+				PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
+				String test = api.retrieve(room);
+				System.out.println(test);
+				//api.send(room,"hej");
+				
 			} finally {
 				PyLib.stopPython();
 			}
