@@ -1,3 +1,5 @@
+package journalsystem;
+
 import org.jpy.PyLib;
 import org.jpy.PyModule;
 import org.jpy.PyObject;
@@ -11,12 +13,17 @@ public class Test {
 			PyLib.startPython();
 			System.out.println("Python started");
 			try{
-				PyObject.executeCode("print('this is from python')", PyInputMode.SCRIPT);
+				/*PyObject.executeCode("print('this is from python')", PyInputMode.SCRIPT);
 				PyModule matrix_client = PyModule.importModule("matrix_client.client");
 				PyObject MatrixClient = matrix_client.call("MatrixClient", "https://ansuddin.xyz");
 				MatrixClient.callMethod("login_with_password", "ans","test");
 				PyObject Room = MatrixClient.callMethod("join_room","!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
-				Room.callMethod("send_text", "jpy");
+				Room.callMethod("send_text", "jpy");*/
+				MatrixApi api = new MatrixApi();
+				PyObject client = api.getMatrixClient();
+				//PyObject room = api.join(client, "!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
+				//api.send(room, "test");
+
 			} finally {
 				PyLib.stopPython();
 			}

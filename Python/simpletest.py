@@ -26,6 +26,8 @@ token = client.login_with_password(username="ans", password="test")
 #rooms = client.get_rooms()
 
 room = client.join_room(room_id)
+room = client.join_room(room_id)
+
 #room.add_listener(on_message)
 #client.start_listener_thread()
 #room.send_text("test")

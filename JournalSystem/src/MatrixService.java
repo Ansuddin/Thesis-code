@@ -1,42 +1,15 @@
-import org.jpy.PyLib;
-import org.jpy.PyModule;
-import org.jpy.PyObject;
-import org.jpy.PyInputMode;
+public static class MatrixService{
+	Matrix api = new MatrixApi();
 
-public class MatrixService implements Matrix {
-	public void send(String message) {
-
-	}
-
-	public String retrive() {
-		return null;
-	}
-	public void join(){
-
-	}
-
-	public void register(){
-
-	}
-
-	public void login() {
-
-	}
-
-	public void invite() {
-
-	}
-
-	public void ban() {
-
-	}
-
-	public void unban() {
-
-	}
-
-	public String[] getParticipants() {
+	public PatientJournal stringToObject(String msg) {
+		//String to JSON
+		//JSON to object
 		return null;
 	}
 
+	public String ObjectToStrig(PatientJournal patientJournal){
+		// Object to JSON
+		// JSON to String
+		return null;
+	}
 }

@@ -11,6 +11,7 @@ public class Main {
 		Hospital hospital = new Hospital();
 		ArrayList<Employees> employees = new ArrayList<Employees>();
 		ArrayList<PatientJournal> patientJournals = new ArrayList<PatientJournal>();
+		hospital.setEmployees(employees);
 
 		// Initialize Python
 		System.out.println("initialize Python");
