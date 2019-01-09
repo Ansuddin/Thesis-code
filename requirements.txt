@@ -9,3 +9,7 @@
 - A secretary can only see some parts of the journal.
 
 -Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
+
+Configurations for room:
+- Default user level is 100. Anyone can kick, ban and invite users. 
+- The room is invite-only

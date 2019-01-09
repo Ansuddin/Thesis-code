@@ -48,16 +48,19 @@ public class MatrixApi { //implements Matrix {
 		return room;
 	}
 
-	public void invite() {
-
+	public void invite(String roomId, String userId) {
+		PyObject room = join(roomId);
+		room.callMethod("invite_user", userId);
 	}
 
-	public void ban() {
-
+	public void ban(String roomId, String userId) {
+		PyObject room = join(roomId);
+		room.callMethod("ban_user", userId, "adding data");
 	}
 
 	public void unban() {
-
+		PyObject room = join(roomId);
+		room.callMethod("unban_user", userId);
 	}
 
 }

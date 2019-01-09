@@ -17,9 +17,10 @@ public class Test {
 			try{
 				
 				MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test");
-				PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
-				String test = api.retrieve(room);
-				System.out.println(test);
+				
+				//PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
+				//String test = api.retrieve(room);
+				//System.out.println(test);
 				//api.send(room,"hej");
 				
 			} finally {
