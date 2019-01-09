@@ -10,6 +10,14 @@
 
 -Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
 
+- Hospitals in a Room are preconfigured and every client knows from the beginning which hospitals are in the room / or can join the room.
+
 Configurations for room:
 - Default user level is 100. Anyone can kick, ban and invite users. 
 - The room is invite-only
+
+TODO:
+- Implement Object to JSON to String and vice versa
+- Setup homeserver again
+- Create multiple users and try ban/unban methods
+- Exception handling for when users are banned or cannot join the room
