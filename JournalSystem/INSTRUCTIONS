@@ -1,3 +1,18 @@
 javac -cp "jpy/jpy.jar" -d bin src/Test.java
 
 java -Djpy.config=jpy/jpyconfig.properties -cp "./:jpy/jpy.jar:bin" journalsystem/Test
+
+
+
+-----
+Jackson Jar
+
+javac -cp "lib/jackson.jar" -d bin src/Test.java src/PatientJournal.java
+
+java -cp "./:lib/*:bin" journalsystem/Test
+
+OR
+
+javac -cp lib/\* -d bin src/Test.java src/PatientJournal.java PatientSession.java
+
+java -cp "./:lib/jackson-databind.jar:lib/jackson-core.jar:lib/jackson-annotations.jar:bin" journalsystem/Test

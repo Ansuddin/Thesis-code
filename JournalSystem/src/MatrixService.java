@@ -1,3 +1,8 @@
+package journalsystem;
+
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MatrixService{
 	
 	Matrix api;
@@ -36,14 +41,21 @@ public class MatrixService{
 	}
 
 	public PatientJournal stringToObject(String msg) {
-		//String to JSON
-		//JSON to object
+		try {
+			PatientJournal patientJournal = mapper.readValue(json, PatientJournal.class);
+			return patientJournal;
+		} catch (Exception e){
+			e.printStackTrace();
+		}			
 		return null;
 	}
 
 	public String objectToString(PatientJournal patientJournal){
-		// Object to JSON
-		// JSON to String
-		return null;
+		try {
+			String json = mapper.writeValueAsString(patientJournal);
+			return json;
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 }
