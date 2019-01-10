@@ -58,7 +58,7 @@ public class MatrixApi { //implements Matrix {
 		room.callMethod("ban_user", userId, "adding data");
 	}
 
-	public void unban() {
+	public void unban(String roomId, String userId) {
 		PyObject room = join(roomId);
 		room.callMethod("unban_user", userId);
 	}

@@ -1,4 +1,4 @@
-javac -cp "jpy/jpy.jar" -d bin src/Test.java
+javac -cp "jpy/jpy.jar" -d bin src/Test.java src/MatrixApi.java
 
 java -Djpy.config=jpy/jpyconfig.properties -cp "./:jpy/jpy.jar:bin" journalsystem/Test
 

@@ -8,7 +8,7 @@ room_id = "!fLhiSuTZAupSQpcEXs:ansuddin.xyz"
 
 
 client = MatrixClient(host)
-token = client.login_with_password(username="ans", password="test")
+token = client.login_with_password(username="hospital1", password="test")
 room = client.join_room(room_id)
 
 

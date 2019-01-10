@@ -1,23 +1,39 @@
+Overall requirements:
 - Hospitals needs shared access to patient journal. 
 - Each hospital has a homeserver running.
 - A room represents a patient journal with the participants in the room being the respective hospitals that share the journal. 
 - The global Patient journal state is stored in matrix.
-- Employees in a hospital shares the same login.
-- Patient journals are by law append only.
-- A hospital has to principals: Doctor and Secretary.
+- Employees in a hospital shares the same matrix login.
+- Patient journals are append only.
+- A hospital has two principals: Doctor and Secretary.
 - A doctor can see full patient journal.
 - A secretary can only see some parts of the journal.
 
+Technical requirements:
 -Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
 
-- Hospitals in a Room are preconfigured and every client knows from the beginning which hospitals are in the room / or can join the room.
 
 Configurations for room:
-- Default user level is 100. Anyone can kick, ban and invite users. 
+- Rooms are precreated and each hospital are aware of each room. 
+- Hospitals in a Room are preconfigured and every client knows from the beginning which hospitals are in the room / or can join the room.
 - The room is invite-only
+- Default user level is 100. Anyone can kick, ban and invite users. 
+
+Test cases (Two preinvited hospitals in a precreated room):
+- Doctor retrieves journal
+- Secretary retrieves journal
+- Doctor edits journal 
+- Secretary edits journal
 
 TODO:
-- Implement Object to JSON to String and vice versa
-- Setup homeserver again
 - Create multiple users and try ban/unban methods
+- Print method for PatientJournal
 - Exception handling for when users are banned or cannot join the room
+- Enable encryption (Use E2E beta repo)
+- Setup federation of homeservers
+
+
+Alternative to precreated rooms:
+- A python script for each user runs in the backgrounds and listens to invitation and accepts. 
+- The room_alias is used instead of room_id. The room_alias is a number and the id value on PatientJournal object. 
+- When adding or retrieving jounal the room must first be found through the room_alias. The rooms are iterated over through get_rooms, and the one with matching value is then returned. 

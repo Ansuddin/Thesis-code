@@ -5,13 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MatrixService{
 	
+	private String[] roomIds;
+	private String[] userIds;
 	Matrix api;
 
 	public MatrixService(){
 		api = new MatrixApi();	
 	}
 
-	public void addJournal(PatientJournal patientJournal, String[] userIds){
+	public void addJournal(String roomId, PatientJournal patientJournal, String[] userIds){
 		// Serialize journal
 		String journal = objectToString(patientJournal)
 
@@ -30,7 +32,7 @@ public class MatrixService{
 		}
 	}
 
-	public PatientJournal retrieveJournal(){
+	public PatientJournal retrieveJournal(String roomId){
 		// Retrieve journal 
 		String strJournal = api.retrieve();
 
