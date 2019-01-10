@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="matrix" default="usage" basedir=".">
+<project name="journalsystem" default="usage" basedir=".">
   <description>Builds Matrix project.</description>
   <property name="build.dir" value="./" />
   <property name="src.dir" location="${build.dir}/src" />
@@ -41,11 +41,17 @@
   <target name="parac">
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
-      <arg value="${pipath.base};{src.dir}" />
-      <arg value="${src.dir}/HelloWorld.para"/>
+      <arg value="${pipath.base}:${src.dir}" />
+      <!--<arg value="${src.dir}/HelloWorld.para"/>-->
+      <arg value="${src.dir}/Doctor.para"/>
+      <arg value="${src.dir}/Secretary.para"/>
+      <arg value="${src.dir}/JournalPolicy.para"/>
+      
+ <!--     <arg value="${src.dir}/PatientJournal.para"/> -->
       <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
     </exec>
   </target>
+
 
   <target name="javac">
     <mkdir dir="${bin.dir}" />
@@ -59,7 +65,7 @@
   </target>
 
   <target name="run">
-    <java classname="HelloWorld" fork="true">
+    <java classname="HelloWorld" fork="true"> <!-- specify classname -->
       <arg value="-h"/>
       <classpath> 
         <path refid="javac-classpath"/> <!-- not working -->

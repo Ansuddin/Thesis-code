@@ -1,0 +1,10 @@
+
+public class Doctor {
+	int id;
+	String name;
+
+	public Doctor (?{Object a:}int id, ?{Object a:} String name){
+		this.id = id;
+		this.name = name;
+	}
+}

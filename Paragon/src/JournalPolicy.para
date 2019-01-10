@@ -1,0 +1,10 @@
+
+
+public class JournalPolicy {
+    private static final Secretary secretary;
+    private static final Doctor doctor;
+   
+    public static final policy high = { doctor : }; 
+    public static final policy low  = { secretary : 
+                                      ; doctor : };
+}
