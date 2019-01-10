@@ -6,6 +6,8 @@ import org.jpy.PyObject;
 import org.jpy.PyInputMode;
 import java.util.Map;
 import java.util.HashMap;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MatrixApi { //implements Matrix {
 
@@ -61,5 +63,30 @@ public class MatrixApi { //implements Matrix {
 	public void unban(String userId) {
 		this.room.callMethod("unban_user", userId);
 	}
+
+	public PatientJournal stringToJournal(String json) {
+		PatientJournal patientJournal = new PatientJournal();
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			patientJournal = mapper.readValue(json, PatientJournal.class);
+		} catch (Exception e){
+			e.printStackTrace();
+		}		
+		return patientJournal;	
+	}
+
+	public String journalToString(PatientJournal patientJournal){
+		String json = "";
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			 json = mapper.writeValueAsString(patientJournal);
+			return json;
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return json;
+	}
+
+
 
 }

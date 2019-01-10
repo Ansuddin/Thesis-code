@@ -64,24 +64,27 @@ public class MatrixApi { //implements Matrix {
 		this.room.callMethod("unban_user", userId);
 	}
 
-	public PatientJournal stringToJournal(String msg) {
+	public PatientJournal stringToJournal(String json) {
+		PatientJournal patientJournal = new PatientJournal();
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			PatientJournal patientJournal = mapper.readValue(json, PatientJournal.class);
-			return patientJournal;
+			patientJournal = mapper.readValue(json, PatientJournal.class);
 		} catch (Exception e){
 			e.printStackTrace();
-		}			
+		}		
+		return patientJournal;	
 	}
 
 	public String journalToString(PatientJournal patientJournal){
+		String json = "";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(patientJournal);
+			 json = mapper.writeValueAsString(patientJournal);
 			return json;
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		return json;
 	}
 
 

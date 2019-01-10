@@ -7,4 +7,6 @@ public native class MatrixApi{
 	void invite(String userId);
 	void ban(String userId);
 	void unban(String userId);
+	String journalToString(PatientJournal journal);
+	PatientJournal stringToJournal(String json);
 }

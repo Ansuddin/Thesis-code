@@ -1,14 +1,25 @@
-
+package journalsystem;
 public class PatientJournal {
 	
-	?JournalPolicy.low int id;
+	/*?JournalPolicy.low int id;
 	?JournalPolicy.high String ssn;
 	?JournalPolicy.low String name;
 	?JournalPolicy.low String address;	
 	?JournalPolicy.low String[] publicNote;
-	//?JournalPolicy.High PatientSession[] sessions;
+	//?JournalPolicy.High PatientSession[] sessions;*/
 
-	public PatientJournal(){}
+	public int id;
+	public String ssn;
+	public String name;
+	public String address;	
+	//public String[] publicNote;
+	//public PatientSession[] sessions;
 
+	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, ?{Object a:} String address){
+		this.id = id;
+		this.ssn = ssn;
+		this.name = name;
+		this.address = address;
+	}
 	 	
 }

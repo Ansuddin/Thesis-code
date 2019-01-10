@@ -32,15 +32,7 @@
         <include name="**/*.pi" />
         <include name="**/*.orig" />
         <include name="**/*.rej" />
-        <exclude name="matrix/*.java"/>
-        <exclude name="**/runtime/*.pi" />
-        <exclude name="**/runtime/*.java" />
-      </fileset>
-      <fileset dir="${src.dir}/journalsystem">
-        <include name="**/*.java" />
-        <include name="**/*.pi" />
-        <include name="**/*.orig" />
-        <include name="**/*.rej" />
+        <exclude name="**/MatrixApi.java"/>
         <exclude name="**/runtime/*.pi" />
         <exclude name="**/runtime/*.java" />
       </fileset>
@@ -52,7 +44,7 @@
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
-      <arg value="${src.dir}/CPTest.para"/>
+
       <!--<arg value="${src.dir}/HelloWorld.para"/>
       <arg value="${src.dir}/journalsystem/Doctor.para"/>
       <arg value="${src.dir}/journalsystem/Secretary.para"/>
@@ -60,8 +52,9 @@
       <arg value="${src.dir}/journalsystem/JournalPolicy.para"/> 
       <arg value="${src.dir}/journalsystem/Matrix.para"/>
 
-      <arg value="${src.dir}/journalsystem/Session.para"/>
-      <arg value="${src.dir}/journalsystem/PatientJournal.para"/> -->
+      <arg value="${src.dir}/journalsystem/Session.para"/>-->
+      <arg value="${src.dir}/journalsystem/PatientJournal.para"/>
+      <arg value="${src.dir}/CPTest.para"/>
       <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
     </exec>
   </target>
@@ -69,7 +62,7 @@
 
   <target name="javac">
     <mkdir dir="${bin.dir}" />
-    <javac srcdir="${src.dir}:${src.dir}/matrix" destdir="${bin.dir}" debug="true" includeAntRuntime="false">
+    <javac srcdir="${src.dir}" destdir="${bin.dir}" debug="true" includeAntRuntime="false">
       
       <classpath refid="javac-classpath" />
       <include name="**/*.java" />
