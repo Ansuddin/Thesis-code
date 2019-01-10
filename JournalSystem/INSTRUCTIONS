@@ -2,6 +2,7 @@ javac -cp "jpy/jpy.jar" -d bin src/Test.java src/MatrixApi.java
 
 java -Djpy.config=jpy/jpyconfig.properties -cp "./:jpy/jpy.jar:bin" journalsystem/Test
 
+javac -cp "JournalSystem/jpy/jpy.jar" -d . src/MatrixApi.java
 
 
 -----
@@ -16,3 +17,6 @@ OR
 javac -cp lib/\* -d bin src/Test.java src/PatientJournal.java PatientSession.java
 
 java -cp "./:lib/jackson-databind.jar:lib/jackson-core.jar:lib/jackson-annotations.jar:bin" journalsystem/Test
+
+
+

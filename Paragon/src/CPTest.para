@@ -1,0 +1,30 @@
+import journalsystem.MatrixApi;
+import org.jpy.PyLib;
+
+public class CPTest {
+	public static void main(String[] args){
+		System.out.println("Initialize");
+		if(!PyLib.isPythonRunning()){
+			PyLib.startPython();
+			System.out.println("Python started");
+			try{
+				
+				MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!XtUmMyjaNdBdSbMfxK:ansuddin.xyz");
+				
+				System.out.println("Hello from Paragon");
+
+				//api.invite("!fLhiSuTZAupSQpcEXs:ansuddin.xyz", "@hospital1:ansuddin.xyz");
+
+				//PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
+				//String test = api.retrieve(room);
+				//System.out.println(test);
+				//api.send(room,"hej");
+				
+
+			} finally {
+				PyLib.stopPython();
+			}
+		}
+
+	}
+}

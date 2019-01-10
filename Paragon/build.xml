@@ -5,6 +5,7 @@
   <property name="src.dir" location="${build.dir}/src" />
   <property name="bin.dir" location="${build.dir}/bin" />
   <property name="lib.dir" location="${build.dir}/lib" />
+  <property name="jpy.dir" location="${build.dir}/jpy"/>
 
   <!-- Path to find standard .pi files -->
   <property name="pipath.base" location="${build.dir}/libPI" />  <!-- specify location -->
@@ -31,6 +32,7 @@
         <include name="**/*.pi" />
         <include name="**/*.orig" />
         <include name="**/*.rej" />
+        <exclude name="matrix/*.java"/>
         <exclude name="**/runtime/*.pi" />
         <exclude name="**/runtime/*.java" />
       </fileset>
@@ -50,7 +52,8 @@
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
-      <!--<arg value="${src.dir}/HelloWorld.para"/>-->
+      <arg value="${src.dir}/CPTest.para"/>
+      <!--<arg value="${src.dir}/HelloWorld.para"/>
       <arg value="${src.dir}/journalsystem/Doctor.para"/>
       <arg value="${src.dir}/journalsystem/Secretary.para"/>
 
@@ -58,7 +61,7 @@
       <arg value="${src.dir}/journalsystem/Matrix.para"/>
 
       <arg value="${src.dir}/journalsystem/Session.para"/>
-      <arg value="${src.dir}/journalsystem/PatientJournal.para"/> 
+      <arg value="${src.dir}/journalsystem/PatientJournal.para"/> -->
       <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
     </exec>
   </target>
@@ -66,7 +69,8 @@
 
   <target name="javac">
     <mkdir dir="${bin.dir}" />
-    <javac srcdir="${src.dir}" destdir="${bin.dir}" debug="true" includeAntRuntime="false">
+    <javac srcdir="${src.dir}:${src.dir}/matrix" destdir="${bin.dir}" debug="true" includeAntRuntime="false">
+      
       <classpath refid="javac-classpath" />
       <include name="**/*.java" />
     </javac>
@@ -76,12 +80,13 @@
   </target>
 
   <target name="run">
-    <java classname="HelloWorld" fork="true"> <!-- specify classname -->
+    <java classname="CPTest" fork="true"> <!-- specify classname -->
       <arg value="-h"/>
       <classpath> 
         <path refid="javac-classpath"/> <!-- not working -->
         <path location="${bin.dir}"/>
       </classpath>
+      <sysproperty key="jpy.config" value="${jpy.dir}/jpyconfig.properties"/>
     </java>
   </target>
 </project>

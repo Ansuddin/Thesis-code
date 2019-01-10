@@ -1,0 +1,10 @@
+package journalsystem;
+
+public native class MatrixApi{
+	public MatrixApi(String a, String b, String c, String d){}
+	void send(String message);
+	String retrieve();
+	void invite(String userId);
+	void ban(String userId);
+	void unban(String userId);
+}
