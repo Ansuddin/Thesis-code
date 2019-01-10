@@ -10,9 +10,8 @@ public class CPTest {
 			try{
 				
 				MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!XtUmMyjaNdBdSbMfxK:ansuddin.xyz");
+				api.send("Hello from Paragon");
 				
-				System.out.println("Hello from Paragon");
-
 				//api.invite("!fLhiSuTZAupSQpcEXs:ansuddin.xyz", "@hospital1:ansuddin.xyz");
 
 				//PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
