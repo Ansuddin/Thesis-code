@@ -34,6 +34,14 @@
         <exclude name="**/runtime/*.pi" />
         <exclude name="**/runtime/*.java" />
       </fileset>
+      <fileset dir="${src.dir}/journalsystem">
+        <include name="**/*.java" />
+        <include name="**/*.pi" />
+        <include name="**/*.orig" />
+        <include name="**/*.rej" />
+        <exclude name="**/runtime/*.pi" />
+        <exclude name="**/runtime/*.java" />
+      </fileset>
       <fileset dir="${bin.dir}" />
     </delete>
   </target>
@@ -41,13 +49,16 @@
   <target name="parac">
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
-      <arg value="${pipath.base}:${src.dir}" />
+      <arg value="${pipath.base}:${src.dir}/journalsystem" />
       <!--<arg value="${src.dir}/HelloWorld.para"/>-->
-      <arg value="${src.dir}/Doctor.para"/>
-      <arg value="${src.dir}/Secretary.para"/>
-      <arg value="${src.dir}/JournalPolicy.para"/>
-      
- <!--     <arg value="${src.dir}/PatientJournal.para"/> -->
+      <arg value="${src.dir}/journalsystem/Doctor.para"/>
+      <arg value="${src.dir}/journalsystem/Secretary.para"/>
+
+      <arg value="${src.dir}/journalsystem/JournalPolicy.para"/> 
+      <arg value="${src.dir}/journalsystem/Matrix.para"/>
+
+      <arg value="${src.dir}/journalsystem/Session.para"/>
+      <arg value="${src.dir}/journalsystem/PatientJournal.para"/> 
       <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
     </exec>
   </target>

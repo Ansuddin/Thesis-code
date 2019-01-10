@@ -1,0 +1,12 @@
+
+public class Session {
+	
+	?JournalPolicy.low int id;
+	?JournalPolicy.low String date;
+	?JournalPolicy.low String purpose;
+	?JournalPolicy.high String note;
+	
+	public Session(){}
+
+	 	
+}

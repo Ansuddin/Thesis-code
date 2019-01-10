@@ -1,5 +1,3 @@
-package journalsystem;
-
 
 public class PatientJournal {
 	
@@ -8,7 +6,7 @@ public class PatientJournal {
 	?JournalPolicy.low String name;
 	?JournalPolicy.low String address;	
 	?JournalPolicy.low String[] publicNote;
-	?JournalPolicy.High PatientSession[] sessions;
+	//?JournalPolicy.High PatientSession[] sessions;
 
 	public PatientJournal(){}
 

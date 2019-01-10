@@ -1,0 +1,4 @@
+public interface Matrix {
+	void send(String message);
+	
+}
