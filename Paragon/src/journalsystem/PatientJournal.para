@@ -15,6 +15,7 @@ public class PatientJournal {
 	//public String[] publicNote;
 	//public PatientSession[] sessions;
 
+	public PatientJournal(){}
 	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, ?{Object a:} String address){
 		this.id = id;
 		this.ssn = ssn;

@@ -1,0 +1,14 @@
+package journalsystem;
+public class PatientJournal
+{
+  public int id;
+  public java.lang.String ssn;
+  public java.lang.String name;
+  public java.lang.String address;
+  public PatientJournal ()
+  {
+  }
+  public PatientJournal (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String ssn, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object a:} java.lang.String address)
+  {
+  }
+}

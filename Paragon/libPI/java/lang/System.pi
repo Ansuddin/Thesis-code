@@ -19,6 +19,7 @@ public native class System {
                                      
     public static ?policyof(key) String getProperty(String key) ;
     
+
     public static void exit(int c);
 
 }

@@ -6,13 +6,15 @@ import journalsystem.*;
 
 public class CPTest {
 	public static void main(String[] args){
+		
+		
 		System.out.println("Initialize");
 		if(!PyLib.isPythonRunning()){
 			PyLib.startPython();
 			System.out.println("Python started");
 			try{
 				
-				MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!XtUmMyjaNdBdSbMfxK:ansuddin.xyz");
+				/*MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!XtUmMyjaNdBdSbMfxK:ansuddin.xyz");
 				api.send("Hello from Paragon");
 				
 				try {
@@ -23,7 +25,7 @@ public class CPTest {
 					PatientJournal journal = api.stringToJournal(json);
 				} catch (Exception e){
 					System.out.println("error");
-				}
+				}*/
 				//api.invite("!fLhiSuTZAupSQpcEXs:ansuddin.xyz", "@hospital1:ansuddin.xyz");
 
 				//PyObject room = api.join("!fLhiSuTZAupSQpcEXs:ansuddin.xyz");
@@ -32,10 +34,12 @@ public class CPTest {
 				//api.send(room,"hej");
 				
 
+
 			} finally {
 				PyLib.stopPython();
 			}
 		}
+
 
 	}
 }

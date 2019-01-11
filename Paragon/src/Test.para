@@ -1,0 +1,60 @@
+import journalsystem.MatrixApi;
+import org.jpy.PyLib;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import journalsystem.*;
+import java.util.Scanner;
+import java.lang.System;
+
+public class Test {
+	public static void main(?{Object a :} String[] args){
+		
+		if(!PyLib.isPythonRunning()){
+			PyLib.startPython();
+			System.out.println("Python started");
+			if(args.length > 0){
+				try{
+					Employee employee;
+					if(args[0].equals("doctor")){
+						System.out.println(args[0]);
+						employee = new Doctor(1,args[0]);
+					} else if(args[0].equals("secretary")) {
+						System.out.println(args[0]);
+						employee = new Secretary(2,args[0]);
+					} else {
+						System.out.println("Wrong args:" + args[0] + ":");
+						return;
+					}
+
+					while(true){
+						Scanner scanner = new Scanner(System.in);
+						// Options
+						System.out.println("Select an option: ");
+						System.out.println("1. Retrieve patient journal");
+						System.out.println("2. Edit and send patient journal");
+						System.out.println("3. Exit");
+						int option = scanner.nextInt();
+						if(option == 1){
+							System.out.println("Retrieved journal");
+							break;
+						} else if (option == 2){
+							System.out.println("Editing and sending journal");
+							break;
+						} else if (option == 3){
+							System.out.println("Exiting");
+							break;
+						} else {
+							System.out.println("Wrong input!");
+							break;
+						}
+					}						
+				} finally {
+					PyLib.stopPython();
+				}
+			} else {
+				System.out.println("Args is empty");
+			}
+		}
+
+	}
+}
