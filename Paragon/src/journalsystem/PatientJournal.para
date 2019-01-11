@@ -1,4 +1,6 @@
 package journalsystem;
+import java.util.ArrayList;
+
 public class PatientJournal {
 	
 	/*?JournalPolicy.low int id;
@@ -12,15 +14,27 @@ public class PatientJournal {
 	public String ssn;
 	public String name;
 	public String address;	
-	//public String[] publicNote;
-	//public PatientSession[] sessions;
+	public String publicNotes;
+	public ?{Object a :} String[] sessions;
 
 	public PatientJournal(){}
-	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, ?{Object a:} String address){
+	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, ?{Object a:} String address, ?{Object a:} String publicNotes, ?{Object a:} String[] sessions){
 		this.id = id;
 		this.ssn = ssn;
 		this.name = name;
 		this.address = address;
+		this.publicNotes = publicNotes;
+		this.sessions = sessions;
+	}
+
+	public !{Object a: } void addToSessions(?{Object a:}String session){
+		String[] newSessions = new String[this.sessions.length+1];
+		for(int i=0; i<this.sessions.length; i++){
+			newSessions[i] = this.sessions[i];
+		}
+		newSessions[sessions.length] = session;
+		this.sessions = newSessions;
+
 	}
 	 	
 }

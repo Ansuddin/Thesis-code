@@ -5,10 +5,14 @@ public class PatientJournal
   public java.lang.String ssn;
   public java.lang.String name;
   public java.lang.String address;
+  public java.lang.String publicNotes;
+  public ?{java.lang.Object a:} java.lang.String[] sessions;
   public PatientJournal ()
   {
   }
-  public PatientJournal (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String ssn, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object a:} java.lang.String address)
+  public PatientJournal (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String ssn, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object a:} java.lang.String address, ?{java.lang.Object a:} java.lang.String publicNotes, ?{java.lang.Object a:} java.lang.String[] sessions)
   {
   }
+  public !{java.lang.Object a:} void addToSessions(?{java.lang.Object a:} java.lang.String session)
+  ;
 }

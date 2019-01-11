@@ -5,15 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import journalsystem.*;
 import java.util.Scanner;
 import java.lang.System;
+import java.util.ArrayList;
 
 public class Test {
-	public static void main(?{Object a :} String[] args){
+	public !{Object a:} static void main(?{Object a :} String[] args){
 		
 		if(!PyLib.isPythonRunning()){
 			PyLib.startPython();
 			System.out.println("Python started");
 			if(args.length > 0){
 				try{
+					// patient1 room = !jGiMyqbOaVwNMkgkYU:ansuddin.xyz
+					//MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
+					MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!XtUmMyjaNdBdSbMfxK:ansuddin.xyz");
 					Employee employee;
 					if(args[0].equals("doctor")){
 						System.out.println(args[0]);
@@ -31,16 +35,85 @@ public class Test {
 						// Options
 						System.out.println("Select an option: ");
 						System.out.println("1. Retrieve patient journal");
-						System.out.println("2. Edit and send patient journal");
-						System.out.println("3. Exit");
+						System.out.println("2. Add and send new patient journal");
+						System.out.println("3. Edit and send patient journal");
+						System.out.println("4. Exit");
 						int option = scanner.nextInt();
 						if(option == 1){
-							System.out.println("Retrieved journal");
-							break;
+							System.out.println("Retrieving journal");
+							String json = api.retrieve();
+							if(json == null || json.equals("")){ // Or if not valid json
+								System.out.println("Journal not added");
+							}
+							else {
+								System.out.println(json);
+							}
+							System.out.println();
+							
+							
 						} else if (option == 2){
-							System.out.println("Editing and sending journal");
-							break;
+							System.out.println("Adding and sending new journal");
+							String json = api.retrieve();
+							if(json == null || json.equals("")){
+								// TODO: Ban all users
+								String[] sessions = {"started treatment for pollen"};
+								PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans Uddin", "Knapmagerstien 49", "Has grass pollen allergy", sessions);
+								json = api.journalToString(journal);
+								api.send(json); //TODO: Handle send errors
+								// TODO: Unban all users
+								// TODO: Invite all users
+								System.out.println(json);
+								System.out.println("Journal added");
+							}
+							else {
+								System.out.println("Journal already exists");
+							}
+							System.out.println();
 						} else if (option == 3){
+							System.out.println("Editing and sending journal");
+							String json = api.retrieve();
+							if(json != null ){
+								if(!json.equals("")){
+									// TODO: Ban all users
+
+									PatientJournal journal = api.stringToJournal(json);
+									
+									//--- Make some changes ---
+									System.out.println("Select option:");
+									System.out.println("1. Change public note");
+									System.out.println("2. Add session");
+									int editOption = scanner.nextInt();
+									Scanner editScanner = new Scanner(System.in);
+									if(editOption == 1 ){
+										System.out.println("Add new public note");
+										String note = editScanner.nextLine();
+										journal.publicNotes = note;
+										json = api.journalToString(journal);
+										api.send(json); //TODO: Handle send errors
+									} else if (editOption ==2){
+										System.out.println("Add new session");
+										String newSession = editScanner.nextLine();
+										journal.addToSessions(newSession);
+										json = api.journalToString(journal);
+										api.send(json); //TODO: Handle send errors
+									} else {
+										System.out.println("Wrong option!");
+									}
+									// -- finished making changes --
+
+									// TODO: Unban all users
+									// TODO: Invite all users
+									System.out.println(json);
+									System.out.println("Journal edited");
+								} else {
+									System.out.println("Journal not added.");
+								}
+
+							} else {
+								System.out.println("Journal not added");
+							}
+							System.out.println();
+						} else if (option == 4) {
 							System.out.println("Exiting");
 							break;
 						} else {
