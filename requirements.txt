@@ -26,8 +26,6 @@ Test cases (Two preinvited hospitals in a precreated room):
 - Secretary edits journal
 
 TODO:
-- Create multiple users and try ban/unban methods
-- Print method for PatientJournal
 - Exception handling for when users are banned or cannot join the room
 - Enable encryption (Use E2E beta repo)
 - Setup federation of homeservers

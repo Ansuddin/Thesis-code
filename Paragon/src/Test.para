@@ -1,0 +1,28 @@
+import java.lang.System;
+import java.util.Scanner;
+import java.util.ArrayList;
+import org.jpy.PyLib;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import journalsystem.*;
+import journalsystem.MatrixApi;
+
+public class Test {
+	public !{Object a:} static void main(?{Object a :} String[] args){
+		
+		if(!PyLib.isPythonRunning()){
+			PyLib.startPython();
+			System.out.println("Python started");
+			try{
+				HospitalService service = new HospitalService("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
+
+				
+								
+			} finally {
+				PyLib.stopPython();
+			}
+
+		}
+
+	}
+}

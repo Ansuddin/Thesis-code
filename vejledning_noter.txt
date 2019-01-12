@@ -1,0 +1,16 @@
+Vejledning noter:
+
+Hvorfor bruge matrix?
+Understøtter E2E,
+
+Den samme problem som motiveret Matrix eksistens findes i den offentlige sektor og dens data.
+MAtir prolbem: skype, fb messenger, whataspp
+
+Matrix kan fungerer som et API for at få vidt forskellige software produkter i den offetnlige sektor til at udveksle data. 
+
+Er det nok at komme med løsningsforslag:  Til race condition problemet
+
+Prioritering af opgaver:
+1. Fokus på IFC policies
+2. få matrix til at virke som tingene er lige nu: løse conflicts i data.
+3. hvis tid hvordan kan man hacke rundt i matrix og 
