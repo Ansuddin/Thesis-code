@@ -7,23 +7,24 @@ public class PatientJournal {
 	?JournalPolicy.high String ssn;
 	?JournalPolicy.low String name;
 	?JournalPolicy.low String address;	
-	?JournalPolicy.low String[] publicNote;
-	//?JournalPolicy.High PatientSession[] sessions;*/
+	?JournalPolicy.low String publicNote;
+	?JournalPolicy.high String[] sessions;*/
 
-	public int id;
-	public String ssn;
+	public ?{Object a:}int id;
+	public ?{:}String ssn;
 	public String name;
 	public String address;	
-	public String publicNotes;
+	public String publicNote;
 	public ?{Object a :} String[] sessions;
 
 	public PatientJournal(){}
-	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, ?{Object a:} String address, ?{Object a:} String publicNotes, ?{Object a:} String[] sessions){
+	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, 
+		?{Object a:} String address, ?{Object a:} String publicNote, ?{Object a:} String[] sessions){
 		this.id = id;
 		this.ssn = ssn;
 		this.name = name;
 		this.address = address;
-		this.publicNotes = publicNotes;
+		this.publicNote = publicNote;
 		this.sessions = sessions;
 	}
 

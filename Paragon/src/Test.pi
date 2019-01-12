@@ -1,0 +1,5 @@
+public class Test
+{
+  public !{java.lang.Object a:} static void main(?{java.lang.Object a:} java.lang.String[] args)
+  ;
+}

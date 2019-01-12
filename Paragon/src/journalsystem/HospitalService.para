@@ -2,7 +2,7 @@ import journalsystem.MatrixApi;
 
 public class HospitalService{
 	
-	?{:}MatrixApi api;
+	/*?{:}MatrixApi api;
 
 	public HospitalService(?{:}String url, ?{:}String user, ?{:}String pass, ?{:}String roomId){
 		this.api = new MatrixApi(url,user,pass,roomId);
@@ -10,5 +10,5 @@ public class HospitalService{
 
 	public !{Object a:} String retrieve(){
 		return api.retrieve();
-	}
+	}*/
 }
