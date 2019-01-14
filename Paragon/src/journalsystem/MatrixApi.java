@@ -1,4 +1,3 @@
-package journalsystem;
 
 import org.jpy.PyLib;
 import org.jpy.PyModule;

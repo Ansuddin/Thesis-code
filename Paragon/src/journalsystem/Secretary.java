@@ -1,5 +1,3 @@
-package journalsystem;
-import journalsystem.*;
 public class Secretary
 {
   PatientJournal journal;

@@ -1,21 +1,25 @@
-package journalsystem;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 public class PatientJournal {
 
-	/* Gives error when using defined policy
-	public static final doctor    = {Doctor d:};
-	public static final secretary = {Secretary s:};
-	public static final api 	  = {Api a:};
+	/* Gives error when using combined policies
+	public static final policy trusted = { MatrixApi a:};
+	public static final policy high = {Doctor d: };
+	public static final policy low = { Secretary s : ;Doctor d: };
 	*/
 
-	private ?{Doctor d:} int 	   id;
-	private   String   ssn;
-	private  String   name;
-	private  String   address;	
-	private  String   publicNote;
-	private  String[] sessions;
+	public static final policy high = {Doctor d: ;MatrixApi a: };
+	public static final policy low = { Secretary s : ;Doctor d: ;MatrixApi a: };
+	
 
+	private ?low int 	   id;
+	private ?high  String   ssn;
+	private ?low String   name;
+	private ?low String   address;	
+	private ?low String   publicNote;
+	private ?high String[] sessions;
+
+	public PatientJournal(){}
 	public PatientJournal(?{Object a:} int id, ?{Object a:} String ssn, 
 						  ?{Object a:} String name, ?{Object a:} String address, 
 						  ?{Object a:} String publicNote, ?{Object a:} String[] sessions){
@@ -27,8 +31,12 @@ public class PatientJournal {
 		this.sessions = sessions;
 	}
 
-	public int getId(){
+	public ?low int getId(){
 		return this.id;
+	}
+
+	public !low void setInt(?{Object a:} int id){
+		this.id=id;
 	}
 
 	public !{Object a:} void setPublicNote(?{Object a:}String note){

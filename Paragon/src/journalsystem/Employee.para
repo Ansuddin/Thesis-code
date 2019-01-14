@@ -1,7 +1,0 @@
-package journalsystem;
-
-
-public interface Employee {
-	
-	void receive(PatientJournal journal);
-}

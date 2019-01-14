@@ -1,6 +1,4 @@
-package journalsystem;
 
-import journalsystem.MatrixApi;
 
 public class Hospital{
 	

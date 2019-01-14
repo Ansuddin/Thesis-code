@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import org.jpy.PyLib;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import journalsystem.*;
-import journalsystem.MatrixApi;
 public class Test
 {
   public static void main(java.lang.String[] args)

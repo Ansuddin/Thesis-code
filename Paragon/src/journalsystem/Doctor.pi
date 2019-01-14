@@ -1,4 +1,3 @@
-package journalsystem;
 public class Doctor
 {
   ?{java.lang.Object a:} PatientJournal journal;

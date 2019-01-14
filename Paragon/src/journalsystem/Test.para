@@ -1,11 +1,10 @@
+
 import java.lang.System;
 import java.util.Scanner;
 import java.util.ArrayList;
 import org.jpy.PyLib;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import journalsystem.*;
-import journalsystem.MatrixApi;
 
 public class Test {
 	public !{Object a:} static void main(?{Object a :} String[] args){
@@ -19,7 +18,7 @@ public class Test {
 				String[] sessions = {"startet behandling"};
 				PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien", "Høfeber", sessions);
 				
-				int id = journal.getId();
+				?{Secretary a:}int id = journal.getId();
 				//?{Doctor a:}String name = journal.name;
 				/*Doctor d = new Doctor(1,"doctor");
 				Secretary s = new Secretary(1, "secretary");

@@ -1,6 +1,4 @@
-package journalsystem;
 
-import journalsystem.*;
 
 public class JournalPolicy {
     //private static final MatrixApi api; // matrix
