@@ -1,10 +1,23 @@
+package journalsystem;
 
-public class Doctor implements Employee {
-	int id;
-	String name;
+import journalsystem.*;
 
+public class Doctor {
+	/*
+	?{Object a:}int id;
+	?{Object a:}String name;
+
+	public Doctor(){}
 	public Doctor (?{Object a:}int id, ?{Object a:} String name){
 		this.id = id;
 		this.name = name;
+	}*/
+
+	?{Object a:}PatientJournal journal;
+
+	public Doctor(){}
+
+	public !{Object a:} void receive(?{Object a:}PatientJournal journal){
+		this.journal = journal;
 	}
 }

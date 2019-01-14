@@ -18,9 +18,7 @@ public class Test
       {
         java.lang.String[] sessions = {"startet behandling"};
         PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien", "H\248feber", sessions);
-        int id = journal.id;
-        java.lang.String ssn = journal.ssn;
-        java.lang.System.out.println(id);
+        int id = journal.getId();
       }
       finally {
                 org.jpy.PyLib.stopPython();

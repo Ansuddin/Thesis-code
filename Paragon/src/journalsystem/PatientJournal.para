@@ -2,30 +2,41 @@ package journalsystem;
 import java.util.ArrayList;
 
 public class PatientJournal {
-	
-	/*?JournalPolicy.low int id;
-	?JournalPolicy.high String ssn;
-	?JournalPolicy.low String name;
-	?JournalPolicy.low String address;	
-	?JournalPolicy.low String publicNote;
-	?JournalPolicy.high String[] sessions;*/
 
-	public ?{Object a:}int id;
-	public ?{:}String ssn;
-	public String name;
-	public String address;	
-	public String publicNote;
-	public ?{Object a :} String[] sessions;
+	/* Gives error when using defined policy
+	public static final doctor    = {Doctor d:};
+	public static final secretary = {Secretary s:};
+	public static final api 	  = {Api a:};
+	*/
 
-	public PatientJournal(){}
-	public PatientJournal (?{Object a:}int id, ?{Object a:} String ssn, ?{Object a:} String name, 
-		?{Object a:} String address, ?{Object a:} String publicNote, ?{Object a:} String[] sessions){
+	private ?{Doctor d:} int 	   id;
+	private   String   ssn;
+	private  String   name;
+	private  String   address;	
+	private  String   publicNote;
+	private  String[] sessions;
+
+	public PatientJournal(?{Object a:} int id, ?{Object a:} String ssn, 
+						  ?{Object a:} String name, ?{Object a:} String address, 
+						  ?{Object a:} String publicNote, ?{Object a:} String[] sessions){
 		this.id = id;
 		this.ssn = ssn;
 		this.name = name;
 		this.address = address;
 		this.publicNote = publicNote;
 		this.sessions = sessions;
+	}
+
+	public int getId(){
+		return this.id;
+	}
+
+	public !{Object a:} void setPublicNote(?{Object a:}String note){
+		this.publicNote = note;
+	}
+
+	public !{Object a:} void setSessions(?{Object a:}String[] sessions) {
+
 	}
 
 	public !{Object a: } void addToSessions(?{Object a:}String session){

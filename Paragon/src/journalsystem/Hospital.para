@@ -1,0 +1,32 @@
+package journalsystem;
+
+import journalsystem.MatrixApi;
+
+public class Hospital{
+	
+	private static final MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
+	//private static final Doctor doctor = new Doctor();
+	//private static final Secretary secretary = new Secretary();
+
+
+
+	public static final policy MatrixPolicy = {api:};
+	//public static final policy DoctorPolicy = {doctor:};
+	//public static final policy SecretaryPolicy = {secretary:
+												 //;doctor:};
+
+	public Hospital(){}
+
+	public !{Object a:} String retrieve(){
+		//return api.retrieve();
+		return "";
+	}
+
+	public void addNewJournal(){
+
+	}
+
+	public void updateJournal(){
+
+	}
+}

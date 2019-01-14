@@ -1,10 +1,13 @@
-public class Secretary implements Employee
+package journalsystem;
+import journalsystem.*;
+public class Secretary
 {
-  private int id;
-  private java.lang.String name;
-  public Secretary (int id, java.lang.String name)
+  PatientJournal journal;
+  public Secretary ()
   {
-    this.id = id;
-    this.name = name;
+  }
+  public void receive(PatientJournal journal)
+  {
+    this.journal = journal;
   }
 }

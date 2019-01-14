@@ -1,10 +1,13 @@
-public class Doctor implements Employee
+package journalsystem;
+import journalsystem.*;
+public class Doctor
 {
-  int id;
-  java.lang.String name;
-  public Doctor (int id, java.lang.String name)
+  PatientJournal journal;
+  public Doctor ()
   {
-    this.id = id;
-    this.name = name;
+  }
+  public void receive(PatientJournal journal)
+  {
+    this.journal = journal;
   }
 }

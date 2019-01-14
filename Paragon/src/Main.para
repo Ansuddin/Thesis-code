@@ -92,7 +92,7 @@ public class Main {
 									if(editOption == 1 ){
 										System.out.println("Add new public note");
 										String note = editScanner.nextLine();
-										journal.publicNotes = note;
+										journal.publicNote = note;
 										json = api.journalToString(journal);
 										api.send(json); //TODO: Handle send errors
 									} else if (editOption ==2){

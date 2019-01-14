@@ -14,3 +14,8 @@ Prioritering af opgaver:
 1. Fokus på IFC policies
 2. få matrix til at virke som tingene er lige nu: løse conflicts i data.
 3. hvis tid hvordan kan man hacke rundt i matrix og 
+
+
+Paragon notes:
+It is possible to leak information by exploiting variation in the timing or termination
+behaviour of code page 7

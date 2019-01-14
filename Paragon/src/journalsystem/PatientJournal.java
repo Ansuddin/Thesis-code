@@ -2,15 +2,12 @@ package journalsystem;
 import java.util.ArrayList;
 public class PatientJournal
 {
-  public int id;
-  public java.lang.String ssn;
-  public java.lang.String name;
-  public java.lang.String address;
-  public java.lang.String publicNote;
-  public java.lang.String[] sessions;
-  public PatientJournal ()
-  {
-  }
+  private int id;
+  private java.lang.String ssn;
+  private java.lang.String name;
+  private java.lang.String address;
+  private java.lang.String publicNote;
+  private java.lang.String[] sessions;
   public PatientJournal (int id, java.lang.String ssn, java.lang.String name, java.lang.String address, java.lang.String publicNote, java.lang.String[] sessions)
   {
     this.id = id;
@@ -19,6 +16,17 @@ public class PatientJournal
     this.address = address;
     this.publicNote = publicNote;
     this.sessions = sessions;
+  }
+  public int getId()
+  {
+    return this.id;
+  }
+  public void setPublicNote(java.lang.String note)
+  {
+    this.publicNote = note;
+  }
+  public void setSessions(java.lang.String[] sessions)
+  {
   }
   public void addToSessions(java.lang.String session)
   {
