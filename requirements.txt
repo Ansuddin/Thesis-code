@@ -8,7 +8,9 @@ Overall requirements:
 - A hospital has two principals: Doctor and Secretary.
 - A doctor can see full patient journal.
 - A secretary can only see some parts of the journal.
-
+- A Patient can read only read his journal but all fields. 
+- A patient can donate organs. 
+- A Doctor can access 
 Technical requirements:
 -Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
 
@@ -35,3 +37,22 @@ Alternative to precreated rooms:
 - A python script for each user runs in the backgrounds and listens to invitation and accepts. 
 - The room_alias is used instead of room_id. The room_alias is a number and the id value on PatientJournal object. 
 - When adding or retrieving jounal the room must first be found through the room_alias. The rooms are iterated over through get_rooms, and the one with matching value is then returned. 
+
+
+Capability? The government is the caretaker of rooms. They own the rooms and can invite relevant hospitals to the room. 
+How are they saved today? 
+
+IFC enforces noninterference. NO information leak. Must declassify to give access in real life examples and declassification allows only the part to be ...FlowLocks
+
+UNdtagelse til noninterference. Hvordan udtrykker man nogle lækager er tilladte -> stateful policies (locks i paragon)
+
+JIF har ikke dynamic policies. 
+
+
+Security-typed languages for inplementation of Cryptographic protocols. A case study 
+
+Argumenter for hvorfor IFC er godt
+ 
+ Argumenter for hvorofr Paragon er godt. 
+
+ HVordan var det som mig som programmør at kode i PAragon. Sammenligne med observationer fra Aslan askarovs artikel.

@@ -45,26 +45,13 @@
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
-
-
-      
-
       <!--<arg value="${src.dir}/Main.para"/> -->
-      
-      
-
-    <arg value="${src.dir}/journalsystem/Secretary.para"/>
-    
-    <arg value="${src.dir}/journalsystem/Doctor.para"/> 
-
-   <!--<arg value="${src.dir}/journalsystem/Hospital.para"/> -->
-
-
+      <!--<arg value="${src.dir}/journalsystem/Secretary.para"/>-->
+      <!--<arg value="${src.dir}/journalsystem/Doctor.para"/> -->
+      <!--<arg value="${src.dir}/journalsystem/Hospital.para"/> -->
       <!--<arg value="${src.dir}/journalsystem/JournalPolicy.para" />-->
-      
-     <arg value="${src.dir}/journalsystem/PatientJournal.para"/>
-     <arg value="${src.dir}/journalsystem/Test.para"/>
-      <!-- Specify location like this <arg value="${src.dir}/se/chalmers/parajpmail/ParaJPMailException.para" /> -->
+      <arg value="${src.dir}/journalsystem/PatientJournal.para"/>
+      <arg value="${src.dir}/journalsystem/Test.para"/>
     </exec>
   </target>
 

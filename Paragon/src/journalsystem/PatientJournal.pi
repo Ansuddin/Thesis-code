@@ -1,39 +1,41 @@
 public class PatientJournal
 {
-  public ?{java.lang.Object a:} int id;
-  private ?{:} java.lang.String ssn;
-  private ?{java.lang.Object a:} java.lang.String name;
-  private ?{java.lang.Object a:} java.lang.String address;
-  private ?{java.lang.Object a:} java.lang.String publicNote;
-  private ?{:} java.lang.String[] sessions;
+  public static final policy high = {:};
+  public static final policy low = {java.lang.Object a:};
+  private ?PatientJournal.low int id;
+  private ?PatientJournal.high java.lang.String ssn;
+  private ?PatientJournal.low java.lang.String name;
+  private ?PatientJournal.low java.lang.String address;
+  private ?PatientJournal.low java.lang.String publicNote;
+  private ?PatientJournal.high java.lang.String[] sessions;
   public PatientJournal ()
   {
   }
-  public PatientJournal (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String ssn, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object a:} java.lang.String address, ?{java.lang.Object a:} java.lang.String publicNote, ?{java.lang.Object a:} java.lang.String[] sessions)
+  public PatientJournal (?PatientJournal.low int id, ?PatientJournal.high java.lang.String ssn, ?PatientJournal.low java.lang.String name, ?PatientJournal.low java.lang.String address, ?PatientJournal.low java.lang.String publicNote, ?PatientJournal.high java.lang.String[] sessions)
   {
   }
-  public ?{java.lang.Object a:} int getId()
+  public ?PatientJournal.low int getId()
   ;
-  public !{java.lang.Object a:} void setInt(?{java.lang.Object a:} int id)
+  public !PatientJournal.low void setInt(?PatientJournal.low int id)
   ;
-  public ?{:} java.lang.String getSsn()
+  public ?PatientJournal.high java.lang.String getSsn()
   ;
-  public !{:} void setSsn(?{:} java.lang.String ssn)
+  public !PatientJournal.high void setSsn(?PatientJournal.high java.lang.String ssn)
   ;
-  public ?{java.lang.Object a:} java.lang.String getName()
+  public ?PatientJournal.low java.lang.String getName()
   ;
-  public !{java.lang.Object a:} void setName(?{java.lang.Object a:} java.lang.String name)
+  public !PatientJournal.low void setName(?PatientJournal.low java.lang.String name)
   ;
-  public ?{java.lang.Object a:} java.lang.String getAddress()
+  public ?PatientJournal.low java.lang.String getAddress()
   ;
-  public !{java.lang.Object a:} void setAddress(?{java.lang.Object a:} java.lang.String address)
+  public !PatientJournal.low void setAddress(?PatientJournal.low java.lang.String address)
   ;
-  public ?{java.lang.Object a:} java.lang.String getPublicNote()
+  public ?PatientJournal.low java.lang.String getPublicNote()
   ;
-  public !{java.lang.Object a:} void setPublicNote(?{java.lang.Object a:} java.lang.String note)
+  public !PatientJournal.low void setPublicNote(?PatientJournal.low java.lang.String note)
   ;
-  public !{:} void setSessions(?{:} java.lang.String[] sessions)
+  public !PatientJournal.high void setSessions(?PatientJournal.high java.lang.String[] sessions)
   ;
-  public !{:} void addToSessions(?{:} java.lang.String session)
+  public !PatientJournal.high void addToSessions(?PatientJournal.high java.lang.String session)
   ;
 }

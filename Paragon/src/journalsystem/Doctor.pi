@@ -1,9 +1,0 @@
-public class Doctor
-{
-  ?{java.lang.Object a:} PatientJournal journal;
-  public Doctor ()
-  {
-  }
-  public !{java.lang.Object a:} void receive(?{java.lang.Object a:} PatientJournal journal)
-  ;
-}

@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 public class PatientJournal
 {
-  public int id;
+  public static final se.chalmers.paragon.runtime.Policy high = new se.chalmers.paragon.runtime.Policy();
+  public static final se.chalmers.paragon.runtime.Policy low = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {java.lang.Object.class}, new se.chalmers.paragon.runtime.Variable(0)));
+  private int id;
   private java.lang.String ssn;
   private java.lang.String name;
   private java.lang.String address;

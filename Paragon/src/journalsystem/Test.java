@@ -10,5 +10,7 @@ public class Test
   {
     java.lang.String[] sessions = {"startet behandling"};
     PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien", "H\248feber", sessions);
+    java.lang.String fakeSsn = "012345-6789";
+    journal.setSsn(fakeSsn);
   }
 }
