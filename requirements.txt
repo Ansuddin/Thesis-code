@@ -9,8 +9,7 @@ Overall requirements:
 - A doctor can see full patient journal.
 - A secretary can only see some parts of the journal.
 - A Patient can read only read his journal but all fields. 
-- A patient can donate organs. 
-- A Doctor can access 
+- Dynamic locks for doctor and secretary. Doctor must be associated with patient when viewing patient journal.
 Technical requirements:
 -Msg type should be "m.text" when sending patient journal (JSON format). The convertion of string to JSON and vice versa should happen in the client.
 
