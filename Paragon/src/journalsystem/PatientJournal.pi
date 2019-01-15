@@ -1,41 +1,40 @@
 public class PatientJournal
 {
-  public static final policy high = {:};
-  public static final policy low = {java.lang.Object a:};
-  private ?PatientJournal.low int id;
-  private ?PatientJournal.high java.lang.String ssn;
-  private ?PatientJournal.low java.lang.String name;
-  private ?PatientJournal.low java.lang.String address;
-  private ?PatientJournal.low java.lang.String publicNote;
-  private ?PatientJournal.high java.lang.String[] sessions;
+  private ?(Policy.low + Policy.untrusted) int id;
+  private ?(Policy.high + Policy.trusted) java.lang.String ssn;
+  private ?(Policy.low + Policy.untrusted) java.lang.String name;
+  private ?(Policy.low + Policy.untrusted) java.lang.String address;
+  private ?(Policy.low + Policy.untrusted) java.lang.String publicNote;
+  private ?(Policy.high + Policy.trusted) java.lang.String[] sessions;
+  private ?(Policy.low + Policy.untrusted) boolean allowStatistics;
   public PatientJournal ()
   {
   }
-  public PatientJournal (?PatientJournal.low int id, ?PatientJournal.high java.lang.String ssn, ?PatientJournal.low java.lang.String name, ?PatientJournal.low java.lang.String address, ?PatientJournal.low java.lang.String publicNote, ?PatientJournal.high java.lang.String[] sessions)
+  public PatientJournal (?(Policy.low + Policy.untrusted) int id, ?(Policy.high + Policy.trusted) java.lang.String ssn, ?(Policy.low + Policy.untrusted) java.lang.String name, ?(Policy.low + Policy.untrusted) java.lang.String address, ?(Policy.low + Policy.untrusted) java.lang.String publicNote, ?(Policy.high + Policy.trusted) java.lang.String[] sessions, ?(Policy.low + Policy.untrusted) boolean allowStatistics)
   {
   }
-  public ?PatientJournal.low int getId()
+  public ?(Policy.low + Policy.untrusted) int getId()
   ;
-  public !PatientJournal.low void setInt(?PatientJournal.low int id)
+  public !(Policy.low + Policy.untrusted) void setInt(?(Policy.low + Policy.untrusted) int id)
   ;
-  public ?PatientJournal.high java.lang.String getSsn()
+  public ?(Policy.high + Policy.trusted) java.lang.String getSsn()
   ;
-  public !PatientJournal.high void setSsn(?PatientJournal.high java.lang.String ssn)
+  public !(Policy.high + Policy.trusted) void setSsn(?(Policy.high + Policy.trusted) java.lang.String ssn)
   ;
-  public ?PatientJournal.low java.lang.String getName()
+  public ?(Policy.low + Policy.untrusted) java.lang.String getName()
   ;
-  public !PatientJournal.low void setName(?PatientJournal.low java.lang.String name)
+  public !(Policy.low + Policy.untrusted) void setName(?(Policy.low + Policy.untrusted) java.lang.String name)
   ;
-  public ?PatientJournal.low java.lang.String getAddress()
+  public ?(Policy.low + Policy.untrusted) java.lang.String getAddress()
   ;
-  public !PatientJournal.low void setAddress(?PatientJournal.low java.lang.String address)
+  public !(Policy.low + Policy.untrusted) void setAddress(?(Policy.low + Policy.untrusted) java.lang.String address)
   ;
-  public ?PatientJournal.low java.lang.String getPublicNote()
+  public ?(Policy.low + Policy.untrusted) java.lang.String getPublicNote()
   ;
-  public !PatientJournal.low void setPublicNote(?PatientJournal.low java.lang.String note)
+  public !(Policy.low + Policy.untrusted) void setPublicNote(?(Policy.low + Policy.untrusted) java.lang.String note)
   ;
-  public !PatientJournal.high void setSessions(?PatientJournal.high java.lang.String[] sessions)
+  public !(Policy.high + Policy.trusted) void setSessions(?(Policy.high + Policy.trusted) java.lang.String[] sessions)
   ;
-  public !PatientJournal.high void addToSessions(?PatientJournal.high java.lang.String session)
+  public !(Policy.high + Policy.trusted) void addToSessions(?(Policy.high + Policy.trusted) java.lang.String session)
   ;
 }

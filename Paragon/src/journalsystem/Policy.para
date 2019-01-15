@@ -1,0 +1,13 @@
+public class Policy {
+	private static final Object lowObserver = new Object();
+	private static final Object highObserver = new Object();
+	private static final Object untrustedObserver = new Object();
+	private static final Object trustedObserver = new Object();
+
+	public static final policy high = { highObserver : };
+	public static final policy low = { lowObserver :
+									 ; highObserver : };
+	public static final policy trusted = { trustedObserver : };
+	public static final policy untrusted = { untrustedObserver :
+									 ; trustedObserver : };
+}

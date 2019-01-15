@@ -9,16 +9,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Test {
 	public !{Object a:} static void main(?{Object a :} String[] args){
 		
-		String[] sessions = {"startet behandling"};
-		PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien"
-												 ,"Høfeber", sessions);
+
+		?(Policy.low+Policy.untrusted) int id = 1;
+		?(Policy.high+Policy.trusted) String ssn = "270793-2131";
+		?(Policy.low+Policy.untrusted) String name = "Ans Uddin";
+		?(Policy.low+Policy.untrusted) String address = "Knapmagerstien 49";
+		?(Policy.low+Policy.untrusted) String publicNote = "Høfeber";
+		?(Policy.high + Policy.trusted) String[] sessions = {"startet behandling"};
+		?(Policy.low+Policy.untrusted) boolean allowStatistics = false;
 		
+		PatientJournal journal = new PatientJournal(id, ssn, name, address, publicNote, 
+													sessions, allowStatistics);
+		
+
+		//?TrustedUntrusted.trusted int id = journal.getId();
 
 		//?PatientJournal.high String ssn = journal.getSsn();
 		//journal.setPublicNote(ssn);
 
-		?PatientJournal.low String fakeSsn = "012345-6789";
-		journal.setSsn(fakeSsn);
+		//?HighLow.low String fakeSsn = "012345-6789";
+		//journal.setSsn(fakeSsn);
 
 		//?PatientJournal.low String note = journal.getPublicNote();
 		//journal.addToSessions(note);

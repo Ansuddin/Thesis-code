@@ -1,18 +1,17 @@
 import java.util.ArrayList;
 public class PatientJournal
 {
-  public static final se.chalmers.paragon.runtime.Policy high = new se.chalmers.paragon.runtime.Policy();
-  public static final se.chalmers.paragon.runtime.Policy low = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {java.lang.Object.class}, new se.chalmers.paragon.runtime.Variable(0)));
   private int id;
   private java.lang.String ssn;
   private java.lang.String name;
   private java.lang.String address;
   private java.lang.String publicNote;
   private java.lang.String[] sessions;
+  private boolean allowStatistics;
   public PatientJournal ()
   {
   }
-  public PatientJournal (int id, java.lang.String ssn, java.lang.String name, java.lang.String address, java.lang.String publicNote, java.lang.String[] sessions)
+  public PatientJournal (int id, java.lang.String ssn, java.lang.String name, java.lang.String address, java.lang.String publicNote, java.lang.String[] sessions, boolean allowStatistics)
   {
     this.id = id;
     this.ssn = ssn;
@@ -20,6 +19,7 @@ public class PatientJournal
     this.address = address;
     this.publicNote = publicNote;
     this.sessions = sessions;
+    this.allowStatistics = allowStatistics;
   }
   public int getId()
   {

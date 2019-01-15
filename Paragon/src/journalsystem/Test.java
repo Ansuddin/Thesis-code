@@ -8,9 +8,13 @@ public class Test
 {
   public static void main(java.lang.String[] args)
   {
+    int id = 1;
+    java.lang.String ssn = "270793-2131";
+    java.lang.String name = "Ans Uddin";
+    java.lang.String address = "Knapmagerstien 49";
+    java.lang.String publicNote = "H\248feber";
     java.lang.String[] sessions = {"startet behandling"};
-    PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien", "H\248feber", sessions);
-    java.lang.String fakeSsn = "012345-6789";
-    journal.setSsn(fakeSsn);
+    boolean allowStatistics = false;
+    PatientJournal journal = new PatientJournal(id, ssn, name, address, publicNote, sessions, allowStatistics);
   }
 }
