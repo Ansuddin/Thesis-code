@@ -9,31 +9,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Test {
 	public !{Object a:} static void main(?{Object a :} String[] args){
 		
-		if(!PyLib.isPythonRunning()){
-			PyLib.startPython();
-			System.out.println("Python started");
-			try{
-				//Hospital hospital = new Hospital();
-				//HospitalService service = new HospitalService("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");	
-				String[] sessions = {"startet behandling"};
-				PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien", "Høfeber", sessions);
-				
-				?{Secretary a:}int id = journal.getId();
-				//?{Doctor a:}String name = journal.name;
-				/*Doctor d = new Doctor(1,"doctor");
-				Secretary s = new Secretary(1, "secretary");
+		String[] sessions = {"startet behandling"};
+		PatientJournal journal = new PatientJournal(1, "270793-2131", "Ans", "Knapmagerstien"
+												 ,"Høfeber", sessions);
+		
 
-				int id = journal.id;
-				String ssn = journal.ssn; // high
-				System.out.println(id);
-				System.out.println(ssn); // Violates IFC policy since System.out is low
-				*/
-								
-			} finally {
-				PyLib.stopPython();
-			}
+		//?{:} String ssn = journal.getSsn();
+		//journal.setPublicNote(ssn);
 
-		}
+		//?{Object a:} String fakeSsn = "012345-6789";
+		//journal.setSsn(fakeSsn);
+
+
 
 	}
 }

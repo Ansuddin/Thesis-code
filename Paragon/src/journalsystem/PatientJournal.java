@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 public class PatientJournal
 {
-  public static final se.chalmers.paragon.runtime.Policy high = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {Doctor.class}, new se.chalmers.paragon.runtime.Variable(0)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {MatrixApi.class}, new se.chalmers.paragon.runtime.Variable(0)));
-  public static final se.chalmers.paragon.runtime.Policy low = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {Secretary.class}, new se.chalmers.paragon.runtime.Variable(0)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {Doctor.class}, new se.chalmers.paragon.runtime.Variable(0)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {MatrixApi.class}, new se.chalmers.paragon.runtime.Variable(0)));
-  private int id;
+  public int id;
   private java.lang.String ssn;
   private java.lang.String name;
   private java.lang.String address;
@@ -29,12 +27,41 @@ public class PatientJournal
   {
     this.id = id;
   }
+  public java.lang.String getSsn()
+  {
+    return this.ssn;
+  }
+  public void setSsn(java.lang.String ssn)
+  {
+    this.ssn = ssn;
+  }
+  public java.lang.String getName()
+  {
+    return this.name;
+  }
+  public void setName(java.lang.String name)
+  {
+    this.name = name;
+  }
+  public java.lang.String getAddress()
+  {
+    return this.address;
+  }
+  public void setAddress(java.lang.String address)
+  {
+    this.address = address;
+  }
+  public java.lang.String getPublicNote()
+  {
+    return this.publicNote;
+  }
   public void setPublicNote(java.lang.String note)
   {
     this.publicNote = note;
   }
   public void setSessions(java.lang.String[] sessions)
   {
+    this.sessions = sessions;
   }
   public void addToSessions(java.lang.String session)
   {

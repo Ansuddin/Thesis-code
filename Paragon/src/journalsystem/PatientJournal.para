@@ -2,22 +2,21 @@
 import java.util.ArrayList;
 public class PatientJournal {
 
-	/* Gives error when using combined policies
-	public static final policy trusted = { MatrixApi a:};
-	public static final policy high = {Doctor d: };
-	public static final policy low = { Secretary s : ;Doctor d: };
-	*/
-
-	public static final policy high = {Doctor d: ;MatrixApi a: };
-	public static final policy low = { Secretary s : ;Doctor d: ;MatrixApi a: };
+	/* 
+	 *  Unintended results when using following policies,
+	 *  and gives error when using combined policies.
+	 */
+	//public static final policy trusted = {MatrixApi a:};
+	//public static final policy high = {Doctor d: };
+	//public static final policy low = { Secretary s : ;Doctor:};
 	
 
-	private ?low int 	   id;
-	private ?high  String   ssn;
-	private ?low String   name;
-	private ?low String   address;	
-	private ?low String   publicNote;
-	private ?high String[] sessions;
+	private ?{Object a:} int 	  id;
+	private ?{:}  		 String   ssn;
+	private ?{Object a:} String   name;
+	private ?{Object a:} String   address;	
+	private ?{Object a:} String   publicNote;
+	private ?{:} 		 String[] sessions;
 
 	public PatientJournal(){}
 	public PatientJournal(?{Object a:} int id, ?{Object a:} String ssn, 
@@ -31,23 +30,52 @@ public class PatientJournal {
 		this.sessions = sessions;
 	}
 
-	public ?low int getId(){
+	public ?{Object a:} int getId(){
 		return this.id;
 	}
 
-	public !low void setInt(?{Object a:} int id){
+	public !{Object a:} void setInt(?{Object a:} int id){
 		this.id=id;
 	}
 
-	public !{Object a:} void setPublicNote(?{Object a:}String note){
+	public ?{:} String getSsn(){
+		return this.ssn;
+	}
+
+	public !{:} void setSsn(?{:}String ssn){
+		this.ssn=ssn;
+	}
+
+	public ?{Object a:} String getName(){
+		return this.name;
+	}
+
+	public !{Object a:} void setName(?{Object a:}String name){
+		this.name = name;
+	}
+
+	public ?{Object a:} String getAddress(){
+		return this.address;
+	}
+
+	public !{Object a:}void setAddress(?{Object a:}String address){
+		this.address = address;
+	}
+
+	public ?{Object a:} String getPublicNote(){
+		return this.publicNote;
+	}
+
+	public !{Object a} void setPublicNote(?{Object a} String note){
 		this.publicNote = note;
 	}
 
-	public !{Object a:} void setSessions(?{Object a:}String[] sessions) {
-
+	public !{:} void setSessions(?{:}String[] sessions){
+		this.sessions = sessions;
 	}
 
-	public !{Object a: } void addToSessions(?{Object a:}String session){
+
+	public !{:} void addToSessions(?{:} String session){
 		String[] newSessions = new String[this.sessions.length+1];
 		for(int i=0; i<this.sessions.length; i++){
 			newSessions[i] = this.sessions[i];

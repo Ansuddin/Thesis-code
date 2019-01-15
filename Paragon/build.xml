@@ -57,7 +57,7 @@
     
     <arg value="${src.dir}/journalsystem/Doctor.para"/> 
 
-   <arg value="${src.dir}/journalsystem/Hospital.para"/> 
+   <!--<arg value="${src.dir}/journalsystem/Hospital.para"/> -->
 
 
       <!--<arg value="${src.dir}/journalsystem/JournalPolicy.para" />-->
