@@ -41,17 +41,17 @@
     </delete>
   </target>
 
-  <target name="parac" depends="fakePatientJournal">
+  <target name="parac" >
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
       <!--<arg value="${src.dir}/Main.para"/> -->
-      <!--<arg value="${src.dir}/journalsystem/Secretary.para"/>-->
-      <!--<arg value="${src.dir}/journalsystem/Doctor.para"/> -->
-      <!--<arg value="${src.dir}/journalsystem/Hospital.para"/> -->
       <arg value="${src.dir}/journalsystem/Policy.para"/>
       <arg value="${src.dir}/journalsystem/PatientJournal.para"/>
-      <arg value="${src.dir}/journalsystem/Test.para"/>
+      <arg value="${src.dir}/journalsystem/Secretary.para"/>
+      <!--<arg value="${src.dir}/journalsystem/Doctor.para"/> -->
+      <!--<arg value="${src.dir}/journalsystem/Hospital.para"/> -->
+      <!--<arg value="${src.dir}/journalsystem/Test.para"/>-->
     </exec>
   </target>
 
