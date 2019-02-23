@@ -1,0 +1,13 @@
+
+public class Patient {
+	
+	?{Object a:}int id;
+	?{Object a:}String name;
+
+
+	public Patient(){}
+
+	public void receive( PatientJournal journal){
+
+	}
+}

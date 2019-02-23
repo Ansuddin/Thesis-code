@@ -2,76 +2,74 @@
 import java.util.ArrayList;
 public class PatientJournal {
 
-	private ?(Policy.low  + Policy.untrusted) int      id;
-	private ?(Policy.high + Policy.trusted)   String   ssn;
-	private ?(Policy.low  + Policy.untrusted) String   name;
-	private ?(Policy.low  + Policy.untrusted) String   address;	
-	private ?(Policy.low  + Policy.untrusted) String   publicNote;
+
+	
+
+	private ?(Policy.low + Policy.trusted)   String   ssn;
+	private ?(Policy.low  + Policy.trusted) String   name;
+	private ?(Policy.low  + Policy.trusted) String   address;	
+	private ?(Policy.low  + Policy.trusted) String   publicNote;
 	private ?(Policy.high + Policy.trusted)   String[] sessions;
-	private ?(Policy.low  + Policy.untrusted) boolean  allowStatistics;
 
 	public PatientJournal(){}
 
-	public PatientJournal(?(Policy.low  + Policy.untrusted) int id, 
-						  ?(Policy.high + Policy.trusted)   String ssn, 
-						  ?(Policy.low  + Policy.untrusted) String name, 
-						  ?(Policy.low  + Policy.untrusted) String address, 
-						  ?(Policy.low  + Policy.untrusted) String publicNote, 
-						  ?(Policy.high + Policy.trusted)   String[] sessions,
-						  ?(Policy.low  + Policy.untrusted) boolean allowStatistics ){
-		this.id = id;
+	public PatientJournal(?(Policy.low + Policy.trusted)   String ssn, 
+						  ?(Policy.low  + Policy.trusted) String name, 
+						  ?(Policy.low  + Policy.trusted) String address, 
+						  ?(Policy.low  + Policy.trusted) String publicNote, 
+						  ?(Policy.high + Policy.trusted)   String[] sessions){
 		this.ssn = ssn;
 		this.name = name;
 		this.address = address;
 		this.publicNote = publicNote;
 		this.sessions = sessions;
-		this.allowStatistics = allowStatistics;
 	}
 
-	public ?(Policy.low+Policy.untrusted) int getId(){
-		return this.id;
-	}
 
-	public !(Policy.low+Policy.untrusted) void setInt(?(Policy.low+Policy.untrusted) int id){
-		this.id=id;
-	}
-
-	public ?(Policy.high + Policy.trusted) String getSsn(){
+	public ?(Policy.low + Policy.trusted) String getSsn(){
 		return this.ssn;
 	}
 
-	public !(Policy.high + Policy.trusted) void setSsn(?(Policy.high + Policy.trusted) String ssn){
+	public !(Policy.low + Policy.trusted) void setSsn(?(Policy.high + Policy.trusted) String ssn){
 		this.ssn=ssn;
 	}
 
-	public ?(Policy.low+Policy.untrusted) String getName(){
+	public ?(Policy.low+Policy.trusted) String getName(){
 		return this.name;
 	}
 
-	public !(Policy.low+Policy.untrusted) void setName(?(Policy.low+Policy.untrusted) String name){
+	public !(Policy.low+Policy.trusted) void setName(?(Policy.low+Policy.trusted) String name){
 		this.name = name;
 	}
 
-	public ?(Policy.low+Policy.untrusted) String getAddress(){
+	public ?(Policy.low+Policy.trusted) String getAddress(){
 		return this.address;
 	}
 
-	public !(Policy.low+Policy.untrusted) void setAddress(?(Policy.low+Policy.untrusted) String address){
+	public !(Policy.low+Policy.trusted) void setAddress(?(Policy.low+Policy.trusted) String address){
 		this.address = address;
 	}
 
-	public ?(Policy.low+Policy.untrusted) String getPublicNote(){
+	public ?(Policy.low+Policy.trusted) String getPublicNote(){
 		return this.publicNote;
 	}
 
-	public !(Policy.low+Policy.untrusted) void setPublicNote(?(Policy.low+Policy.untrusted) String note){
+	public !(Policy.low+Policy.trusted) void setPublicNote(?(Policy.low+Policy.trusted) String note){
 		this.publicNote = note;
 	}
+
 
 	public !(Policy.high + Policy.trusted) void setSessions(?(Policy.high + Policy.trusted) String[] sessions){
 		this.sessions = sessions;
 	}
 
+
+	~Locks.IsDoctor
+	public ?(Policy.high + Policy.trusted) String[] getSessions(){
+		return sessions;
+	}
+
+	~Locks.IsDoctor ~Locks.IsReferred
 	public !(Policy.high + Policy.trusted) void addToSessions(?(Policy.high + Policy.trusted) String session){
 		String[] newSessions = new String[this.sessions.length+1];
 		for(int i=0; i<this.sessions.length; i++){

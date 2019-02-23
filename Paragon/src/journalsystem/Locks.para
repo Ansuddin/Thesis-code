@@ -1,0 +1,6 @@
+public class Locks{
+
+	public static lock IsDoctor;
+	public static lock IsReferred;
+	//public static lock Matrix;
+}

@@ -7,20 +7,37 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Test {
-	public !{Object a:} static void main(?{Object a :} String[] args){
+	public !{Object a:} static void main(?{Object a:} String[] args){
+		
+		/*
+		String ssn = "270793-2131";
+		String name = "Ans Uddin";
+		String address = "Knapmagerstien 49";
+		String publicNote = "Høfeber";
+		String[] sessions = {"startet behandling"};
 		
 
-		?(Policy.low+Policy.untrusted) int id = 1;
-		?(Policy.high+Policy.trusted) String ssn = "270793-2131";
-		?(Policy.low+Policy.untrusted) String name = "Ans Uddin";
-		?(Policy.low+Policy.untrusted) String address = "Knapmagerstien 49";
-		?(Policy.low+Policy.untrusted) String publicNote = "Høfeber";
-		?(Policy.high + Policy.trusted) String[] sessions = {"startet behandling"};
-		?(Policy.low+Policy.untrusted) boolean allowStatistics = false;
+		PatientJournal journal = new PatientJournal(ssn, name, address, publicNote, 
+													sessions);
+
+		if(Locks.IsDoctor){
+			String[] sessionscopy = journal.getSessions();
+			//System.out.println(sessionscopy[0]);
+		}
+
+		Secretary sec = new Secretary();*/
+
+		//journal.setPublicNote(sec.inputForPublicnote());
+
 		
-		PatientJournal journal = new PatientJournal(id, ssn, name, address, publicNote, 
-													sessions, allowStatistics);
-		
+		// If a Patient reads it will flow a high variable
+		//?Policy.high String patientreading = journal.getSsn();
+
+		//Patient patient = new Patient();
+		//patient.receive(journal);
+
+		// However I can not set the value of SSN 
+		//journal.setSsn(patientreading);
 
 		//?TrustedUntrusted.trusted int id = journal.getId();
 
@@ -32,6 +49,44 @@ public class Test {
 
 		//?PatientJournal.low String note = journal.getPublicNote();
 		//journal.addToSessions(note);
+
+		// Confidentiality
+		/*											
+		?Policy.low String publicVar = "public";
+		?Policy.high String secretVar = "secret";
+
+		secretVar = publicVar; // OK
+		//publicVar = secretVar; // BAD
+
+		// Integrity
+		?Policy.untrusted String untrustedInput = "untrusted";
+		?Policy.trusted String trustedInput = "trusted";
+
+		untrustedInput = trustedInput; // OK
+		//trustedInput = untrustedInput; // BAD
+		*/
+
+		// Label inference
+
+		// Combined policies
+		?(Policy.low2 + Policy.trusted) String name = "Ans";
+		//String publicName = name;
+		?(Policy.high2 + Policy.trusted) String test = name;
+/*
+
+		Doctor doctor = new Doctor();
+		Secretary secretary = new Secretary();
+
+
+		final policy high = { doctor : };
+		final policy low = { doctor :
+							; secretary : };
+
+		?high String doctorsession = "secret";
+
+		String test = doctorsession;
+
+*/
 
 
 
