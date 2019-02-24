@@ -13,18 +13,22 @@ public class Hospital{
 	//public static final policy SecretaryPolicy = {secretary:
 												 //;doctor:};
 
+	policy jouralPolicy = 
+		{	Doctor d :
+		;	(Doctor d) Secretary s : IsReferred(d), WorksFor(d,s)	};
+
+	private HashMap<String,String> patients;
+	private HashMap<String,PatientJournal> journals;
+
 	public Hospital(){}
 
-	public !{Object a:} String retrieve(){
+
+	public ?journalPolicy void getJournal(String ssn){
 		//return api.retrieve();
-		return "";
 	}
 
-	public void addNewJournal(){
 
-	}
-
-	public void updateJournal(){
+	public !journalPolicy void updateJournal(String ssn,){
 
 	}
 }

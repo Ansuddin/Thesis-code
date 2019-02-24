@@ -69,13 +69,12 @@ public class Test {
 		// Label inference
 
 		// Combined policies
-		?(Policy.low2 + Policy.trusted) String name = "Ans";
+		//?(Policy.low2 + Policy.trusted) String name = "Ans";
 		//String publicName = name;
-		?(Policy.high2 + Policy.trusted) String test = name;
-/*
+		//?(Policy.high2 + Policy.trusted) String test = name;
 
-		Doctor doctor = new Doctor();
-		Secretary secretary = new Secretary();
+
+		Object observer = new Object();
 
 
 		final policy high = { doctor : };
@@ -86,9 +85,17 @@ public class Test {
 
 		String test = doctorsession;
 
-*/
 
 
+
+		/*Secretary untrustedObserver = new Secretary();
+		Doctor trustedObserver = new Doctor();
+
+
+		policy untrusted = { untrustedObserver : };
+		policy trusted = { untrustedObserver : 
+									 ; trustedObserver : };
+		*/
 
 	}
 }
