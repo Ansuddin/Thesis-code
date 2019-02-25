@@ -13,22 +13,24 @@ public class Hospital{
 	//public static final policy SecretaryPolicy = {secretary:
 												 //;doctor:};
 
-	policy jouralPolicy = 
+	/*policy jouralPolicy = 
 		{	Doctor d :
-		;	(Doctor d) Secretary s : IsReferred(d), WorksFor(d,s)	};
+		;	(Doctor d) Secretary s : IsReferred(d), WorksFor(d,s)	};*/
+
+	
+	//private HashMap<String,PatientJournal> journals;
 
 	private HashMap<String,String> patients;
-	private HashMap<String,PatientJournal> journals;
 
 	public Hospital(){}
 
 
-	public ?journalPolicy void getJournal(String ssn){
+	public void getJournal(String ssn){
 		//return api.retrieve();
 	}
 
 
-	public !journalPolicy void updateJournal(String ssn,){
+	public  void updateJournal(String ssn,){
 
 	}
 }

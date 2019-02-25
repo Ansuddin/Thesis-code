@@ -46,11 +46,13 @@
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
       <!--<arg value="${src.dir}/Main.para"/> -->
+
+    <arg value="${src.dir}/journalsystem/Declassification.para"/>      
     <arg value="${src.dir}/journalsystem/Secretary.para"/>      
       <arg value="${src.dir}/journalsystem/Doctor.para"/>
      <arg value="${src.dir}/journalsystem/Locks.para"/>
       <arg value="${src.dir}/journalsystem/Policy.para"/>
-     <arg value="${src.dir}/journalsystem/PatientJournal.para"/>
+     <arg value="${src.dir}/journalsystem/PatientJournalD.para"/>
 
       <arg value="${src.dir}/journalsystem/MatrixService.para"/>
 

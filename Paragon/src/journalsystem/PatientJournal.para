@@ -85,7 +85,7 @@ public class PatientJournal {
 		this.publicSessions = newSessions;
 	} 
 
-	~Locks.IsDoctor ~Locks.Referred
+	~Locks.IsDoctor ~Locks.Referred // "|| Locks.Matrix" would be nice to say.
 	public !(Policy.high + Policy.trusted) void addToPrivateSessions(?(Policy.high + Policy.trusted) String session){
 		String[] newSessions = new String[this.privateSessions.length+1];
 		for(int i=0; i<this.privateSessions.length; i++){

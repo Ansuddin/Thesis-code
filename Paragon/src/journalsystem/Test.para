@@ -19,20 +19,46 @@ public class Test {
 
 		
 
-		PatientJournal journal = new PatientJournal(ssn, name, address, publicNote, publicSessions,	privateSessions);
+		PatientJournalD journal = new PatientJournalD(ssn, name, address, publicNote, publicSessions,	privateSessions);
+		Doctor doctor = new Doctor();
 
-
-		String[] publicVar = journal.getPrivateSessions();
+		/*String[] publicVar = journal.getPrivateSessions();
 		Doctor doctor = new Doctor();
 		open Locks.IsDoctor;
 		open Locks.Referred;
 		//open Locks.IsReferred(doctor, journal);
 		if (Locks.Referred && Locks.IsDoctor){
 			journal.addToPrivateSessions("test");
-		}
+		}*/
 
 		//System.out.println(journal.getName());
 
+		// Test declassify
+		open Locks.IsDoctor;
+		String secret = Policy.<String>declassifyMedium(journal.getName());
+		System.out.println(secret);
+
+/*
+		?Policy.lowD String lowVar = "low";
+		?Policy.mediumD String mediumVar = "medium";
+		?Policy.highD String highVar = "high";
+
+		mediumVar = lowVar; // OK
+		//lowVar = mediumVar; // BAD
+		open Locks.IsDoctor{
+			lowVar = mediumVar; // OK
+		}
+
+		highVar = mediumVar; // OK
+		//mediumVar = highVar; // BAD
+		open Locks.IsReferred(doctor,journal){
+			mediumVar = highVar; //OK
+			//lowVar = highVar; // BAD
+			open Locks.IsDoctor{
+				lowVar = highVar;
+			}
+		}
+*/
 
 
 		

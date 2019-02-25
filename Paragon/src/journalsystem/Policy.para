@@ -5,7 +5,7 @@ public class Policy {
 	private static final Object lowObserver = new Object();
 	private static final Object highObserver = new Object();
 
-	public static final policy low = {lowObserver: ; highObserver:};
+	public static final policy low = { highObserver: ;lowObserver: };
 	public static final policy medium = {highObserver:};
 	public static final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p) };
 
@@ -17,5 +17,40 @@ public class Policy {
 	public static final policy untrusted = { untrustedObserver : };
 	public static final policy trusted = { untrustedObserver : 
 									 ; trustedObserver : };
+
+
+
+
+	// Another Confidentiality variant
+	//public static final policy lowD = { Object x: };
+	//public static final policy mediumD = { Object x: Locks.IsDoctor};
+	//public static final policy highD = {(Doctor d, PatientJournal p)  Object x : Locks.IsReferred(d,p), Locks.IsDoctor };
+
+
+	// With declassification ocks
+
+	// Declassification locks
+	private lock medium;
+	private lock high;	
+	
+	public static final policy lowD = { Object x: };
+	public static final policy mediumD = { Object x: medium};
+	public static final policy highD = { Object x : medium, high };
+
+	~Locks.IsDoctor
+	public static ?lowD <A> A declassifyMedium(?mediumD A x){
+		open medium {
+			return x;
+		}
+	}
+
+	~Locks.IsDoctor ~Locks.Referred
+	public static ?lowD <A> A declassifyHigh(?highD A x){
+		open medium {
+			open high {
+				return x;
+			}
+		}
+	}
 
 }

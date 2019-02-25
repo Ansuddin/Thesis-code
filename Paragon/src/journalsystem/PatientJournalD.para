@@ -1,0 +1,98 @@
+
+public class PatientJournalD {
+
+	
+	private ?(Policy.lowD) String   ssn;
+	private ?(Policy.lowD) String   name;
+	private ?(Policy.lowD) String   address;	
+	private ?(Policy.lowD) String   publicNote;
+	private ?(Policy.mediumD) String[] publicSessions;
+	private ?(Policy.highD) String[] privateSessions;
+	
+
+	public PatientJournalD(){}
+
+	public PatientJournalD(?(Policy.lowD ) String   ssn, 
+						  ?(Policy.lowD ) String   name, 
+						  ?(Policy.lowD ) String   address, 
+						  ?(Policy.lowD ) String   publicNote, 
+						  ?(Policy.mediumD ) String[] publicSessions,
+						  ?(Policy.highD ) String[] privateSessions){
+		this.ssn = ssn;
+		this.name = name;
+		this.address = address;
+		this.publicNote = publicNote;
+		this.publicSessions = publicSessions;
+		this.privateSessions = privateSessions;
+	}
+
+
+	public ?(Policy.lowD) String getSsn(){
+		return this.ssn;
+	}
+
+	public !(Policy.lowD) void setSsn(?(Policy.lowD) String ssn){
+		this.ssn=ssn;
+	}
+
+	public ?(Policy.lowD) String getName(){
+		return this.name;
+	}
+
+	public !(Policy.lowD) void setName(?(Policy.lowD) String name){
+		this.name = name;
+	}
+
+	public ?(Policy.lowD) String getAddress(){
+		return this.address;
+	}
+
+	public !(Policy.lowD) void setAddress(?(Policy.lowD) String address){
+		this.address = address;
+	}
+
+	public ?(Policy.lowD) String getPublicNote(){
+		return this.publicNote;
+	}
+
+	public !(Policy.lowD) void setPublicNote(?(Policy.lowD) String note){
+		this.publicNote = note;
+	}
+
+	public ?(Policy.mediumD) String[] getPublicSessions(){
+		return publicSessions;
+	}
+
+	public !(Policy.mediumD) void setPublicSessions(?(Policy.mediumD) String[] publicSessions){
+		this.publicSessions = publicSessions;
+	}
+
+	public ?(Policy.highD) String[] getPrivateSessions(){
+		return privateSessions;
+	}
+
+	public !(Policy.highD) void setPrivateSessions(?(Policy.highD) String[] privateSessions){
+		this.privateSessions = privateSessions;
+	}
+
+	//~Locks.IsDoctor
+	public !(Policy.mediumD) void addToPublicSessions(?(Policy.mediumD) String session){
+		String[] newSessions = new String[this.publicSessions.length+1];
+		for(int i=0; i<this.publicSessions.length; i++){
+			newSessions[i] = this.publicSessions[i];
+		}
+		newSessions[publicSessions.length] = session;
+		this.publicSessions = newSessions;
+	} 
+
+	~Locks.IsDoctor ~Locks.Referred
+	public !(Policy.highD) void addToPrivateSessions(?(Policy.highD) String session){
+		String[] newSessions = new String[this.privateSessions.length+1];
+		for(int i=0; i<this.privateSessions.length; i++){
+			newSessions[i] = this.privateSessions[i];
+		}
+		newSessions[privateSessions.length] = session;
+		this.privateSessions = newSessions;
+	} 	
+	
+}
