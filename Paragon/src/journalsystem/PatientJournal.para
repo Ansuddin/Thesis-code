@@ -1,28 +1,29 @@
 
-import java.util.ArrayList;
 public class PatientJournal {
 
-
 	
-
-	private ?(Policy.low + Policy.trusted)   String   ssn;
-	private ?(Policy.low  + Policy.trusted) String   name;
-	private ?(Policy.low  + Policy.trusted) String   address;	
-	private ?(Policy.low  + Policy.trusted) String   publicNote;
-	private ?(Policy.high + Policy.trusted)   String[] sessions;
+	private ?(Policy.low  	+ Policy.trusted) String   ssn;
+	private ?(Policy.low  	+ Policy.trusted) String   name;
+	private ?(Policy.low  	+ Policy.trusted) String   address;	
+	private ?(Policy.low  	+ Policy.trusted) String   publicNote;
+	private ?(Policy.medium + Policy.trusted) String[] publicSessions;
+	private ?(Policy.high 	+ Policy.trusted) String[] privateSessions;
+	
 
 	public PatientJournal(){}
 
-	public PatientJournal(?(Policy.low + Policy.trusted)   String ssn, 
-						  ?(Policy.low  + Policy.trusted) String name, 
-						  ?(Policy.low  + Policy.trusted) String address, 
-						  ?(Policy.low  + Policy.trusted) String publicNote, 
-						  ?(Policy.high + Policy.trusted)   String[] sessions){
+	public PatientJournal(?(Policy.low    + Policy.trusted) String   ssn, 
+						  ?(Policy.low    + Policy.trusted) String   name, 
+						  ?(Policy.low    + Policy.trusted) String   address, 
+						  ?(Policy.low    + Policy.trusted) String   publicNote, 
+						  ?(Policy.medium + Policy.trusted) String[] publicSessions,
+						  ?(Policy.high   + Policy.trusted) String[] privateSessions){
 		this.ssn = ssn;
 		this.name = name;
 		this.address = address;
 		this.publicNote = publicNote;
-		this.sessions = sessions;
+		this.publicSessions = publicSessions;
+		this.privateSessions = privateSessions;
 	}
 
 
@@ -30,7 +31,7 @@ public class PatientJournal {
 		return this.ssn;
 	}
 
-	public !(Policy.low + Policy.trusted) void setSsn(?(Policy.high + Policy.trusted) String ssn){
+	public !(Policy.low + Policy.trusted) void setSsn(?(Policy.low + Policy.trusted) String ssn){
 		this.ssn=ssn;
 	}
 
@@ -58,24 +59,40 @@ public class PatientJournal {
 		this.publicNote = note;
 	}
 
-
-	public !(Policy.high + Policy.trusted) void setSessions(?(Policy.high + Policy.trusted) String[] sessions){
-		this.sessions = sessions;
+	public ?(Policy.medium + Policy.trusted) String[] getPublicSessions(){
+		return publicSessions;
 	}
 
-
-	~Locks.IsDoctor
-	public ?(Policy.high + Policy.trusted) String[] getSessions(){
-		return sessions;
+	public !(Policy.medium + Policy.trusted) void setPublicSessions(?(Policy.medium + Policy.trusted) String[] publicSessions){
+		this.publicSessions = publicSessions;
 	}
 
-	~Locks.IsDoctor ~Locks.IsReferred
-	public !(Policy.high + Policy.trusted) void addToSessions(?(Policy.high + Policy.trusted) String session){
-		String[] newSessions = new String[this.sessions.length+1];
-		for(int i=0; i<this.sessions.length; i++){
-			newSessions[i] = this.sessions[i];
+	public ?(Policy.high + Policy.trusted) String[] getPrivateSessions(){
+		return privateSessions;
+	}
+
+	public !(Policy.high + Policy.trusted) void setPrivateSessions(?(Policy.high + Policy.trusted) String[] privateSessions){
+		this.privateSessions = privateSessions;
+	}
+
+	//~Locks.IsDoctor
+	public !(Policy.medium + Policy.trusted) void addToPublicSessions(?(Policy.medium + Policy.trusted) String session){
+		String[] newSessions = new String[this.publicSessions.length+1];
+		for(int i=0; i<this.publicSessions.length; i++){
+			newSessions[i] = this.publicSessions[i];
 		}
-		newSessions[sessions.length] = session;
-		this.sessions = newSessions;
+		newSessions[publicSessions.length] = session;
+		this.publicSessions = newSessions;
+	} 
+
+	~Locks.IsDoctor ~Locks.Referred
+	public !(Policy.high + Policy.trusted) void addToPrivateSessions(?(Policy.high + Policy.trusted) String session){
+		String[] newSessions = new String[this.privateSessions.length+1];
+		for(int i=0; i<this.privateSessions.length; i++){
+			newSessions[i] = this.privateSessions[i];
+		}
+		newSessions[privateSessions.length] = session;
+		this.privateSessions = newSessions;
 	} 	
+	
 }

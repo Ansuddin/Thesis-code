@@ -9,25 +9,31 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Test {
 	public !{Object a:} static void main(?{Object a:} String[] args){
 		
-		/*
+		
 		String ssn = "270793-2131";
 		String name = "Ans Uddin";
 		String address = "Knapmagerstien 49";
-		String publicNote = "Høfeber";
-		String[] sessions = {"startet behandling"};
+		String publicNote = "antibiotika intolerance";
+		String[] publicSessions = {" D-vitamin deficiancy"};
+		String[] privateSessions = {"Treatment for panic attacks started"};
+
 		
 
-		PatientJournal journal = new PatientJournal(ssn, name, address, publicNote, 
-													sessions);
+		PatientJournal journal = new PatientJournal(ssn, name, address, publicNote, publicSessions,	privateSessions);
 
-		if(Locks.IsDoctor){
-			String[] sessionscopy = journal.getSessions();
-			//System.out.println(sessionscopy[0]);
+
+		String[] publicVar = journal.getPrivateSessions();
+		Doctor doctor = new Doctor();
+		open Locks.IsDoctor;
+		open Locks.Referred;
+		//open Locks.IsReferred(doctor, journal);
+		if (Locks.Referred && Locks.IsDoctor){
+			journal.addToPrivateSessions("test");
 		}
 
-		Secretary sec = new Secretary();*/
+		//System.out.println(journal.getName());
 
-		//journal.setPublicNote(sec.inputForPublicnote());
+
 
 		
 		// If a Patient reads it will flow a high variable
@@ -74,28 +80,62 @@ public class Test {
 		//?(Policy.high2 + Policy.trusted) String test = name;
 
 
-		Object observer = new Object();
+
+		// Policy test with fresh and general
+		//final policy generalPolicy = { Doctor d : };
+		//final policy freshPolicy = { doctor : };
+		//?generalPolicy String val1 = "General doctor";
+		//?freshPolicy String val2 = "Fresh doctor";
+		//?secretary String val3  = "secretary";
+		//val1 = val2; // BAD freshpolicy is more secret than generalpolicy. 
+		//val2 = val1; // OK only 
+
+		//Policy test with lock
+		/*Doctor doctor = new Doctor();
+
+		final policy low = {Doctor d: ; MatrixService m: };
+		final policy lowMatrix = {MatrixService m:};
+		final policy highDoctor = { Doctor d: Locks.IsDoctor};  
+		final policy highMatrix = { Doctor d: Locks.Matrix};
+		final policy highMatrixDoctor = { Doctor d: Locks.IsDoctor
+										; MatrixService m: Locks.Matrix };
+		?low String publicVar = "public";
+		?lowMatrix String publicMatrix = "public";
+		?highDoctor String secretVarDoc = "secret";
+		?highMatrix String secretVarMatrix = "secret";
+		?highMatrixDoctor String secret = "secret";*/
 
 
-		final policy high = { doctor : };
-		final policy low = { doctor :
-							; secretary : };
+		//open Locks.Matrix;
+		//publicVar = secretVarDoc;
+		//secretVarMatrix = secretVarDoc;
+		//publicVar = secret;
+		//publicMatrix = secret;
 
-		?high String doctorsession = "secret";
+		// publicVar = publicMatrix;
 
-		String test = doctorsession;
+		 // Patientjournal Policy test
+		/*Object lowObserver = new Object();
+		Object highObserver = new Object();
+		final policy low = {lowObserver: ; highObserver:};
+		final policy medium = {highObserver:};
+		final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p)};
+
+		?low String publicVar = "public";
+		?medium String mediumVar = "medium";
+		?high String secretVar = "secret";
+		secretVar = publicVar; // OK
+		//publicVar = secretVar; // BAD
+		mediumVar = publicVar; // OK
+		//publicVar = mediumVar; // BAD
+		secretVar = mediumVar; // OK
+		//mediumVar = secretVar; // BAD
 
 
-
-
-		/*Secretary untrustedObserver = new Secretary();
-		Doctor trustedObserver = new Doctor();
-
-
-		policy untrusted = { untrustedObserver : };
-		policy trusted = { untrustedObserver : 
-									 ; trustedObserver : };
-		*/
+		/*Doctor doctor = new Doctor();
+		PatientJournal journal = new PatientJournal();
+		open Locks.IsReferred(doctor,journal);
+		mediumVar = secretVar; // OK*/
 
 	}
 }

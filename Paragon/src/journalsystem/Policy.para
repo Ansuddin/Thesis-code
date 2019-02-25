@@ -1,38 +1,21 @@
 public class Policy {
 
-	// Policies from example
+
+	// Confidentiality
 	private static final Object lowObserver = new Object();
 	private static final Object highObserver = new Object();
 
+	public static final policy low = {lowObserver: ; highObserver:};
+	public static final policy medium = {highObserver:};
+	public static final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p) };
+
+
+	// Integrity
 	private static final Object untrustedObserver = new Object();
 	private static final Object trustedObserver = new Object();
-
 
 	public static final policy untrusted = { untrustedObserver : };
 	public static final policy trusted = { untrustedObserver : 
 									 ; trustedObserver : };
-
-	public static final policy high = { highObserver : };
-	public static final policy low = { lowObserver :
-									 ; highObserver : };
-
-	// Policies using defined Objects
-
-	private static final Doctor doctor = new Doctor();
-	private static final Secretary secretary = new Secretary();
-	private static final MatrixService matrix = new MatrixService();
-
-	public static final policy high2 = { matrix :
-									   ; doctor : }; 
-
-	public static final policy low2 = { matrix :
-									   ; doctor :
-									   ; secretary : 
-									  };	
-
-
-
-
-
 
 }

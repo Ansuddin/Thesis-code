@@ -2,15 +2,11 @@ public class Policy
 {
   private static final java.lang.Object lowObserver = new java.lang.Object();
   private static final java.lang.Object highObserver = new java.lang.Object();
+  public static final policy low = {lowObserver:;highObserver:};
+  public static final policy medium = {highObserver:};
+  public static final policy high = {(Doctor d,PatientJournal p) highObserver: Locks.IsReferred(d,p)};
   private static final java.lang.Object untrustedObserver = new java.lang.Object();
   private static final java.lang.Object trustedObserver = new java.lang.Object();
   public static final policy untrusted = {untrustedObserver:};
   public static final policy trusted = {untrustedObserver:;trustedObserver:};
-  public static final policy high = {highObserver:};
-  public static final policy low = {lowObserver:;highObserver:};
-  private static final Doctor doctor = new Doctor();
-  private static final Secretary secretary = new Secretary();
-  private static final MatrixService matrix = new MatrixService();
-  public static final policy high2 = {matrix:;doctor:};
-  public static final policy low2 = {matrix:;doctor:;secretary:};
 }

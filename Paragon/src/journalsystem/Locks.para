@@ -1,6 +1,6 @@
 public class Locks{
 
-	public static lock IsDoctor;
-	public static lock IsReferred;
-	//public static lock Matrix;
+	public static ?{Object x: } lock IsDoctor;
+	public static ?{Object x: } lock IsReferred(Doctor,PatientJournal);
+	public static ?{Object x: } lock Referred;
 }

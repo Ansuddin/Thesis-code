@@ -8,9 +8,20 @@ public class Test
 {
   public static void main(java.lang.String[] args)
   {
-    Secretary untrustedObserver = new Secretary();
-    Doctor trustedObserver = new Doctor();
-    se.chalmers.paragon.runtime.Policy untrusted = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(untrustedObserver)));
-    se.chalmers.paragon.runtime.Policy trusted = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(untrustedObserver)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(trustedObserver)));
+    java.lang.String ssn = "270793-2131";
+    java.lang.String name = "Ans Uddin";
+    java.lang.String address = "Knapmagerstien 49";
+    java.lang.String publicNote = "antibiotika intolerance";
+    java.lang.String[] publicSessions = {" D-vitamin deficiancy"};
+    java.lang.String[] privateSessions = {"Treatment for panic attacks started"};
+    PatientJournal journal = new PatientJournal(ssn, name, address, publicNote, publicSessions, privateSessions);
+    java.lang.String[] publicVar = journal.getPrivateSessions();
+    Doctor doctor = new Doctor();
+    se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Locks.IsDoctor));
+    se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Locks.Referred));
+    if (Locks.Referred && Locks.IsDoctor)
+    {
+      journal.addToPrivateSessions("test");
+    }
   }
 }
