@@ -30,7 +30,7 @@ public class Test
     medium = low;
     high = medium;
     high = low;
-    se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Locks.IsDoctor));
+    se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Policy.IsDoctor));
     java.lang.String out = Policy.<java.lang.String>declassifyMedium(medium);
     java.lang.System.out.println(out);
   }

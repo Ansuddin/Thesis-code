@@ -18,11 +18,11 @@ public class PatientJournalD
   ;
   public ?(Policy.lowD + Policy.trusted) java.lang.String getName()
   ;
-  ~(Locks.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setName(?(Policy.lowD + Policy.trusted) java.lang.String name)
+  ~(Policy.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setName(?(Policy.lowD + Policy.trusted) java.lang.String name)
   ;
   public ?(Policy.lowD + Policy.trusted) java.lang.String getAddress()
   ;
-  ~(Locks.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setAddress(?(Policy.lowD + Policy.trusted) java.lang.String address)
+  ~(Policy.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setAddress(?(Policy.lowD + Policy.trusted) java.lang.String address)
   ;
   public ?(Policy.lowD + Policy.trusted) java.lang.String getPublicNote()
   ;
@@ -30,14 +30,14 @@ public class PatientJournalD
   ;
   public ?(Policy.mediumD + Policy.trusted) java.lang.String[] getPublicSessions()
   ;
-  ~(Locks.OnlyMatrix) public !(Policy.mediumD + Policy.trusted) void setPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String[] publicSessions)
+  ~(Policy.OnlyMatrix) public !(Policy.mediumD + Policy.trusted) void setPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String[] publicSessions)
   ;
   public ?(Policy.highD + Policy.trusted) java.lang.String[] getPrivateSessions()
   ;
-  ~(Locks.OnlyMatrix) public !(Policy.highD + Policy.trusted) void setPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String[] privateSessions)
+  ~(Policy.OnlyMatrix) public !(Policy.highD + Policy.trusted) void setPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String[] privateSessions)
   ;
-  ~(Locks.IsDoctor) public !(Policy.mediumD + Policy.trusted) void addToPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String session)
+  ~(Policy.IsDoctor) public !(Policy.mediumD + Policy.trusted) void addToPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String session)
   ;
-  ~(Locks.IsDoctor) ~(Locks.Referred) public !(Policy.highD + Policy.trusted) void addToPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String session)
+  ~(Policy.IsDoctor) ~(Policy.Referred) public !(Policy.highD + Policy.trusted) void addToPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String session)
   ;
 }

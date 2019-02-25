@@ -1,7 +1,0 @@
-public class Locks
-{
-  public static !(Policy.highD + Policy.trusted) lock IsDoctor;
-  public static !(Policy.highD + Policy.trusted) lock IsReferred(Doctor);
-  public static !(Policy.highD + Policy.trusted) lock Referred;
-  public static !(Policy.highD + Policy.trusted) lock OnlyMatrix;
-}

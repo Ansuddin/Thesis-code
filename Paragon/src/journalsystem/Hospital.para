@@ -3,22 +3,7 @@
 public class Hospital{
 	
 	//private static final MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
-	//private static final Doctor doctor = new Doctor();
-	//private static final Secretary secretary = new Secretary();
 
-
-
-	//public static final policy MatrixPolicy = {api:};
-	//public static final policy DoctorPolicy = {doctor:};
-	//public static final policy SecretaryPolicy = {secretary:
-												 //;doctor:};
-
-	/*policy jouralPolicy = 
-		{	Doctor d :
-		;	(Doctor d) Secretary s : IsReferred(d), WorksFor(d,s)	};*/
-
-	
-	//private HashMap<String,PatientJournal> journals;
 
 	private HashMap<String,String> patients;
 
@@ -33,4 +18,6 @@ public class Hospital{
 	public  void updateJournal(String ssn,){
 
 	}
+
+	public void printPatients(){}
 }

@@ -38,17 +38,17 @@ public class Test {
 
 		/*String[] publicVar = journal.getPrivateSessions();
 		Doctor doctor = new Doctor();
-		open Locks.IsDoctor;
-		open Locks.Referred;
-		//open Locks.IsReferred(doctor, journal);
-		if (Locks.Referred && Locks.IsDoctor){
+		open Policy.IsDoctor;
+		open Policy.Referred;
+		//open Policy.IsReferred(doctor, journal);
+		if (Policy.Referred && Policy.IsDoctor){
 			journal.addToPrivateSessions("test");
 		}*/
 
 		//System.out.println(journal.getName());
 
 		// Test declassify
-		// open Locks.IsDoctor{
+		// open Policy.IsDoctor{
 		// String secret = Policy.<String>declassifyMedium(journal.getName());
 		// System.out.println(secret);
 		//  }
@@ -69,12 +69,12 @@ public class Test {
 		// medium = high;
 		// low = high;
 
-		open Locks.IsDoctor;
+		open Policy.IsDoctor;
 		String out = Policy.<String>declassifyMedium(medium);
 		System.out.println(out);
 
 
-		//open Locks.Referred;
+		//open Policy.Referred;
 		//low = Policy.<bottom,String>declassifyHigh(high);
 		// String pub = Policy.<low,String>declassify("");
 		// System.out.print(pub);
@@ -86,16 +86,16 @@ public class Test {
 
 		mediumVar = lowVar; // OK
 		//lowVar = mediumVar; // BAD
-		open Locks.IsDoctor{
+		open Policy.IsDoctor{
 			lowVar = mediumVar; // OK
 		}
 
 		highVar = mediumVar; // OK
 		//mediumVar = highVar; // BAD
-		open Locks.IsReferred(doctor,journal){
+		open Policy.IsReferred(doctor,journal){
 			mediumVar = highVar; //OK
 			//lowVar = highVar; // BAD
-			open Locks.IsDoctor{
+			open Policy.IsDoctor{
 				lowVar = highVar;
 			}
 		}
@@ -162,10 +162,10 @@ public class Test {
 
 		final policy low = {Doctor d: ; MatrixService m: };
 		final policy lowMatrix = {MatrixService m:};
-		final policy highDoctor = { Doctor d: Locks.IsDoctor};  
-		final policy highMatrix = { Doctor d: Locks.Matrix};
-		final policy highMatrixDoctor = { Doctor d: Locks.IsDoctor
-										; MatrixService m: Locks.Matrix };
+		final policy highDoctor = { Doctor d: Policy.IsDoctor};  
+		final policy highMatrix = { Doctor d: Policy.Matrix};
+		final policy highMatrixDoctor = { Doctor d: Policy.IsDoctor
+										; MatrixService m: Policy.Matrix };
 		?low String publicVar = "public";
 		?lowMatrix String publicMatrix = "public";
 		?highDoctor String secretVarDoc = "secret";
@@ -173,7 +173,7 @@ public class Test {
 		?highMatrixDoctor String secret = "secret";*/
 
 
-		//open Locks.Matrix;
+		//open Policy.Matrix;
 		//publicVar = secretVarDoc;
 		//secretVarMatrix = secretVarDoc;
 		//publicVar = secret;
@@ -186,7 +186,7 @@ public class Test {
 		Object highObserver = new Object();
 		final policy low = {lowObserver: ; highObserver:};
 		final policy medium = {highObserver:};
-		final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p)};
+		final policy high = {(Doctor d, PatientJournal p)  highObserver: Policy.IsReferred(d,p)};
 
 		?low String publicVar = "public";
 		?medium String mediumVar = "medium";
@@ -201,7 +201,7 @@ public class Test {
 
 		/*Doctor doctor = new Doctor();
 		PatientJournal journal = new PatientJournal();
-		open Locks.IsReferred(doctor,journal);
+		open Policy.IsReferred(doctor,journal);
 		mediumVar = secretVar; // OK*/
 
 	}
