@@ -1,61 +1,60 @@
 public class Policy {
 
 
-	// Confidentiality
-	private static final Object lowObserver = new Object();
-	private static final Object highObserver = new Object();
-
-	public static final policy low = { highObserver: ;lowObserver: };
-	public static final policy medium = {highObserver:};
-	public static final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p) };
-
-
+	// Paragon definitions
+	public static final policy bottom = {Object x:};
+	public static final policy top = {:};
 
 	// Integrity
 	private static final Object untrustedObserver = new Object();
 	private static final Object trustedObserver = new Object();
+	private static final Object mostTrustedObserver = new Object();
 
-	public static final policy untrusted = { untrustedObserver : };
-	public static final policy trusted = { untrustedObserver : 
-									 ; trustedObserver : };
+	private lock endorseLock;
 
-
-
-
-	// Another Confidentiality variant
-	//public static final policy lowD = { Object x: };
-	//public static final policy mediumD = { Object x: Locks.IsDoctor};
-	//public static final policy highD = {(Doctor d, PatientJournal p)  Object x : Locks.IsReferred(d,p), Locks.IsDoctor };
+	public static final policy untrusted = { untrustedObserver :; trustedObserver: endorseLock};
+	public static final policy trusted = { untrustedObserver :; trustedObserver: };
+	public static final policy mostTrusted = { untrustedObserver :; trustedObserver:; mostTrustedObserver };
 
 
-	// Another variant with actors and declassification locks
+	public static ?(lowD+trusted) <A>
+	A endorse(?(lowD+trusted*untrusted) A x){
+		open endorseLock{
+			return x;
+		}
+	}
 
-	// Declassification lock
-	private lock declassify;
+	//Confidentiality
+	private lock declassifyLock;
 	
-	public static final policy lowD = { Doctor d:; Secretary s:; Object x: declassify };
-	public static final policy mediumD = { Doctor d:; Object x: declassify};
-	public static final policy highD = { Doctor d: Locks.IsReferred(d); Object x : declassify };
+	public static final policy lowD = { Doctor d:; Secretary s:; Object x: declassifyLock };
+	public static final policy mediumD = { Doctor d:; Object x: declassifyLock};
+	public static final policy highD = { Doctor d: Locks.IsReferred(d); Object x : declassifyLock };
 
 
-	!untrusted public static ?TO <policy TO,A> A declassifyLow(?(TO*lowD) A x){
-		open declassify {
+	!untrusted 
+	public static ?bottom <A> 
+	A declassifyLow(?(bottom*lowD) A x){
+		open declassifyLock {
 			return x;
 		}
 	}
 
 	~Locks.IsDoctor
-	!trusted public static ?TO <policy TO,A> A declassifyMedium(?(TO*mediumD) A x){
-		open declassify {
+	!trusted 
+	public static ?bottom <A> 
+	A declassifyMedium(?(bottom*mediumD) A x){
+		open declassifyLock {
 			return x;
 		}
 	}
 
 	~Locks.IsDoctor ~Locks.Referred
-	!trusted public static ?TO <policy TO, A> A declassifyHigh(?(TO*highD) A x){
-		open declassify {
-			return x;
-			
+	!trusted 
+	public static ?TO <policy TO, A> 
+	A declassifyHigh(?(TO*highD) A x){
+		open declassifyLock {
+			return x;	
 		}
 	}
 

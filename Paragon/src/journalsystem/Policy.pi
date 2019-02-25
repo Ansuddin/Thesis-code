@@ -1,21 +1,23 @@
 public class Policy
 {
-  private static final java.lang.Object lowObserver = new java.lang.Object();
-  private static final java.lang.Object highObserver = new java.lang.Object();
-  public static final policy low = {highObserver:;lowObserver:};
-  public static final policy medium = {highObserver:};
-  public static final policy high = {(Doctor d,PatientJournal p) highObserver: Locks.IsReferred(d,p)};
+  public static final policy bottom = {java.lang.Object x:};
+  public static final policy top = {:};
   private static final java.lang.Object untrustedObserver = new java.lang.Object();
   private static final java.lang.Object trustedObserver = new java.lang.Object();
-  public static final policy untrusted = {untrustedObserver:};
+  private static final java.lang.Object mostTrustedObserver = new java.lang.Object();
+  private lock endorseLock;
+  public static final policy untrusted = {untrustedObserver:;trustedObserver: Policy.endorseLock};
   public static final policy trusted = {untrustedObserver:;trustedObserver:};
-  private lock declassify;
-  public static final policy lowD = {Doctor d:;Secretary s:;java.lang.Object x: Policy.declassify};
-  public static final policy mediumD = {Doctor d:;java.lang.Object x: Policy.declassify};
-  public static final policy highD = {Doctor d: Locks.IsReferred(d);java.lang.Object x: Policy.declassify};
-  !Policy.untrusted public static ?TO <policy TO, A> A declassifyLow(?(TO * Policy.lowD) A x)
+  public static final policy mostTrusted = {untrustedObserver:;trustedObserver:;mostTrustedObserver:};
+  public static ?(Policy.lowD + Policy.trusted) <A> A endorse(?(Policy.lowD + Policy.trusted * Policy.untrusted) A x)
   ;
-  ~(Locks.IsDoctor) !Policy.trusted public static ?TO <policy TO, A> A declassifyMedium(?(TO * Policy.mediumD) A x)
+  private lock declassifyLock;
+  public static final policy lowD = {Doctor d:;Secretary s:;java.lang.Object x: Policy.declassifyLock};
+  public static final policy mediumD = {Doctor d:;java.lang.Object x: Policy.declassifyLock};
+  public static final policy highD = {Doctor d: Locks.IsReferred(d);java.lang.Object x: Policy.declassifyLock};
+  !Policy.untrusted public static ?Policy.bottom <A> A declassifyLow(?(Policy.bottom * Policy.lowD) A x)
+  ;
+  ~(Locks.IsDoctor) !Policy.trusted public static ?Policy.bottom <A> A declassifyMedium(?(Policy.bottom * Policy.mediumD) A x)
   ;
   ~(Locks.IsDoctor) ~(Locks.Referred) !Policy.trusted public static ?TO <policy TO, A> A declassifyHigh(?(TO * Policy.highD) A x)
   ;

@@ -1,43 +1,43 @@
 public class PatientJournalD
 {
-  private ?(Policy.lowD) java.lang.String ssn;
-  private ?(Policy.lowD) java.lang.String name;
-  private ?(Policy.lowD) java.lang.String address;
-  private ?(Policy.lowD) java.lang.String publicNote;
-  private ?(Policy.mediumD) java.lang.String[] publicSessions;
-  private ?(Policy.highD) java.lang.String[] privateSessions;
+  private ?(Policy.lowD + Policy.trusted) java.lang.String ssn;
+  private ?(Policy.lowD + Policy.trusted) java.lang.String name;
+  private ?(Policy.lowD + Policy.trusted) java.lang.String address;
+  private ?(Policy.lowD + Policy.trusted) java.lang.String publicNote;
+  private ?(Policy.mediumD + Policy.trusted) java.lang.String[] publicSessions;
+  private ?(Policy.highD + Policy.trusted) java.lang.String[] privateSessions;
   public PatientJournalD ()
   {
   }
-  public PatientJournalD (?(Policy.lowD) java.lang.String ssn, ?(Policy.lowD) java.lang.String name, ?(Policy.lowD) java.lang.String address, ?(Policy.lowD) java.lang.String publicNote, ?(Policy.mediumD) java.lang.String[] publicSessions, ?(Policy.highD) java.lang.String[] privateSessions)
+  public PatientJournalD (?(Policy.lowD + Policy.trusted) java.lang.String ssn, ?(Policy.lowD + Policy.trusted) java.lang.String name, ?(Policy.lowD + Policy.trusted) java.lang.String address, ?(Policy.lowD + Policy.trusted) java.lang.String publicNote, ?(Policy.mediumD + Policy.trusted) java.lang.String[] publicSessions, ?(Policy.highD + Policy.trusted) java.lang.String[] privateSessions)
   {
   }
-  public ?(Policy.lowD) java.lang.String getSsn()
+  public ?(Policy.lowD + Policy.trusted) java.lang.String getSsn()
   ;
-  public !(Policy.lowD) void setSsn(?(Policy.lowD) java.lang.String ssn)
+  public !(Policy.lowD + Policy.trusted) void setSsn(?(Policy.lowD + Policy.trusted) java.lang.String ssn)
   ;
-  public ?(Policy.lowD) java.lang.String getName()
+  public ?(Policy.lowD + Policy.trusted) java.lang.String getName()
   ;
-  public !(Policy.lowD) void setName(?(Policy.lowD) java.lang.String name)
+  ~(Locks.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setName(?(Policy.lowD + Policy.trusted) java.lang.String name)
   ;
-  public ?(Policy.lowD) java.lang.String getAddress()
+  public ?(Policy.lowD + Policy.trusted) java.lang.String getAddress()
   ;
-  public !(Policy.lowD) void setAddress(?(Policy.lowD) java.lang.String address)
+  ~(Locks.OnlyMatrix) public !(Policy.lowD + Policy.trusted) void setAddress(?(Policy.lowD + Policy.trusted) java.lang.String address)
   ;
-  public ?(Policy.lowD) java.lang.String getPublicNote()
+  public ?(Policy.lowD + Policy.trusted) java.lang.String getPublicNote()
   ;
-  public !(Policy.lowD) void setPublicNote(?(Policy.lowD) java.lang.String note)
+  public !(Policy.lowD + Policy.trusted) void setPublicNote(?(Policy.lowD + Policy.trusted) java.lang.String note)
   ;
-  public ?(Policy.mediumD) java.lang.String[] getPublicSessions()
+  public ?(Policy.mediumD + Policy.trusted) java.lang.String[] getPublicSessions()
   ;
-  public !(Policy.mediumD) void setPublicSessions(?(Policy.mediumD) java.lang.String[] publicSessions)
+  ~(Locks.OnlyMatrix) public !(Policy.mediumD + Policy.trusted) void setPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String[] publicSessions)
   ;
-  public ?(Policy.highD) java.lang.String[] getPrivateSessions()
+  public ?(Policy.highD + Policy.trusted) java.lang.String[] getPrivateSessions()
   ;
-  public !(Policy.highD) void setPrivateSessions(?(Policy.highD) java.lang.String[] privateSessions)
+  ~(Locks.OnlyMatrix) public !(Policy.highD + Policy.trusted) void setPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String[] privateSessions)
   ;
-  public !(Policy.mediumD) void addToPublicSessions(?(Policy.mediumD) java.lang.String session)
+  ~(Locks.IsDoctor) public !(Policy.mediumD + Policy.trusted) void addToPublicSessions(?(Policy.mediumD + Policy.trusted) java.lang.String session)
   ;
-  ~(Locks.IsDoctor) ~(Locks.Referred) public !(Policy.highD) void addToPrivateSessions(?(Policy.highD) java.lang.String session)
+  ~(Locks.IsDoctor) ~(Locks.Referred) public !(Policy.highD + Policy.trusted) void addToPrivateSessions(?(Policy.highD + Policy.trusted) java.lang.String session)
   ;
 }

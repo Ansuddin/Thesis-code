@@ -1,5 +1,5 @@
 public class Test
 {
-  public !Policy.untrusted static void main(?{java.lang.Object a:} java.lang.String[] args)
+  public static !(Policy.lowD + Policy.trusted) void main(?Policy.untrusted java.lang.String[] args)
   ;
 }

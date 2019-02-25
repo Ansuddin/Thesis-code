@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Test {
-	public !Policy.untrusted static void main(?{Object a:} String[] args){
+	public static !(Policy.lowD + Policy.trusted) void main(?Policy.untrusted String[] args){
 		
 		
 		String ssn = "270793-2131";
@@ -20,7 +20,21 @@ public class Test {
 		
 
 		PatientJournalD journal = new PatientJournalD(ssn, name, address, publicNote, publicSessions,	privateSessions);
+		
+		journal.setSsn("test");
+		String test = journal.getSsn();
 		Doctor doctor = new Doctor();
+
+		?(Policy.lowD+Policy.untrusted) String untrustedVar = "";
+		?(Policy.lowD+Policy.trusted) String trustedVar = "";
+
+		untrustedVar = trustedVar;//OK
+		//trustedVar = untrustedVar; // BAD
+
+		trustedVar = Policy.<String>endorse(untrustedVar);
+
+		journal.setPublicNote(Policy.<String>endorse(untrustedVar));
+
 
 		/*String[] publicVar = journal.getPrivateSessions();
 		Doctor doctor = new Doctor();
@@ -40,8 +54,8 @@ public class Test {
 		//  }
 
 		policy bottom = {Object x:};
-		?Policy.lowD String low = "";
-		?Policy.mediumD String medium = "";
+		?(Policy.lowD+Policy.trusted) String low = "";
+		?(Policy.mediumD+Policy.trusted) String medium = "";
 		?Policy.highD String high = "";
 
 		//OK
@@ -49,16 +63,19 @@ public class Test {
 		high = medium;
 		high = low;
 
+
 		//BAD
 		// low = medium;
 		// medium = high;
 		// low = high;
 
-		/*open Locks.IsDoctor;
-		low = Policy.<bottom,String>declassifyMedium(medium);
-		open Locks.Referred;
-		low = Policy.<bottom,String>declassifyHigh(high);*/
+		open Locks.IsDoctor;
+		String out = Policy.<String>declassifyMedium(medium);
+		System.out.println(out);
 
+
+		//open Locks.Referred;
+		//low = Policy.<bottom,String>declassifyHigh(high);
 		// String pub = Policy.<low,String>declassify("");
 		// System.out.print(pub);
 
