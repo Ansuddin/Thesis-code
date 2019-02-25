@@ -10,6 +10,7 @@ public class Policy {
 	public static final policy high = {(Doctor d, PatientJournal p)  highObserver: Locks.IsReferred(d,p) };
 
 
+
 	// Integrity
 	private static final Object untrustedObserver = new Object();
 	private static final Object trustedObserver = new Object();
@@ -27,29 +28,34 @@ public class Policy {
 	//public static final policy highD = {(Doctor d, PatientJournal p)  Object x : Locks.IsReferred(d,p), Locks.IsDoctor };
 
 
-	// With declassification ocks
+	// Another variant with actors and declassification locks
 
-	// Declassification locks
-	private lock medium;
-	private lock high;	
+	// Declassification lock
+	private lock declassify;
 	
-	public static final policy lowD = { Object x: };
-	public static final policy mediumD = { Object x: medium};
-	public static final policy highD = { Object x : medium, high };
+	public static final policy lowD = { Doctor d:; Secretary s:; Object x: declassify };
+	public static final policy mediumD = { Doctor d:; Object x: declassify};
+	public static final policy highD = { Doctor d: Locks.IsReferred(d); Object x : declassify };
+
+
+	!untrusted public static ?TO <policy TO,A> A declassifyLow(?(TO*lowD) A x){
+		open declassify {
+			return x;
+		}
+	}
 
 	~Locks.IsDoctor
-	public static ?lowD <A> A declassifyMedium(?mediumD A x){
-		open medium {
+	!trusted public static ?TO <policy TO,A> A declassifyMedium(?(TO*mediumD) A x){
+		open declassify {
 			return x;
 		}
 	}
 
 	~Locks.IsDoctor ~Locks.Referred
-	public static ?lowD <A> A declassifyHigh(?highD A x){
-		open medium {
-			open high {
-				return x;
-			}
+	!trusted public static ?TO <policy TO, A> A declassifyHigh(?(TO*highD) A x){
+		open declassify {
+			return x;
+			
 		}
 	}
 

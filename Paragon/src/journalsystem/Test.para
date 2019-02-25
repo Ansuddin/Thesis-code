@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Test {
-	public !{Object a:} static void main(?{Object a:} String[] args){
+	public !Policy.untrusted static void main(?{Object a:} String[] args){
 		
 		
 		String ssn = "270793-2131";
@@ -34,9 +34,33 @@ public class Test {
 		//System.out.println(journal.getName());
 
 		// Test declassify
-		open Locks.IsDoctor;
-		String secret = Policy.<String>declassifyMedium(journal.getName());
-		System.out.println(secret);
+		// open Locks.IsDoctor{
+		// String secret = Policy.<String>declassifyMedium(journal.getName());
+		// System.out.println(secret);
+		//  }
+
+		policy bottom = {Object x:};
+		?Policy.lowD String low = "";
+		?Policy.mediumD String medium = "";
+		?Policy.highD String high = "";
+
+		//OK
+		medium = low ;
+		high = medium;
+		high = low;
+
+		//BAD
+		// low = medium;
+		// medium = high;
+		// low = high;
+
+		/*open Locks.IsDoctor;
+		low = Policy.<bottom,String>declassifyMedium(medium);
+		open Locks.Referred;
+		low = Policy.<bottom,String>declassifyHigh(high);*/
+
+		// String pub = Policy.<low,String>declassify("");
+		// System.out.print(pub);
 
 /*
 		?Policy.lowD String lowVar = "low";

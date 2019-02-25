@@ -1,7 +1,7 @@
 public class Locks{
 
 	public static ?{Object x: } lock IsDoctor;
-	public static ?{Object x: } lock IsReferred(Doctor,PatientJournal);
+	public static ?{Object x: } lock IsReferred(Doctor); // Proberbly opened in Hospital class.
 	// Can only be opended when IsReferred is open.
 	public static ?{Object x: } lock Referred;
 }

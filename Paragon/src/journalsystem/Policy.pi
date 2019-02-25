@@ -1,0 +1,22 @@
+public class Policy
+{
+  private static final java.lang.Object lowObserver = new java.lang.Object();
+  private static final java.lang.Object highObserver = new java.lang.Object();
+  public static final policy low = {highObserver:;lowObserver:};
+  public static final policy medium = {highObserver:};
+  public static final policy high = {(Doctor d,PatientJournal p) highObserver: Locks.IsReferred(d,p)};
+  private static final java.lang.Object untrustedObserver = new java.lang.Object();
+  private static final java.lang.Object trustedObserver = new java.lang.Object();
+  public static final policy untrusted = {untrustedObserver:};
+  public static final policy trusted = {untrustedObserver:;trustedObserver:};
+  private lock declassify;
+  public static final policy lowD = {Doctor d:;Secretary s:;java.lang.Object x: Policy.declassify};
+  public static final policy mediumD = {Doctor d:;java.lang.Object x: Policy.declassify};
+  public static final policy highD = {Doctor d: Locks.IsReferred(d);java.lang.Object x: Policy.declassify};
+  !Policy.untrusted public static ?TO <policy TO, A> A declassifyLow(?(TO * Policy.lowD) A x)
+  ;
+  ~(Locks.IsDoctor) !Policy.trusted public static ?TO <policy TO, A> A declassifyMedium(?(TO * Policy.mediumD) A x)
+  ;
+  ~(Locks.IsDoctor) ~(Locks.Referred) !Policy.trusted public static ?TO <policy TO, A> A declassifyHigh(?(TO * Policy.highD) A x)
+  ;
+}

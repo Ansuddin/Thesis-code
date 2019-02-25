@@ -1,0 +1,6 @@
+public class Locks
+{
+  public static ?{java.lang.Object x:} lock IsDoctor;
+  public static ?{java.lang.Object x:} lock IsReferred(Doctor);
+  public static ?{java.lang.Object x:} lock Referred;
+}

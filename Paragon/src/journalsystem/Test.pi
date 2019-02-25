@@ -1,0 +1,5 @@
+public class Test
+{
+  public !Policy.untrusted static void main(?{java.lang.Object a:} java.lang.String[] args)
+  ;
+}
