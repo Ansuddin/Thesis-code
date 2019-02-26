@@ -1,13 +1,14 @@
-
-import java.lang.System;
+/*import java.lang.System;
 import java.util.Scanner;
 import java.util.ArrayList;
 import org.jpy.PyLib;
 import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;*/
 
 public class Test {
-	public static !{Object x:} void main(?{Object x:} String[] args){
+	public static void main(String[] args){
+	}
+}
 
 		// Program flow
 		// Program starts as either a Doctor or secretary. If Doctor then IsDoctor is opened.
@@ -33,7 +34,7 @@ public class Test {
 
 		// Secretary 1:
 
-		Hospital hospital = new Hospital();
+		/*Hospital hospital = new Hospital();
 		Employee employee;
 		if(args[0].equals("doctor")){
 			System.out.println(args[0]);
@@ -48,8 +49,7 @@ public class Test {
 		} else {
 			System.out.println("Wrong args:" + args[0] + ":");
 			return;
-		}
-
+		}*/
 
 
 		/*
@@ -247,6 +247,3 @@ public class Test {
 		PatientJournal journal = new PatientJournal();
 		open Policy.IsReferred(doctor,journal);
 		mediumVar = secretVar; // OK*/
-
-	}
-}

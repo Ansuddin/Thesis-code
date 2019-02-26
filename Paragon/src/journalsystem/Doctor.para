@@ -4,6 +4,7 @@ public class Doctor implements Employee{
 	?{Object a:}int id;
 	?{Object a:}String name;
 	?{Object a:}String[] patients;
+	
 
 	public Doctor (?{Object a:}int id, ?{Object a:} String name, ?{Object x:}String[] patients){
 		this.id = id;
@@ -36,8 +37,8 @@ public class Doctor implements Employee{
 		int endorsedOption = Policy.<Integer>endorse(option).intValue();
 		if(endorsedOption==1){
 			// print journal
-			Employee self = (Employee) this;
-			Util.printJournal(journal,self);
+			Employee thisEmployee = (Employee) this;
+			Util.printJournal(journal,thisEmployee);
 		} else if (endorsedOption==2){
 			// edit journal
 			// call updateJournal

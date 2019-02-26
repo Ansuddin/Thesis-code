@@ -1,0 +1,5 @@
+public class Employee
+{
+  public void receive(PatientJournalD journal, java.util.Scanner scanner, Hospital hospital)
+  ;
+}

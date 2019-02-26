@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public interface Employee {
 
-	void receive(PatientJournalD journal, Scanner scanner, Hospital hospital);
+	public void receive(PatientJournalD journal, Scanner scanner, Hospital hospital);
+	
 }
