@@ -1,12 +1,22 @@
-public class util {
+public class Util {
 
-	public static String getUserInput(){}
 
-	// public static String print(){}
+
+	public static ?(Policy.lowD+Policy.untrusted) String getUserInput(){
+		return null;
+	}
+
+	public static void printJournal(PatientJournalD journal){
+
+	}
 
 	// public static void loadData(String hospital, String doctor)
 
-	public static PatientJournal stringToJournal(String json) {}
+	public static PatientJournalD stringToJournal(String json) {
+		return null;
+	}
 
-	public static String patientToString(PatientJournal){}
+	public static String patientToString(PatientJournalD journal){
+		return null;
+	}
 }

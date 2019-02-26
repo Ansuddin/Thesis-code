@@ -12,6 +12,7 @@ public final native class Integer
     
     public static ?policyof(s) int parseInt(String s);
     
+    public int intValue();
     
     public Integer(int i) { }
     

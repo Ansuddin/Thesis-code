@@ -15,7 +15,7 @@ public class Hospital{
 	}
 
 
-	public PatientJournal getJournal(Employee employee, String ssn){
+	public PatientJournalD getJournal(Employee employee, String ssn){
 		
 		// Open lock IsReferred if doctor has patient in care
 		// if(Policy.IsDoctor){
@@ -32,7 +32,7 @@ public class Hospital{
 
 
 	!(Policy.lowD+Policy.untrusted)
-	public void updateJournal(PatientJournal journal){
+	public void updateJournal(PatientJournalD journal){
 		//String json = Util.patientToString(journal);
 		// api.send(json);
 

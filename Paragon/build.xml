@@ -48,14 +48,17 @@
       <!--<arg value="${src.dir}/Main.para"/> -->
 
       <arg value="${src.dir}/journalsystem/Policy.para"/>
-      
-<!--             <arg value="${src.dir}/journalsystem/Hospital.para"/> 
-      <arg value="${src.dir}/journalsystem/Employee.para"/>
 
-      <arg value="${src.dir}/journalsystem/Doctor.para"/>
-    <arg value="${src.dir}/journalsystem/Secretary.para"/> -->
-     <!-- <arg value="${src.dir}/journalsystem/Locks.para"/> -->
-     <!-- <arg value="${src.dir}/journalsystem/PatientJournalD.para"/> -->
+      <arg value="${src.dir}/journalsystem/PatientJournalD.para"/> 
+
+      <arg value="${src.dir}/journalsystem/Util.para"/> 
+
+      <arg value="${src.dir}/journalsystem/Employee.para"/>
+      <arg value="${src.dir}/journalsystem/Hospital.para"/>
+
+      <arg value="${src.dir}/journalsystem/Secretary.para"/> 
+      <!-- <arg value="${src.dir}/journalsystem/Doctor.para"/> -->
+     
 
       <!-- <arg value="${src.dir}/journalsystem/MatrixService.para"/> -->
 
@@ -102,8 +105,8 @@
   </target>
 
   <target name="fakePatientJournal">
-    <touch file="${src.dir}/journalsystem/PatientJournal.pi" />
-    <echo file="${src.dir}/journalsystem/PatientJournal.pi" message="public class PatientJournal { }" />
+    <touch file="${src.dir}/journalsystem/PatientJournalD.pi" />
+    <echo file="${src.dir}/journalsystem/PatientJournalD.pi" message="public class PatientJournalD { }" />
     <touch file="${src.dir}/journalsystem/Doctor.pi" />
     <echo file="${src.dir}/journalsystem/Doctor.pi" message="public class Doctor { }" />
     <touch file="${src.dir}/journalsystem/Secretary.pi" />

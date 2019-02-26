@@ -1,0 +1,11 @@
+public class Util
+{
+  public static ?(Policy.lowD + Policy.untrusted) java.lang.String getUserInput()
+  ;
+  public static void printJournal(PatientJournalD journal)
+  ;
+  public static PatientJournalD stringToJournal(java.lang.String json)
+  ;
+  public static java.lang.String patientToString(PatientJournalD journal)
+  ;
+}
