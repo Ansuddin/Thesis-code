@@ -20,8 +20,8 @@ public class Test {
 		// a public session note can be added. If the patient is referred then the doctor can add to private session
 		// When the user has done some action the program returns to the main loop.  
 		
-		Hospital hospital = new Hospital();
-		Employee employee;
+		//Hospital hospital = new Hospital();
+		//Employee employee;
 		if(args[0].equals("doctor")){
 			System.out.println(args[0]);
 			//employee = new Doctor(1,args[0]);
@@ -35,6 +35,7 @@ public class Test {
 			System.out.println("Wrong args:" + args[0] + ":");
 			return;
 		}
+
 
 
 		/*

@@ -5,10 +5,10 @@ public class Doctor implements Employee{
 	?{Object a:}String name;
 	?{Object a:}String[] patients;
 
-	public Doctor (?{Object a:}int id, ?{Object a:} String name, String[] patients){
+	public Doctor (?{Object a:}int id, ?{Object a:} String name, ?{Object x:}String[] patients){
 		this.id = id;
 		this.name = name;
-		this.patients = patients
+		this.patients = patients;
 	}
 
 
@@ -18,8 +18,8 @@ public class Doctor implements Employee{
 	// Add to public session
 	// Add to private session if referred
 	// Return to main loop
-	!(Policy.low+Policy.untrusted)
-	public ?(Policy.low+Policy.untrusted) void receive(?(Policy.low+Policy.untrusted) PatientJournal, Scanner scanner){
+	/*!(Policy.low+Policy.trusted)
+	public ?(Policy.low+Policy.trusted) void receive(?(Policy.low+Policy.untrusted) PatientJournal, Scanner scanner){
 		
 		//if(Policy.IsReferred(this)){
 		// open Policy.Referred
@@ -63,16 +63,6 @@ public class Doctor implements Employee{
 		// }
 		//}
 
-	}
-
-	!(Policy.low+Policy.untrusted)
-	public ?(Policy.low+Policy.untrusted) String inputForPublicnote(){
-	 	return "test";
-	}
-
-	!(Policy.low+Policy.untrusted)
-	public ?(Policy.low+Policy.trusted) String inputForPublicnote(){
-	 	return "test";
 	}
 
 }

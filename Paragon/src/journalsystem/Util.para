@@ -1,12 +1,12 @@
 public class util {
 
-	// public static String input(){}
+	public static String getUserInput(){}
 
 	// public static String print(){}
 
 	// public static void loadData(String hospital, String doctor)
 
-	// public static PatientJournal stringToJournal(String json) {}
+	public static PatientJournal stringToJournal(String json) {}
 
-	// public static String patientToString(PatientJournal){}
+	public static String patientToString(PatientJournal){}
 }

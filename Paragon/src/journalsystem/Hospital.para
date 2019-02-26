@@ -15,7 +15,7 @@ public class Hospital{
 	}
 
 
-	public static PatientJournal getJournal(Employee employee, String ssn){
+	public PatientJournal getJournal(Employee employee, String ssn){
 		
 		// Open lock IsReferred if doctor has patient in care
 		// if(Policy.IsDoctor){
@@ -31,11 +31,15 @@ public class Hospital{
 	}
 
 
-	public static void updateJournal(PatientJournal journal){
+	!(Policy.lowD+Policy.untrusted)
+	public void updateJournal(PatientJournal journal){
 		//String json = Util.patientToString(journal);
 		// api.send(json);
 
 	}
+
+	//!(Policy.lowD+Policy.trusted)
+	//public static void trustedMethod(){}
 
 	public void selectPatient(Employee employee) throws NullPointerException {
 		Scanner scanner = new Scanner(System.in);
@@ -51,7 +55,7 @@ public class Hospital{
 
 			if(option<patientArray.length){
 				String ssn = patientArray[option];
-				employee.receive(getJournal(employee,ssn), scanner);
+				employee.receive(getJournal(employee,ssn), scanner, this);
 
 			} else {
 				break;
