@@ -1,22 +1,42 @@
+
+import java.util.Scanner;
+
 public class Util {
 
-
-
 	public static ?(Policy.lowD+Policy.untrusted) String getUserInput(){
-		return null;
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.nextLine();
+		return input;
 	}
 
-	public static void printJournal(PatientJournalD journal){
+	!(Policy.lowD+Policy.trusted)
+	public static void printJournal(?(Policy.lowD+Policy.trusted) PatientJournalD journal, Employee employee){
+		String ssn = Policy.<String>declassifyLow(journal.getSsn());
+		String name = Policy.<String>declassifyLow(journal.getName());
+		String address = Policy.<String>declassifyLow(journal.getAddress());
+		String publicNote = Policy.<String>declassifyLow(journal.getPublicNote());
+		System.out.println("Patient journal: ");
+		System.out.println("\t" + "SSN: " + ssn);
+		System.out.println("\t" + "Name: " + name);
+		System.out.println("\t" + "Address: " + address);
+		System.out.println("\t" + "Public note: " + publicNote);
+		if(Policy.IsDoctor){
+			String[] publicSessions = Policy.<String[]>declassifyMedium(journal.getPublicSessions());
+			System.out.println("\t" + "Public sessions:");
+			for(int i=0; i<publicSessions.length; i++){
+				System.out.println("\t\t" + "Session " + i + ": " + publicSessions[i]);
+			}
 
-	}
 
-	// public static void loadData(String hospital, String doctor)
-
-	public static PatientJournalD stringToJournal(String json) {
-		return null;
-	}
-
-	public static String patientToString(PatientJournalD journal){
-		return null;
+			Doctor doctor = (Doctor) employee;
+			if(Policy.IsReferred(doctor)){
+				open Policy.Referred;
+				String[] privateSessions = Policy.<String[]>declassifyHigh(journal.getPrivateSessions());
+				System.out.println("\t" + "Private sessions:");
+				for(int i=0; i<privateSessions.length; i++){
+					System.out.println("\t\t" + "Session " + i + ": " + privateSessions[i]);
+				}
+			}
+		}
 	}
 }

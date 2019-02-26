@@ -71,7 +71,7 @@ public class PatientJournalD {
 		this.publicSessions = publicSessions;
 	}
 
-	~Policy.IsReferred
+	~Policy.Referred
 	public ?(Policy.highD + Policy.trusted) String[] getPrivateSessions(){
 		return privateSessions;
 	}

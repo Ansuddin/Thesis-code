@@ -45,7 +45,6 @@ public class Policy {
 	public static final policy highD = { Doctor d: IsReferred(d); Object x : declassifyLock };
 
 
-	!untrusted 
 	public static ?bottom <A> 
 	A declassifyLow(?(bottom*lowD) A x){
 		open declassifyLock {
@@ -54,7 +53,6 @@ public class Policy {
 	}
 
 	~IsDoctor
-	!trusted 
 	public static ?bottom <A> 
 	A declassifyMedium(?(bottom*mediumD) A x){
 		open declassifyLock {
@@ -62,10 +60,9 @@ public class Policy {
 		}
 	}
 
-	~IsDoctor ~Referred
-	!trusted 
-	public static ?TO <policy TO, A> 
-	A declassifyHigh(?(TO*highD) A x){
+	~Referred
+	public static ?bottom < A> 
+	A declassifyHigh(?(bottom*highD) A x){
 		open declassifyLock {
 			return x;	
 		}
