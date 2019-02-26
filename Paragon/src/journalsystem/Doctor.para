@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class Doctor implements Employee{
 	
 	?{Object a:}int id;
@@ -11,58 +11,60 @@ public class Doctor implements Employee{
 		this.patients = patients;
 	}
 
+	!(Policy.lowD+Policy.trusted)
+	public void receive(?(Policy.lowD+Policy.trusted)PatientJournalD journal, 
+						?(Policy.lowD+Policy.untrusted)Scanner scanner, Hospital hospital){
 
-	// The method gives the secretary three options:
-	// Print journal
-	// Edit public note
-	// Add to public session
-	// Add to private session if referred
-	// Return to main loop
-	/*!(Policy.low+Policy.trusted)
-	public ?(Policy.low+Policy.trusted) void receive(?(Policy.low+Policy.untrusted) PatientJournal, Scanner scanner){
-		
-		//if(Policy.IsReferred(this)){
-		// open Policy.Referred
+
 		System.out.println("Select an option: ");
 		System.out.println("1. Print journal");
 		System.out.println("2. Edit public note");
 		System.out.println("3. Add to public session");
-		System.out.println("4. Add to private session")
-		System.out.println("5. Back");
+		if(Policy.IsReferred(this)){
+			System.out.println("4. Add to private session");
+		}
+		System.out.println("0. Back");
 		int option = scanner.nextInt();
-		if(option==1){
+		int endorsedOption = Policy.<Integer>endorse(option).intValue();
+		if(endorsedOption==1){
 			// print journal
-		} else if (option==2){
+			Employee self = (Employee) this;
+			Util.printJournal(journal,self);
+		} else if (endorsedOption==2){
 			// edit journal
 			// call updateJournal
-		} else if (option==3) {
+			String input = Util.getUserInput();
+			?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);
+			journal.setPublicNote(endorsed);
+			hospital.updateJournal(journal);
+		} else if (endorsedOption==3) {
 			// Add to public session
 			// Get input and endorse
 			// Call updateJournal
-		} else if (option==4) {
+				if(Policy.IsDoctor){
+					String input = Util.getUserInput();
+					?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);
+					journal.addToPublicSessions(endorsed);
+					hospital.updateJournal(journal);
+				
+				}
+		} else if (endorsedOption==4) {
 			// Add to private session
 			// Get input and endorse
 			// Call updateJournal
+			if(Policy.IsReferred(this)){
+				open Policy.Referred{
+					 String input = Util.getUserInput();
+					 ?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);
+					 journal.addToPrivateSessions(endorsed);
+					 hospital.updateJournal(journal);
+				}
+			}
 		} else {
 			// do nothing
 		}
-		//} else {
-		// System.out.println("Select an option: ");
-		// System.out.println("1. Print journal");
-		// System.out.println("2. Edit public note");
-		// System.out.println("3. Add to public session");
-		// System.out.println("4. Back");
-		// int option = scanner.nextInt();
-		// if(option==1){
-		// 	// print journal
-		// } else if (option==2){
-		// 	// edit journal
-		// 	// call updateJournal
-		// } else {
-		// 	// Do nothing
-		// }
-		//}
-
+		
 	}
+
 
 }

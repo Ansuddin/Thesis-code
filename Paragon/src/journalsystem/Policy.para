@@ -1,17 +1,16 @@
 public class Policy {
 
-		// Locks
-	public static !(Policy.lowD + Policy.trusted) lock IsDoctor; // The confidentiality policy does not effect anything
-	public static !(Policy.lowD + Policy.trusted) lock IsReferred(Doctor); // Proberbly opened in Hospital class.
-	// Can only be opended when IsReferred is open.
-	public static !(Policy.lowD + Policy.trusted) lock Referred;
-	public static !(Policy.lowD + Policy.trusted) lock OnlyMatrix;
-
-	public static !(Policy.lowD + Policy.trusted) lock EditPublicNote;
 
 	// Paragon definitions
 	public static final policy bottom = {Object x:};
 	public static final policy top = {:};
+
+		// Locks
+	public static ?bottom lock IsDoctor; // The confidentiality policy does not effect anything
+	public static ?bottom lock IsReferred(Doctor); // Proberbly opened in Hospital class.
+	// Can only be opended when IsReferred is open.
+	public static ?bottom lock Referred;
+	public static ?bottom lock OnlyMatrix;
 
 
 	// Integrity
@@ -37,13 +36,8 @@ public class Policy {
 	private lock declassifyLock;
 	
 	public static final policy lowD = { Doctor d:; Secretary s:; Object x: declassifyLock };
-
-
-
-
 	public static final policy mediumD = { Doctor d:; Object x: declassifyLock};
 	public static final policy highD = { Doctor d: IsReferred(d); Object x : declassifyLock };
-
 
 	public static ?bottom <A> 
 	A declassifyLow(?(bottom*lowD) A x){

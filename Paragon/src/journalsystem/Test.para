@@ -20,13 +20,14 @@ public class Test {
 		// a public session note can be added. If the patient is referred then the doctor can add to private session
 		// When the user has done some action the program returns to the main loop.  
 		
-		//Hospital hospital = new Hospital();
-		//Employee employee;
+		Hospital hospital = new Hospital();
+		Employee employee;
 		if(args[0].equals("doctor")){
 			System.out.println(args[0]);
-			//employee = new Doctor(1,args[0]);
-			// Open IsDoctor lock
-			// Call Hospital.selectPatient(employee);
+			String[] patients = new String[2];
+			employee = new Doctor(1,args[0], patients);
+			open Policy.IsDoctor;
+			hospital.selectPatient(employee);
 		} else if(args[0].equals("secretary")) {
 			System.out.println(args[0]);
 			//employee = new Secretary(2,args[0]);
