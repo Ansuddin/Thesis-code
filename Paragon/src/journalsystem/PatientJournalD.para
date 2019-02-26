@@ -61,7 +61,7 @@ public class PatientJournalD {
 		this.publicNote = note;
 	}
 
-	~Policy.IsDoctor	
+	~Policy.DoctorLock	
 	public ?(Policy.mediumD + Policy.trusted) String[] getPublicSessions(){
 		return publicSessions;
 	}
@@ -81,7 +81,7 @@ public class PatientJournalD {
 		this.privateSessions = privateSessions;
 	}
 
-	~Policy.IsDoctor
+	~Policy.DoctorLock
 	public !(Policy.mediumD + Policy.trusted) void addToPublicSessions(?(Policy.mediumD + Policy.trusted) String session){
 		String[] newSessions = new String[this.publicSessions.length+1];
 		for(int i=0; i<this.publicSessions.length; i++){

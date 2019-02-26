@@ -15,7 +15,8 @@ public class Doctor implements Employee{
 	!(Policy.lowD+Policy.trusted)
 	public void receive(?(Policy.lowD+Policy.trusted)PatientJournalD journal, 
 						?(Policy.lowD+Policy.untrusted)Scanner scanner, Hospital hospital){
-		
+
+		Employee upcastedSelf = (Employee) this;
 		Doctor self = this;
 		String ssn = journal.getSsn();
 		for(int i=0; i<patients.length; i++){
@@ -37,8 +38,7 @@ public class Doctor implements Employee{
 		int endorsedOption = Policy.<Integer>endorse(option).intValue();
 		if(endorsedOption==1){
 			// print journal
-			Employee thisEmployee = (Employee) this;
-			Util.printJournal(journal,thisEmployee);
+			Util.printJournal(journal,upcastedSelf);
 		} else if (endorsedOption==2){
 			// edit journal
 			// call updateJournal
@@ -50,11 +50,13 @@ public class Doctor implements Employee{
 			// Add to public session
 			// Get input and endorse
 			// Call updateJournal
-				if(Policy.IsDoctor){
-					String input = Util.getUserInput();
-					?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);
-					journal.addToPublicSessions(endorsed);
-					hospital.updateJournal(journal);
+				if(Policy.IsDoctor(upcastedSelf)){
+					open Policy.DoctorLock{
+						String input = Util.getUserInput();
+						?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);
+						journal.addToPublicSessions(endorsed);
+						hospital.updateJournal(journal);
+					}
 				
 				}
 		} else if (endorsedOption==4) {

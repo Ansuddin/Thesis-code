@@ -5,33 +5,57 @@ import java.util.Scanner;
 
 public class Hospital{
 	
-	private final MatrixApi<PatientJournalD> api;
+	//private final MatrixApi<PatientJournalD> api;
 
 	private final HashMap<String,String> patients;
 
-	public Hospital(?Policy.bottom MatrixApi<PatientJournalD> api, ?Policy.bottom HashMap<String,String> patients){
-		this.api = api;
+	public Hospital(?Policy.bottom HashMap<String,String> patients){ //, ?Policy.bottom MatrixApi<PatientJournalD> api){
+		//this.api = api;
 		this.patients = patients;
 	}
 
 
 	public PatientJournalD getJournal(String ssn){
-		String room = patients.get(ssn);
+		/*String room = patients.get(ssn);
 		String JSON = api.retrieve(room);
 		PatientJournalD journal = api.JSONToObject(JSON);
 		return journal;
+		*/
+		HashMap<String,PatientJournalD> patientjournals = new HashMap<String,PatientJournalD>();
+		String ssn1 = "2707932131";
+		String name1 = "Ans Uddin";
+		String address1 = "Knapmagerstien 49";
+		String publicNote1 = "antibiotika intolerance";
+		String[] publicSessions1 = {" D-vitamin deficiancy"};
+		String[] privateSessions1 = {"Treatment for panic attacks started"};
+		PatientJournalD journal1 = new PatientJournalD(ssn1, name1, address1, publicNote1, publicSessions1,	privateSessions1);
+
+		String ssn2 = "3101942138";
+		String name2 = "Halima Sharif";
+		String address2 = "Varebrovej 20";
+		String publicNote2 = "Lageskift";
+		String[] publicSessions2 = {"Brakket benet"};
+		String[] privateSessions2 = {"Depression"};
+		PatientJournalD journal2 = new PatientJournalD(ssn2, name2, address2, publicNote2, publicSessions2,	privateSessions2);
+
+		patientjournals.put("2707932131", journal1);
+		patientjournals.put("3101942138", journal2);
+
+		return patientjournals.get(ssn);
 	}
 
 
 	!(Policy.lowD+Policy.trusted)
 	public void updateJournal(PatientJournalD journal){
-		String json = api.objectToJSON(journal);
-		api.send(json);
+		//String json = api.objectToJSON(journal);
+		//api.send(json);
 
 	}
 
 
-	public void selectPatient(Employee employee) throws NullPointerException {
+	public void selectPatient(Employee employee) {
+		System.out.println();
+		System.out.println("Main");
 		Scanner scanner = new Scanner(System.in);
 		String[] patientArray = patients.keySet().toArray(new String[patients.size()]);
 		while(true){
@@ -39,12 +63,12 @@ public class Hospital{
 			for(int i=0; i<patients.size(); i++){
 				System.out.println(i+1 + ". " + patientArray[i]);
 			}
-			System.out.println(patientArray.length + ". Exit");
+			System.out.println("0. Exit");
 
 			int option = scanner.nextInt();
 
-			if(option<patientArray.length){
-				String ssn = patientArray[option];
+			if(option>0 && option <=patientArray.length){
+				String ssn = patientArray[option-1];
 				employee.receive(getJournal(ssn), scanner, this);
 
 			} else {

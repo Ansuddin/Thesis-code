@@ -36,7 +36,7 @@ public class Policy {
 	public static ?(lowD+trusted) lock Referred;
 
 	public static ?(lowD+trusted) lock IsDoctor(Employee);
-	public static ?(lowD+trusted) lock IsDoctor; // The confidentiality policy does not effect anything
+	public static ?(lowD+trusted) lock DoctorLock; // The confidentiality policy does not effect anything
 	
 
 	public static ?(lowD+trusted) lock OnlyMatrix;	
@@ -53,7 +53,7 @@ public class Policy {
 		}
 	}
 
-	~IsDoctor
+	~DoctorLock
 	public static ?bottom <A> 
 	A declassifyMedium(?(bottom*mediumD) A x){
 		open declassifyLock {

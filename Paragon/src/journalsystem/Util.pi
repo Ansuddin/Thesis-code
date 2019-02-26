@@ -1,7 +1,0 @@
-public class Util
-{
-  public static ?(Policy.lowD + Policy.untrusted) java.lang.String getUserInput()
-  ;
-  !(Policy.lowD + Policy.trusted) public static void printJournal(?(Policy.lowD + Policy.trusted) PatientJournalD journal, Employee employee)
-  ;
-}

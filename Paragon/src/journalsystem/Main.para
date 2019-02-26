@@ -1,6 +1,6 @@
 import java.lang.System;
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.HashMap;
 import org.jpy.PyLib;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +22,9 @@ public class Main {
 		//Configuration based on parameters
 		// Hospital 1: new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
 		// new HashMap<String,String>()
+		HashMap<String,String> map = new HashMap<String,String>();
+		map.put("2707932131","");
+		map.put("3101942138","");
 		
 		// Hospital 2: 
 
@@ -31,35 +34,34 @@ public class Main {
 
 		// Secretary 1:
 
-		//Hospital hospital = new Hospital();
-		// Employee employee;
-		// if(args[0].equals("doctor")){
-		// 	System.out.println(args[0]);
-		// 	String[] patients = new String[2];
-		// 	employee = new Doctor(1,args[0], patients);
-		// 	open Policy.IsDoctor(employee);
-		// 	//hospital.selectPatient(employee);
-		// } else if(args[0].equals("secretary")) {
-		// 	System.out.println(args[0]);
-		// 	//employee = new Secretary(2,args[0]);
-		// 	// // Call Hospital.selectPatient(employee);
-		// } else {
-		// 	System.out.println("Wrong args:" + args[0] + ":");
-		// 	return;
-		// }
-
-		Car car = new Audi();
-
-		Audi audi = (Audi) car;
-
-		Car car2 = (Car) audi;
-
-		if(car==car2){
-			System.out.println("yes");
-
-		} else {
-			System.out.println("no");
+		Hospital hospital = new Hospital(map);
+		Employee employee;
+		if(args[0].equals("doctor1")){
+			System.out.println(args[0]);
+			String[] patients = {"2707932131"};
+			employee = new Doctor(1,args[0], patients);
+			open Policy.IsDoctor(employee);
+			System.out.println("Calling hospital method");
+			hospital.selectPatient(employee);
+			System.out.println("Done");
+		} 
+		else if (args[0].equals("doctor2")){
+			System.out.println(args[0]);
+			String[] patients = {""};
+			employee = new Doctor(1,args[0], patients);
+			open Policy.IsDoctor(employee);
+			hospital.selectPatient(employee);
+		} 
+		else if(args[0].equals("secretary")) {
+			System.out.println(args[0]);
+			employee = new Secretary(2,args[0]);
+			hospital.selectPatient(employee);
+		} 
+		else {
+			System.out.println("Wrong args:" + args[0] + ":");
+			return;
 		}
+
 	
 	}
 }

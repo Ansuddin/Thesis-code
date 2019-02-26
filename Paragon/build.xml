@@ -44,7 +44,7 @@
   <target name="parac" depends="dummyClasses">
     <exec executable="./parac"> <!-- specify location -->
       <arg value="-p" />
-<!--       <arg value="${pipath.base}:${src.dir}/journalsystem" />
+      <arg value="${pipath.base}:${src.dir}/journalsystem" />
 
       <arg value="${src.dir}/journalsystem/Employee.para"/>
       <arg value="${src.dir}/journalsystem/Policy.para"/>
@@ -57,11 +57,8 @@
       <arg value="${src.dir}/journalsystem/Hospital.para"/>
 
       <arg value="${src.dir}/journalsystem/Secretary.para"/> 
-      <arg value="${src.dir}/journalsystem/Doctor.para"/> -->
+      <arg value="${src.dir}/journalsystem/Doctor.para"/>
      
-      <arg value="${src.dir}/journalsystem/Car.para"/>
-
-      <arg value="${src.dir}/journalsystem/Audi.para"/>
 
       <arg value="${src.dir}/journalsystem/Main.para"/>
       <!-- <arg value="${src.dir}/journalsystem/Test.para"/> -->
