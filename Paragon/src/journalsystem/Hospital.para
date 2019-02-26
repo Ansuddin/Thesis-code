@@ -5,41 +5,31 @@ import java.util.Scanner;
 
 public class Hospital{
 	
-	//private static final MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
+	private final MatrixApi<PatientJournalD> api;
 
+	private final HashMap<String,String> patients;
 
-	private final HashMap<String,String> patients = new HashMap<String,String>();
-
-	public Hospital(){
-		// Put rooms and SSN
+	public Hospital(?Policy.bottom MatrixApi<PatientJournalD> api, ?Policy.bottom HashMap<String,String> patients){
+		this.api = api;
+		this.patients = patients;
 	}
 
 
-	public PatientJournalD getJournal(Employee employee, String ssn){
-		
-		// Open lock IsReferred if doctor has patient in care
-		// if(Policy.IsDoctor){
-		// 	Doctor doctor = (Doctor) employee;
-		// 	for(int i=0; i<doctor.patients.length; i++){
-		// 		if(doctor.patients[i] == ssn)
-		// 			// open Policy.IsReferred(doctor);
-		// 	}
-		// } 
-		// String room = patients.get(ssn);
-		//return api.retrieve(room);
-		return null;
+	public PatientJournalD getJournal(String ssn){
+		String room = patients.get(ssn);
+		String JSON = api.retrieve(room);
+		PatientJournalD journal = api.JSONToObject(JSON);
+		return journal;
 	}
 
 
-	!(Policy.lowD+Policy.untrusted)
+	!(Policy.lowD+Policy.trusted)
 	public void updateJournal(PatientJournalD journal){
-		//String json = Util.patientToString(journal);
-		// api.send(json);
+		String json = api.objectToJSON(journal);
+		api.send(json);
 
 	}
 
-	//!(Policy.lowD+Policy.trusted)
-	//public static void trustedMethod(){}
 
 	public void selectPatient(Employee employee) throws NullPointerException {
 		Scanner scanner = new Scanner(System.in);
@@ -55,7 +45,7 @@ public class Hospital{
 
 			if(option<patientArray.length){
 				String ssn = patientArray[option];
-				employee.receive(getJournal(employee,ssn), scanner, this);
+				employee.receive(getJournal(ssn), scanner, this);
 
 			} else {
 				break;

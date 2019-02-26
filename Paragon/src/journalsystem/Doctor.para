@@ -14,13 +14,21 @@ public class Doctor implements Employee{
 	!(Policy.lowD+Policy.trusted)
 	public void receive(?(Policy.lowD+Policy.trusted)PatientJournalD journal, 
 						?(Policy.lowD+Policy.untrusted)Scanner scanner, Hospital hospital){
-
+		
+		Doctor self = this;
+		String ssn = journal.getSsn();
+		for(int i=0; i<patients.length; i++){
+			if(patients[i] == ssn){
+				 open Policy.IsReferred(self);
+				}
+		}
+		
 
 		System.out.println("Select an option: ");
 		System.out.println("1. Print journal");
 		System.out.println("2. Edit public note");
 		System.out.println("3. Add to public session");
-		if(Policy.IsReferred(this)){
+		if(Policy.IsReferred(self)){
 			System.out.println("4. Add to private session");
 		}
 		System.out.println("0. Back");
@@ -52,7 +60,7 @@ public class Doctor implements Employee{
 			// Add to private session
 			// Get input and endorse
 			// Call updateJournal
-			if(Policy.IsReferred(this)){
+			if(Policy.IsReferred(self)){
 				open Policy.Referred{
 					 String input = Util.getUserInput();
 					 ?(Policy.lowD+Policy.trusted) String endorsed = Policy.<String>endorse(input);

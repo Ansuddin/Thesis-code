@@ -20,6 +20,19 @@ public class Test {
 		// a public session note can be added. If the patient is referred then the doctor can add to private session
 		// When the user has done some action the program returns to the main loop.  
 		
+
+		//Configuration based on parameters
+		// Hospital 1: new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
+		// new HashMap<String,String>()
+		
+		// Hospital 2: 
+
+		// Doctor 1:
+
+		// Doctor 2:
+
+		// Secretary 1:
+
 		Hospital hospital = new Hospital();
 		Employee employee;
 		if(args[0].equals("doctor")){
