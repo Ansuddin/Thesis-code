@@ -1,23 +1,63 @@
-
+import java.util.HashMap;
+import java.util.Set;
+import java.lang.System;
+import java.util.Scanner;
 
 public class Hospital{
 	
 	//private static final MatrixApi api = new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
 
 
-	private HashMap<String,String> patients;
+	private final HashMap<String,String> patients = new HashMap<String,String>();
 
-	public Hospital(){}
-
-
-	public void getJournal(String ssn){
-		//return api.retrieve();
+	public Hospital(){
+		// Put rooms and SSN
 	}
 
 
-	public  void updateJournal(String ssn,){
+	public static PatientJournal getJournal(Employee employee, String ssn){
+		
+		// Open lock IsReferred if doctor has patient in care
+		// if(Policy.IsDoctor){
+		// 	Doctor doctor = (Doctor) employee;
+		// 	for(int i=0; i<doctor.patients.length; i++){
+		// 		if(doctor.patients[i] == ssn)
+		// 			// open Policy.IsReferred(doctor);
+		// 	}
+		// } 
+		// String room = patients.get(ssn);
+		//return api.retrieve(room);
+		return null;
+	}
+
+
+	public static void updateJournal(PatientJournal journal){
+		//String json = Util.patientToString(journal);
+		// api.send(json);
 
 	}
 
-	public void printPatients(){}
+	public void selectPatient(Employee employee) throws NullPointerException {
+		Scanner scanner = new Scanner(System.in);
+		String[] patientArray = patients.keySet().toArray(new String[patients.size()]);
+		while(true){
+			System.out.println("Select a patient:");
+			for(int i=0; i<patients.size(); i++){
+				System.out.println(i+1 + ". " + patientArray[i]);
+			}
+			System.out.println(patientArray.length + ". Exit");
+
+			int option = scanner.nextInt();
+
+			if(option<patientArray.length){
+				String ssn = patientArray[option];
+				employee.receive(getJournal(employee,ssn), scanner);
+
+			} else {
+				break;
+			}
+
+			
+		}
+	}
 }

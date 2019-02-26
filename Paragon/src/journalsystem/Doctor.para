@@ -1,21 +1,78 @@
 
-public class Doctor {
-	/*
+public class Doctor implements Employee{
+	
 	?{Object a:}int id;
 	?{Object a:}String name;
+	?{Object a:}String[] patients;
 
-	public Doctor(){}
-	public Doctor (?{Object a:}int id, ?{Object a:} String name){
+	public Doctor (?{Object a:}int id, ?{Object a:} String name, String[] patients){
 		this.id = id;
 		this.name = name;
-	}*/
+		this.patients = patients
+	}
 
-	/*?{Object a:}PatientJournal journal;
 
-	public Doctor(){}
+	// The method gives the secretary three options:
+	// Print journal
+	// Edit public note
+	// Add to public session
+	// Add to private session if referred
+	// Return to main loop
+	!(Policy.low+Policy.untrusted)
+	public ?(Policy.low+Policy.untrusted) void receive(?(Policy.low+Policy.untrusted) PatientJournal, Scanner scanner){
+		
+		//if(Policy.IsReferred(this)){
+		// open Policy.Referred
+		System.out.println("Select an option: ");
+		System.out.println("1. Print journal");
+		System.out.println("2. Edit public note");
+		System.out.println("3. Add to public session");
+		System.out.println("4. Add to private session")
+		System.out.println("5. Back");
+		int option = scanner.nextInt();
+		if(option==1){
+			// print journal
+		} else if (option==2){
+			// edit journal
+			// call updateJournal
+		} else if (option==3) {
+			// Add to public session
+			// Get input and endorse
+			// Call updateJournal
+		} else if (option==4) {
+			// Add to private session
+			// Get input and endorse
+			// Call updateJournal
+		} else {
+			// do nothing
+		}
+		//} else {
+		// System.out.println("Select an option: ");
+		// System.out.println("1. Print journal");
+		// System.out.println("2. Edit public note");
+		// System.out.println("3. Add to public session");
+		// System.out.println("4. Back");
+		// int option = scanner.nextInt();
+		// if(option==1){
+		// 	// print journal
+		// } else if (option==2){
+		// 	// edit journal
+		// 	// call updateJournal
+		// } else {
+		// 	// Do nothing
+		// }
+		//}
 
-	public !{Object a:} void receive(?{Object a:}PatientJournal journal){
-		this.journal = journal;
-	}*/
-	public Doctor(){}
+	}
+
+	!(Policy.low+Policy.untrusted)
+	public ?(Policy.low+Policy.untrusted) String inputForPublicnote(){
+	 	return "test";
+	}
+
+	!(Policy.low+Policy.untrusted)
+	public ?(Policy.low+Policy.trusted) String inputForPublicnote(){
+	 	return "test";
+	}
+
 }

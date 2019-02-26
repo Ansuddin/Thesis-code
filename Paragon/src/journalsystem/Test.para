@@ -7,8 +7,37 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Test {
-	public static !(Policy.lowD + Policy.trusted) void main(?Policy.untrusted String[] args){
+	public static !{Object x:} void main(?{Object x:} String[] args){
+
+		// Program flow
+		// Program starts as either a Doctor or secretary. If Doctor then IsDoctor is opened.
+		// The program runs a while loop and presents a list of patients which the user can select.
+		// When user selects a journal it is first checked who the user is.
+		// If the user is doctor then it is checked if the patient is referred and the lock IsReferred would then open
+		// The user then receives the journal through the receive method and can perform some action: 
+		// If the user is a secretary than the user can print the journal, or edit the public note.
+		// If the user is a doctor then the journal can be printed, public note can be edited or 
+		// a public session note can be added. If the patient is referred then the doctor can add to private session
+		// When the user has done some action the program returns to the main loop.  
 		
+		Hospital hospital = new Hospital();
+		Employee employee;
+		if(args[0].equals("doctor")){
+			System.out.println(args[0]);
+			//employee = new Doctor(1,args[0]);
+			// Open IsDoctor lock
+			// Call Hospital.selectPatient(employee);
+		} else if(args[0].equals("secretary")) {
+			System.out.println(args[0]);
+			//employee = new Secretary(2,args[0]);
+			// // Call Hospital.selectPatient(employee);
+		} else {
+			System.out.println("Wrong args:" + args[0] + ":");
+			return;
+		}
+
+
+		/*
 		
 		String ssn = "270793-2131";
 		String name = "Ans Uddin";
@@ -52,7 +81,7 @@ public class Test {
 		// String secret = Policy.<String>declassifyMedium(journal.getName());
 		// System.out.println(secret);
 		//  }
-
+/*
 		policy bottom = {Object x:};
 		?(Policy.lowD+Policy.trusted) String low = "";
 		?(Policy.mediumD+Policy.trusted) String medium = "";
