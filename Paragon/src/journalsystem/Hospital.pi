@@ -1,0 +1,14 @@
+public class Hospital
+{
+  private final MatrixApi<PatientJournalD> api;
+  private final java.util.HashMap<java.lang.String, java.lang.String> patients;
+  public Hospital (?Policy.bottom java.util.HashMap<java.lang.String, java.lang.String> patients, ?Policy.bottom MatrixApi<PatientJournalD> api)
+  {
+  }
+  public PatientJournalD getJournal(java.lang.String ssn)
+  ;
+  !(Policy.lowD + Policy.trusted) public void updateJournal(PatientJournalD journal)
+  ;
+  public void selectPatient(Employee employee)
+  ;
+}

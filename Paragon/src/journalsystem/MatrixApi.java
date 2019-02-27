@@ -15,13 +15,18 @@ public class MatrixApi<T> { //implements Matrix {
 
 	public MatrixApi(String homeserver, String user, String pass, String roomId) {
 		// TODO: Enable encryption
-		PyModule matrix_client = PyModule.importModule("matrix_client.client");
-		this.client = matrix_client.call("MatrixClient", homeserver);
-		login(user,pass);
-		this.room = join(roomId);
+		
+				PyModule matrix_client = PyModule.importModule("matrix_client.client");
+				this.client = matrix_client.call("MatrixClient", homeserver);
+				login(user,pass);
+				this.room = join(roomId);
+			
+		
+
 	}
 
 	private void login(String user, String pass) {
+
 		this.client.callMethod("login_with_password", user, pass);
 	}
 
@@ -30,12 +35,14 @@ public class MatrixApi<T> { //implements Matrix {
 		return room;
 	}
 
-	public void send(String message) {
+	public void send(String message, String roomString) {
+		this.room = join(roomString);
 		this.room.callMethod("send_text", message);
 
 	}
 
 	public String retrieve(String roomString) {
+		this.room = join(roomString);
 		this.room.callMethod("backfill_previous_messages", "True", "1");
 		PyObject events = room.callMethod("get_events");
 		HashMap<String,Object> global = new HashMap<>();

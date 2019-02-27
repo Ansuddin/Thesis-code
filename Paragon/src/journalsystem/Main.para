@@ -19,47 +19,58 @@ public class Main {
 		// When the user has done some action the program returns to the main loop.  
 		
 
-		//Configuration based on parameters
-		// Hospital 1: new MatrixApi("https://ansuddin.xyz","ans","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
-		// new HashMap<String,String>()
+		// Configurations
+		// Hospital
 		HashMap<String,String> map = new HashMap<String,String>();
-		map.put("2707932131","");
-		map.put("3101942138","");
-		
-		// Hospital 2: 
+		map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+		map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
 
 		// Doctor 1:
+		String[] patients1 = {"2707932131","8912345678"};
+		Employee doctor1 = new Doctor(1, "John", patients1);
 
 		// Doctor 2:
+		String[] patients2 = {"2707932131"};
+		Employee doctor2 = new Doctor(2, "Michael", patients2);
 
-		// Secretary 1:
+		// Secretary
+		Employee secretary = new Secretary(3,"Donna");
 
-		Hospital hospital = new Hospital(map);
-		Employee employee;
-		if(args[0].equals("doctor1")){
-			System.out.println(args[0]);
-			String[] patients = {"2707932131"};
-			employee = new Doctor(1,args[0], patients);
-			open Policy.IsDoctor(employee);
-			System.out.println("Calling hospital method");
-			hospital.selectPatient(employee);
-			System.out.println("Done");
-		} 
-		else if (args[0].equals("doctor2")){
-			System.out.println(args[0]);
-			String[] patients = {""};
-			employee = new Doctor(1,args[0], patients);
-			open Policy.IsDoctor(employee);
-			hospital.selectPatient(employee);
-		} 
-		else if(args[0].equals("secretary")) {
-			System.out.println(args[0]);
-			employee = new Secretary(2,args[0]);
-			hospital.selectPatient(employee);
-		} 
-		else {
-			System.out.println("Wrong args:" + args[0] + ":");
-			return;
+
+		if(!PyLib.isPythonRunning()){
+			PyLib.startPython();
+			System.out.println("Python started");
+			try{
+				MatrixApi matrix = new MatrixApi("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+		
+
+				Hospital hospital = new Hospital(map,matrix);
+				if(args[0].equals("doctor1")){
+					System.out.println("Running as: "+args[0]);
+					Employee employee = doctor1;
+					open Policy.IsDoctor(employee);
+					hospital.selectPatient(employee);
+				} 
+				else if (args[0].equals("doctor2")){
+					System.out.println("Running as: "+args[0]);
+					Employee employee = doctor2;
+					open Policy.IsDoctor(employee);
+					hospital.selectPatient(employee);
+				} 
+				else if(args[0].equals("secretary")) {
+					System.out.println("Running as: "+args[0]);
+					Employee employee = secretary;
+					hospital.selectPatient(employee);
+				} 
+				else {
+					System.out.println("Wrong args:" + args[0] + ":");
+					return;
+				}
+
+
+			} finally {
+				PyLib.stopPython();
+			}
 		}
 
 	

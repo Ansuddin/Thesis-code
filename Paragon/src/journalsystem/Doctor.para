@@ -16,13 +16,13 @@ public class Doctor implements Employee{
 	public void receive(?(Policy.lowD+Policy.trusted)PatientJournalD journal, 
 						?(Policy.lowD+Policy.untrusted)Scanner scanner, Hospital hospital){
 
-		Employee upcastedSelf = (Employee) this;
 		Doctor self = this;
+		
 		String ssn = journal.getSsn();
 		for(int i=0; i<patients.length; i++){
-			if(patients[i] == ssn){
+			if(patients[i].equals(ssn)){
 				 open Policy.IsReferred(self);
-				}
+			}
 		}
 		
 
@@ -38,6 +38,7 @@ public class Doctor implements Employee{
 		int endorsedOption = Policy.<Integer>endorse(option).intValue();
 		if(endorsedOption==1){
 			// print journal
+			Employee upcastedSelf = (Employee) this;
 			Util.printJournal(journal,upcastedSelf);
 		} else if (endorsedOption==2){
 			// edit journal
@@ -50,6 +51,7 @@ public class Doctor implements Employee{
 			// Add to public session
 			// Get input and endorse
 			// Call updateJournal
+			Employee upcastedSelf = (Employee) this;
 				if(Policy.IsDoctor(upcastedSelf)){
 					open Policy.DoctorLock{
 						String input = Util.getUserInput();

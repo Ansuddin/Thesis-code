@@ -1,0 +1,29 @@
+public class Policy
+{
+  public static final policy bottom = {java.lang.Object x:};
+  public static final policy top = {:};
+  private static final java.lang.Object untrustedObserver = new java.lang.Object();
+  private static final java.lang.Object trustedObserver = new java.lang.Object();
+  private static final java.lang.Object mostTrustedObserver = new java.lang.Object();
+  private lock endorseLock;
+  public static final policy untrusted = {untrustedObserver:;trustedObserver: Policy.endorseLock};
+  public static final policy trusted = {untrustedObserver:;trustedObserver:};
+  public static final policy mostTrusted = {untrustedObserver:;trustedObserver:;mostTrustedObserver:};
+  public static ?(Policy.lowD + Policy.trusted) <A> A endorse(?(Policy.lowD + Policy.trusted * Policy.untrusted) A x)
+  ;
+  private lock declassifyLock;
+  public static final policy lowD = {Doctor d:;Secretary s:;java.lang.Object x: Policy.declassifyLock};
+  public static ?(Policy.lowD + Policy.trusted) lock IsReferred(Doctor);
+  public static ?(Policy.lowD + Policy.trusted) lock Referred;
+  public static ?(Policy.lowD + Policy.trusted) lock IsDoctor(Employee);
+  public static ?(Policy.lowD + Policy.trusted) lock DoctorLock;
+  public static ?(Policy.lowD + Policy.trusted) lock OnlyMatrix;
+  public static final policy mediumD = {Doctor d:;java.lang.Object x: Policy.declassifyLock};
+  public static final policy highD = {Doctor d: Policy.IsReferred(d);java.lang.Object x: Policy.declassifyLock};
+  public static ?Policy.bottom <A> A declassifyLow(?(Policy.bottom * Policy.lowD) A x)
+  ;
+  ~(Policy.DoctorLock) public static ?Policy.bottom <A> A declassifyMedium(?(Policy.bottom * Policy.mediumD) A x)
+  ;
+  ~(Policy.Referred) public static ?Policy.bottom <A> A declassifyHigh(?(Policy.bottom * Policy.highD) A x)
+  ;
+}

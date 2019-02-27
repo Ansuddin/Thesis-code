@@ -1,0 +1,11 @@
+public class Doctor implements Employee
+{
+  ?{java.lang.Object a:} int id;
+  ?{java.lang.Object a:} java.lang.String name;
+  ?{java.lang.Object a:} java.lang.String[] patients;
+  public Doctor (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object x:} java.lang.String[] patients)
+  {
+  }
+  !(Policy.lowD + Policy.trusted) public void receive(?(Policy.lowD + Policy.trusted) PatientJournalD journal, ?(Policy.lowD + Policy.untrusted) java.util.Scanner scanner, Hospital hospital)
+  ;
+}
