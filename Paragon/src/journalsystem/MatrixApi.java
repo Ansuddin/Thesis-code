@@ -8,7 +8,7 @@ import java.util.HashMap;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class MatrixApi<T> { //implements Matrix {
+public class MatrixApi { //implements Matrix {
 
 	PyObject client;
 	PyObject room;
@@ -58,18 +58,6 @@ public class MatrixApi<T> { //implements Matrix {
 		return message;
 	}
 
-	public void invite(String userId) {
-		this.room.callMethod("invite_user", userId);
-	}
-
-	public void ban(String userId) {
-		this.room.callMethod("ban_user", userId, "adding data");
-	}
-
-	public void unban(String userId) {
-		this.room.callMethod("unban_user", userId);
-	}
-
 	public PatientJournalD JSONToObject(String json) {
 		PatientJournalD object = new PatientJournalD();
 		try {
@@ -91,6 +79,21 @@ public class MatrixApi<T> { //implements Matrix {
 			e.printStackTrace();
 		}
 		return json;
+	}
+
+	//Unused
+	public void invite(String userId) {
+		this.room.callMethod("invite_user", userId);
+	}
+
+	//Unused
+	public void ban(String userId) {
+		this.room.callMethod("ban_user", userId, "adding data");
+	}
+
+	//Unused
+	public void unban(String userId) {
+		this.room.callMethod("unban_user", userId);
 	}
 
 

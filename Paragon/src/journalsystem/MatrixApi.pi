@@ -1,11 +1,8 @@
  
-public native class MatrixApi{
+public native class MatrixApi<policy p> {
 	public MatrixApi(String a, String b, String c, String d){}
-	void send(String message, String room);
-	String retrieve(String room);
-	void invite(String userId);
-	void ban(String userId);
-	void unban(String userId);
-	String objectToJSON(PatientJournalD object);
-	PatientJournalD JSONToObject(String json);
+	!p void send(?p String message, ?p String room);
+	?p String retrieve(?p String room);
+	?p String objectToJSON(?p PatientJournalD object);
+	?p PatientJournalD JSONToObject(?p String json);
 }

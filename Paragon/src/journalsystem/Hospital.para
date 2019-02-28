@@ -5,17 +5,21 @@ import java.util.Scanner;
 
 public class Hospital{
 	
-	private final MatrixApi<PatientJournalD> api;
+	private final MatrixApi<Policy.lowD+Policy.trusted> api;
 
 	private final HashMap<String,String> patients;
 
-	public Hospital(?Policy.bottom HashMap<String,String> patients, ?Policy.bottom MatrixApi<PatientJournalD> api){
+	private final Employee[] employees;
+
+	public Hospital(?Policy.bottom HashMap<String,String> patients, 
+			?Policy.bottom MatrixApi<Policy.lowD+Policy.trusted> api, ?Policy.bottom Employee[] employees){
 		this.api = api;
 		this.patients = patients;
+		this.employees = employees;
 	}
 
 
-	public PatientJournalD getJournal(String ssn){
+	public PatientJournalD getJournal(?(Policy.lowD+Policy.trusted)String ssn){
 		String room = patients.get(ssn);
 		String JSON = api.retrieve(room);
 		PatientJournalD journal = api.JSONToObject(JSON);
@@ -26,14 +30,14 @@ public class Hospital{
 
 
 	!(Policy.lowD+Policy.trusted)
-	public void updateJournal(PatientJournalD journal){
+	public void updateJournal(?(Policy.lowD+Policy.trusted)PatientJournalD journal){
 		String room = patients.get(journal.getSsn());
 		String json = api.objectToJSON(journal);
 		api.send(json,room);
 
 	}
 
-
+	!(Policy.lowD+Policy.trusted)
 	public void selectPatient(Employee employee) {
 		System.out.println();
 		System.out.println("Main");
@@ -59,4 +63,28 @@ public class Hospital{
 			
 		}
 	}
+
+	/*!Policy.bottom
+	public void selectEmployee(){
+		System.out.println();
+		Scanner scanner = new Scanner(System.in);
+		while(true){
+			System.out.println("Select a employee: ");
+			for(int i=0; i<employees.size(); i++){
+				System.out.println(i+1 + ". " + employees[i].name + ", " + employees[i].title);
+			}
+			System.out.println("0. Exit");
+
+			int option = scanner.nextInt();
+
+			if(option>0 && option <=patientArray.length){
+				String ssn = patientArray[option-1];
+
+			} else {
+				break;
+			}
+
+			
+		}
+	}*/
 }

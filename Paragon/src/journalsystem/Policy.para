@@ -34,6 +34,8 @@ public class Policy {
 	public static ?(lowD+trusted) lock IsReferred(Doctor); // Proberbly opened in Hospital class.
 	// Should be opended when IsReferred is open.
 	public static ?(lowD+trusted) lock Referred;
+	//Define IsReferred like this:
+	// public static ?(lowD+trusted) lock IsReferred(Doctor) {IsReferred(d):Referred}
 
 	public static ?(lowD+trusted) lock IsDoctor(Employee);
 	public static ?(lowD+trusted) lock DoctorLock; // The confidentiality policy does not effect anything
