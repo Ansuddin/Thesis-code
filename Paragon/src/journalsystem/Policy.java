@@ -4,11 +4,9 @@ public class Policy
   public static final se.chalmers.paragon.runtime.Policy top = new se.chalmers.paragon.runtime.Policy();
   private static final java.lang.Object untrustedObserver = new java.lang.Object();
   private static final java.lang.Object trustedObserver = new java.lang.Object();
-  private static final java.lang.Object mostTrustedObserver = new java.lang.Object();
   static final private se.chalmers.paragon.runtime.LockID endorseLock = new se.chalmers.paragon.runtime.LockID("endorseLock");
   public static final se.chalmers.paragon.runtime.Policy untrusted = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(untrustedObserver)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(trustedObserver), new se.chalmers.paragon.runtime.Atom(endorseLock)));
   public static final se.chalmers.paragon.runtime.Policy trusted = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(untrustedObserver)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(trustedObserver)));
-  public static final se.chalmers.paragon.runtime.Policy mostTrusted = new se.chalmers.paragon.runtime.Policy(new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(untrustedObserver)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(trustedObserver)), new se.chalmers.paragon.runtime.Clause(new Class<?>[] {}, new se.chalmers.paragon.runtime.Actor(mostTrustedObserver)));
   public static <A> A endorse(A x)
   {
     {

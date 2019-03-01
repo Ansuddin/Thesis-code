@@ -5,20 +5,18 @@ public class Policy {
 	public static final policy bottom = {Object x:};
 	public static final policy top = {:};
 
-
 	// Integrity
 	private static final Object untrustedObserver = new Object();
 	private static final Object trustedObserver = new Object();
-	private static final Object mostTrustedObserver = new Object();
 
 	private lock endorseLock;
-
 	public static final policy untrusted = { untrustedObserver :; trustedObserver: endorseLock};
 	public static final policy trusted = { untrustedObserver :; trustedObserver: };
-	public static final policy mostTrusted = { untrustedObserver :; trustedObserver:; mostTrustedObserver };
 
 
-	public static ?(lowD+trusted) <A>
+	//Endorse
+	?(lowD+trusted)
+	public static <A>
 	A endorse(?(lowD+trusted*untrusted) A x){
 		open endorseLock{
 			return x;
@@ -30,25 +28,20 @@ public class Policy {
 	
 	public static final policy lowD = { Doctor d:; Secretary s:; Object x: declassifyLock };
 	
-	// Putting locks here since paragon is stupid.
-	public static ?(lowD+trusted) lock IsReferred(Doctor); // Proberbly opened in Hospital class.
-	// Should be opended when IsReferred is open.
+	// Putting locks here otherwise compile error.
+	public static ?(lowD+trusted) lock IsReferred(Doctor); 
 	public static ?(lowD+trusted) lock Referred;
-	//Define IsReferred like this:
-	// public static ?(lowD+trusted) lock IsReferred(Doctor) {IsReferred(d):Referred}
-
 	public static ?(lowD+trusted) lock IsDoctor(Employee);
-	public static ?(lowD+trusted) lock DoctorLock; // The confidentiality policy does not effect anything
-	
-
+	public static ?(lowD+trusted) lock DoctorLock; 
 	public static ?(lowD+trusted) lock OnlyMatrix;	
 
 	public static final policy mediumD = { Doctor d:; Object x: declassifyLock};
 	public static final policy highD = { Doctor d: IsReferred(d); Object x : declassifyLock };
 
 
-
-	public static ?bottom <A> 
+	//Declassify
+	?bottom
+	public static <A> 
 	A declassifyLow(?(bottom*lowD) A x){
 		open declassifyLock {
 			return x;
@@ -56,7 +49,8 @@ public class Policy {
 	}
 
 	~DoctorLock
-	public static ?bottom <A> 
+	?bottom
+	public static <A> 
 	A declassifyMedium(?(bottom*mediumD) A x){
 		open declassifyLock {
 			return x;
@@ -64,14 +58,11 @@ public class Policy {
 	}
 
 	~Referred
-	public static ?bottom < A> 
+	?bottom
+	public static < A> 
 	A declassifyHigh(?(bottom*highD) A x){
 		open declassifyLock {
 			return x;	
 		}
 	}
-
-
-
-
 }

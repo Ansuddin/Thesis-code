@@ -8,46 +8,45 @@ public class Main
 {
   public static void main(java.lang.String[] args)
   {
-    java.util.HashMap<java.lang.String, java.lang.String> map = new java.util.HashMap<java.lang.String, java.lang.String>();
-    map.put("2707932131", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
-    map.put("8912345678", "!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
-    java.lang.String[] patients1 = {"2707932131", "8912345678"};
-    Employee doctor1 = new Doctor(1, "John", patients1);
-    java.lang.String[] patients2 = {"2707932131"};
-    Employee doctor2 = new Doctor(2, "Michael", patients2);
-    Employee secretary = new Secretary(3, "Donna");
-    Employee[] employees = new Employee[3];
-    employees[0] = doctor1;
-    employees[1] = doctor2;
-    employees[2] = secretary;
     if (!org.jpy.PyLib.isPythonRunning())
     {
       org.jpy.PyLib.startPython();
       try
       {
-        Matrix matrix = new MatrixJPY("https://ansuddin.xyz", "hospital1", "test", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
-        Hospital hospital = new Hospital(map, matrix, employees);
-        if (args[0].equals("doctor1"))
+        if (args[0].equals("hospital1"))
         {
           java.lang.System.out.println("Running as: " + args[0]);
-          Employee employee = doctor1;
-          se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Policy.IsDoctor, new se.chalmers.paragon.runtime.Actor(employee)));
-          hospital.selectPatient(employee);
+          java.util.HashMap<java.lang.String, java.lang.String> map = new java.util.HashMap<java.lang.String, java.lang.String>();
+          map.put("2707932131", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+          map.put("8912345678", "!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
+          Matrix matrix = new MatrixJPY("https://ansuddin.xyz", "hospital1", "test", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+          Hospital hospital = new Hospital(map, matrix);
+          java.lang.String[] patients1 = {"2707932131", "8912345678"};
+          java.lang.String[] patients2 = {""};
+          Employee doctor1 = new Doctor(1, "John", "Doctor", patients1, hospital);
+          Employee doctor2 = new Doctor(2, "Michael", "Doctor", patients2, hospital);
+          Employee secretary = new Secretary(3, "Donna", "Secretary", hospital);
+          hospital.addEmployee(doctor1);
+          hospital.addEmployee(doctor2);
+          hospital.addEmployee(secretary);
+          hospital.selectEmployee();
         }
         else
-        if (args[0].equals("doctor2"))
+        if (args[0].equals("hospital2"))
         {
           java.lang.System.out.println("Running as: " + args[0]);
-          Employee employee = doctor2;
-          se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Policy.IsDoctor, new se.chalmers.paragon.runtime.Actor(employee)));
-          hospital.selectPatient(employee);
-        }
-        else
-        if (args[0].equals("secretary"))
-        {
-          java.lang.System.out.println("Running as: " + args[0]);
-          Employee employee = secretary;
-          hospital.selectPatient(employee);
+          java.util.HashMap<java.lang.String, java.lang.String> map = new java.util.HashMap<java.lang.String, java.lang.String>();
+          map.put("2707932131", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+          map.put("8912345678", "!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
+          map.put("6789123456", "!JIVwFELdgbMXArYtxG:ansuddin.xyz");
+          Matrix matrix = new MatrixJPY("https://ansuddin.xyz", "hospital1", "test", "!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+          Hospital hospital = new Hospital(map, matrix);
+          java.lang.String[] patients1 = {"2707932131", "6789123456"};
+          Employee doctor1 = new Doctor(1, "Elizabeth", "Doctor", patients1, hospital);
+          Employee secretary = new Secretary(3, "Danny", "Secretary", hospital);
+          hospital.addEmployee(doctor1);
+          hospital.addEmployee(secretary);
+          hospital.selectEmployee();
         }
         else
         {

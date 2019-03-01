@@ -1,9 +1,0 @@
-public class Report{
-
-	String name;
-
-	public Report(?{Object x:} String name){
-		this.name = name;
-	}
-
-}

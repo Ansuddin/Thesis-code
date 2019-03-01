@@ -1,8 +1,0 @@
-public class Salesman implements Employee2{
-
-	public Salesman(){}
-
-	public void receive(Report report){
-		
-	}
-}

@@ -9,10 +9,6 @@ public interface Matrix {
 
 	public String retrieve(String roomString);
 
-	public PatientJournalD JSONToObject(String json);
-
-	public String objectToJSON(PatientJournalD object);
-
 	//Unused
 	public void invite(String userId);
 

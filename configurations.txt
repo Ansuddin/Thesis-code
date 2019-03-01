@@ -1,9 +1,9 @@
 // Hospital 1	
 		MatrixApi matrix1 = new MatrixApi("https://ansuddin.xyz","hospital1","test","!jGiMyqbOaVwNMkgkYU:ansuddin.xyz");
 		HashMap<String,String> map1 = new HashMap<String,String>();
-		map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
-		map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
-		map.put("6789123456","!JIVwFELdgbMXArYtxG:ansuddin.xyz");
+		map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz"); // Patient 1
+		map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz"); // Patient 2
+		map.put("6789123456","!JIVwFELdgbMXArYtxG:ansuddin.xyz"); // Patient 3
 		map.put("5678912345","!FndRGpqYCQfAmpytFP:ansuddin.xyz");
 		map.put("4567891234","!JNwApEsMYKBzATlxod:ansuddin.xyz");
 
@@ -14,6 +14,9 @@
 		map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
 		map.put("6789123456","!JIVwFELdgbMXArYtxG:ansuddin.xyz");
 		map.put("5678912345","!VvYBcbQdMjVXOrTZnz:ansuddin.xyz");
+
+
+{"ssn":"6789123456","name":"Charlotte Grimstad","address":"Frederikssundsvej 192","publicNote":"","publicSessions":["Stomach ache"],"privateSessions":["Discovered a tumor","Waiting for results for cancer"]}
 
 		// Doctor 1:
 		String[] patients1 = {"2707932131","8912345678"};

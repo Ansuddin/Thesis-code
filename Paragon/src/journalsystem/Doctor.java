@@ -1,17 +1,22 @@
 import java.util.Scanner;
 public class Doctor implements Employee
 {
-  int id;
-  java.lang.String name;
-  java.lang.String[] patients;
-  public Doctor (int id, java.lang.String name, java.lang.String[] patients)
+  public int id;
+  public java.lang.String name;
+  public java.lang.String title;
+  public java.lang.String[] patients;
+  public Hospital hospital;
+  public Doctor (int id, java.lang.String name, java.lang.String title, java.lang.String[] patients, Hospital hospital)
   {
     this.id = id;
     this.name = name;
+    this.title = title;
     this.patients = patients;
+    this.hospital = hospital;
   }
-  public void receive(PatientJournalD journal, java.util.Scanner scanner, Hospital hospital)
+  public void receive(PatientJournalD journal, java.util.Scanner scanner)
   {
+    openLockIsDoctor((Employee) this);
     Doctor self = this;
     java.lang.String ssn = journal.getSsn();
     for (int i = 0 ; i < patients.length ; i++)
@@ -21,6 +26,7 @@ public class Doctor implements Employee
         se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Policy.IsReferred, new se.chalmers.paragon.runtime.Actor(self)));
       }
     }
+    java.lang.System.out.println("Level 3");
     java.lang.System.out.println("Select an option: ");
     java.lang.System.out.println("1. Print journal");
     java.lang.System.out.println("2. Edit public note");
@@ -75,5 +81,17 @@ public class Doctor implements Employee
     else
     {
     }
+  }
+  private void openLockIsDoctor(Employee employee)
+  {
+    se.chalmers.paragon.runtime.LockState.open(new se.chalmers.paragon.runtime.Lock(Policy.IsDoctor, new se.chalmers.paragon.runtime.Actor(employee)));
+  }
+  public java.lang.String getName()
+  {
+    return this.name;
+  }
+  public java.lang.String getTitle()
+  {
+    return this.title;
   }
 }

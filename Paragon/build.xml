@@ -32,6 +32,10 @@
         <include name="**/*.pi" />
         <include name="**/*.orig" />
         <include name="**/*.rej" />
+        <exclude name="**/Mapper.java"/>
+        <exclude name="**/Mapper.pi"/>
+        <exclude name="**/Employee.java"/>
+        <exclude name="**/Employee.pi"/>
         <exclude name="**/MatrixJPY.java"/>
         <exclude name="**/MatrixJPY.pi"/>
         <exclude name="**/Matrix.java"/>
@@ -48,7 +52,6 @@
       <arg value="-p" />
       <arg value="${pipath.base}:${src.dir}/journalsystem" />
 
-      <arg value="${src.dir}/journalsystem/Employee.para"/>
       <arg value="${src.dir}/journalsystem/Policy.para"/>
       <arg value="${src.dir}/journalsystem/PatientJournalD.para"/> 
       <arg value="${src.dir}/journalsystem/Util.para"/> 

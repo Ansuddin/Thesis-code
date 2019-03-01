@@ -1,11 +1,19 @@
 public class Doctor implements Employee
 {
-  ?{java.lang.Object a:} int id;
-  ?{java.lang.Object a:} java.lang.String name;
-  ?{java.lang.Object a:} java.lang.String[] patients;
-  public Doctor (?{java.lang.Object a:} int id, ?{java.lang.Object a:} java.lang.String name, ?{java.lang.Object x:} java.lang.String[] patients)
+  public int id;
+  public java.lang.String name;
+  public java.lang.String title;
+  public java.lang.String[] patients;
+  public Hospital hospital;
+  public Doctor (?{java.lang.Object x:} int id, ?{java.lang.Object x:} java.lang.String name, ?{java.lang.Object x:} java.lang.String title, ?{java.lang.Object x:} java.lang.String[] patients, ?{java.lang.Object x:} Hospital hospital)
   {
   }
-  !(Policy.lowD + Policy.trusted) public void receive(?(Policy.lowD + Policy.trusted) PatientJournalD journal, ?(Policy.lowD + Policy.untrusted) java.util.Scanner scanner, Hospital hospital)
+  !(Policy.lowD + Policy.trusted) public void receive(?(Policy.lowD + Policy.trusted) PatientJournalD journal, ?(Policy.lowD + Policy.untrusted) java.util.Scanner scanner)
+  ;
+  !(Policy.lowD + Policy.trusted) private void openLockIsDoctor(?(Policy.lowD + Policy.trusted) Employee employee)
+  ;
+  ?Policy.bottom public java.lang.String getName()
+  ;
+  ?Policy.bottom public java.lang.String getTitle()
   ;
 }

@@ -1,12 +1,9 @@
-
 import org.jpy.PyLib;
 import org.jpy.PyModule;
 import org.jpy.PyObject;
 import org.jpy.PyInputMode;
 import java.util.Map;
 import java.util.HashMap;
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MatrixJPY implements Matrix {
 
@@ -19,25 +16,6 @@ public class MatrixJPY implements Matrix {
 				this.client = matrix_client.call("MatrixClient", homeserver);
 				login(user,pass);
 				this.room = join(roomId);
-			
-		
-
-	}
-
-	public void login(String user, String pass) {
-
-		this.client.callMethod("login_with_password", user, pass);
-	}
-
-	public PyObject join(String roomId){ // TODO:Handle if user is banned from room
-		PyObject room = this.client.callMethod("join_room", roomId);
-		return room;
-	}
-
-	public void send(String message, String roomString) {
-		this.room = join(roomString);
-		this.room.callMethod("send_text", message);
-
 	}
 
 	public String retrieve(String roomString) {
@@ -57,27 +35,18 @@ public class MatrixJPY implements Matrix {
 		return message;
 	}
 
-	public PatientJournalD JSONToObject(String json) {
-		PatientJournalD object = new PatientJournalD();
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			object = mapper.readValue(json, PatientJournalD.class);
-		} catch (Exception e){
-			e.printStackTrace();
-		}		
-		return object;	
+	public void send(String message, String roomString) {
+		this.room = join(roomString);
+		this.room.callMethod("send_text", message);
 	}
 
-	public String objectToJSON(PatientJournalD object){
-		String json = "";
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			 json = mapper.writeValueAsString(object);
-			return json;
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-		return json;
+	public void login(String user, String pass) {
+		this.client.callMethod("login_with_password", user, pass);
+	}
+
+	public PyObject join(String roomId){ // TODO:Handle if user is banned from room
+		PyObject room = this.client.callMethod("join_room", roomId);
+		return room;
 	}
 
 	//Unused
@@ -94,7 +63,5 @@ public class MatrixJPY implements Matrix {
 	public void unban(String userId) {
 		this.room.callMethod("unban_user", userId);
 	}
-
-
 
 }

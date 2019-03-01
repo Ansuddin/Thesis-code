@@ -1,16 +1,21 @@
 import java.util.Scanner;
 public class Secretary implements Employee
 {
-  private int id;
-  private java.lang.String name;
-  public Secretary (int id, java.lang.String name)
+  public int id;
+  public java.lang.String name;
+  public java.lang.String title;
+  public Hospital hospital;
+  public Secretary (int id, java.lang.String name, java.lang.String title, Hospital hospital)
   {
     this.id = id;
     this.name = name;
+    this.title = title;
+    this.hospital = hospital;
   }
-  public void receive(PatientJournalD journal, java.util.Scanner scanner, Hospital hospital)
+  public void receive(PatientJournalD journal, java.util.Scanner scanner)
   {
     Employee upcastedSelf = (Employee) this;
+    java.lang.System.out.println("Level 3");
     java.lang.System.out.println("Select an option: ");
     java.lang.System.out.println("1. Print journal");
     java.lang.System.out.println("2. Edit public note");
@@ -32,5 +37,13 @@ public class Secretary implements Employee
     else
     {
     }
+  }
+  public java.lang.String getName()
+  {
+    return this.name;
+  }
+  public java.lang.String getTitle()
+  {
+    return this.title;
   }
 }

@@ -7,75 +7,51 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
 	public static !Policy.bottom void main(?Policy.bottom String[] args){
-		// Program flow
-		// Program starts as either a Doctor or secretary. If Doctor then IsDoctor is opened.
-		// The program runs a while loop and presents a list of patients which the user can select.
-		// When user selects a journal it is first checked who the user is.
-		// If the user is doctor then it is checked if the patient is referred and the lock IsReferred would then open
-		// The user then receives the journal through the receive method and can perform some action: 
-		// If the user is a secretary than the user can print the journal, or edit the public note.
-		// If the user is a doctor then the journal can be printed, public note can be edited or 
-		// a public session note can be added. If the patient is referred then the doctor can add to private session
-		// When the user has done some action the program returns to the main loop.  
-		
-
 		// Configurations
-		// Hospital
-		HashMap<String,String> map = new HashMap<String,String>();
-		map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
-		map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
-
-		// Doctor 1:
-		String[] patients1 = {"2707932131","8912345678"};
-		Employee doctor1 = new Doctor(1, "John", patients1);
-
-		// Doctor 2:
-		String[] patients2 = {"2707932131"};
-		Employee doctor2 = new Doctor(2, "Michael", patients2);
-
-		// Secretary
-		Employee secretary = new Secretary(3,"Donna");
-
-		Employee[] employees = new Employee[3];
-		employees[0] = doctor1;
-		employees[1] = doctor2;
-		employees[2] = secretary;
-
 		if(!PyLib.isPythonRunning()){
 			PyLib.startPython();
 			try{
-				Matrix<Policy.lowD+Policy.trusted> matrix = new MatrixJPY<Policy.lowD+Policy.trusted>("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
-		
-
-				Hospital hospital = new Hospital(map,matrix, employees);
-				if(args[0].equals("doctor1")){
+				if(args[0].equals("hospital1")){
+					// Configuration 1
 					System.out.println("Running as: "+args[0]);
-					Employee employee = doctor1;
-					open Policy.IsDoctor(employee);
-					hospital.selectPatient(employee);
+					HashMap<String,String> map = new HashMap<String,String>();
+					map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+					map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
+					Matrix<Policy.lowD+Policy.trusted> matrix = new MatrixJPY<Policy.lowD+Policy.trusted>("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+					Hospital hospital = new Hospital(map,matrix);
+					String[] patients1 = {"2707932131","8912345678"};
+					String[] patients2 = {""};
+					Employee doctor1 = new Doctor(1, "John", "Doctor", patients1, hospital);
+					Employee doctor2 = new Doctor(2, "Michael", "Doctor", patients2, hospital);
+					Employee secretary = new Secretary(3,"Donna", "Secretary", hospital);
+					hospital.addEmployee(doctor1);
+					hospital.addEmployee(doctor2);
+					hospital.addEmployee(secretary);
+					hospital.selectEmployee();
 				} 
-				else if (args[0].equals("doctor2")){
+				else if (args[0].equals("hospital2")){
+					//Configuration 2
 					System.out.println("Running as: "+args[0]);
-					Employee employee = doctor2;
-					open Policy.IsDoctor(employee);
-					hospital.selectPatient(employee);
-				} 
-				else if(args[0].equals("secretary")) {
-					System.out.println("Running as: "+args[0]);
-					Employee employee = secretary;
-					hospital.selectPatient(employee);
-				} 
+					HashMap<String,String> map = new HashMap<String,String>();
+					map.put("2707932131","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+					map.put("8912345678","!gKZKAxpgJBvdqIzmMD:ansuddin.xyz");
+					map.put("6789123456","!JIVwFELdgbMXArYtxG:ansuddin.xyz");
+					Matrix<Policy.lowD+Policy.trusted> matrix = new MatrixJPY<Policy.lowD+Policy.trusted>("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+					Hospital hospital = new Hospital(map,matrix);
+					String[] patients1 = {"2707932131","6789123456"};
+					Employee doctor1 = new Doctor(1, "Elizabeth", "Doctor", patients1, hospital);
+					Employee secretary = new Secretary(3,"Danny", "Secretary", hospital);
+					hospital.addEmployee(doctor1);
+					hospital.addEmployee(secretary);
+					hospital.selectEmployee();
+				}  
 				else {
 					System.out.println("Wrong args:" + args[0] + ":");
 					return;
 				}
-
-
 			} finally {
 				PyLib.stopPython();
 			}
 		}
-
-	
 	}
 }

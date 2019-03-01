@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Util {
 
-	public static ?(Policy.lowD+Policy.untrusted) String getUserInput(){
+	?(Policy.lowD+Policy.untrusted)
+	public static String getUserInput(){
 		System.out.println("Please type now: ");
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
@@ -29,8 +30,7 @@ public class Util {
 					System.out.println("\t\t" + "Session " + i + ": " + publicSessions[i]);
 				}
 			}
-
-
+			
 			Doctor doctor = (Doctor) employee;
 			if(Policy.IsReferred(doctor)){
 				 open Policy.Referred{
