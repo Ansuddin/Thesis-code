@@ -32,8 +32,10 @@
         <include name="**/*.pi" />
         <include name="**/*.orig" />
         <include name="**/*.rej" />
-        <exclude name="**/MatrixApi.java"/>
-        <exclude name="**/MatrixApi.pi"/>
+        <exclude name="**/MatrixJPY.java"/>
+        <exclude name="**/MatrixJPY.pi"/>
+        <exclude name="**/Matrix.java"/>
+        <exclude name="**/Matrix.pi"/>
         <exclude name="**/runtime/*.pi" />
         <exclude name="**/runtime/*.java" />
       </fileset>
@@ -48,21 +50,13 @@
 
       <arg value="${src.dir}/journalsystem/Employee.para"/>
       <arg value="${src.dir}/journalsystem/Policy.para"/>
-
       <arg value="${src.dir}/journalsystem/PatientJournalD.para"/> 
-
-
-
       <arg value="${src.dir}/journalsystem/Util.para"/> 
-
       <arg value="${src.dir}/journalsystem/Hospital.para"/>
-
       <arg value="${src.dir}/journalsystem/Secretary.para"/> 
       <arg value="${src.dir}/journalsystem/Doctor.para"/>
-     
-
       <arg value="${src.dir}/journalsystem/Main.para"/>
-      <!-- <arg value="${src.dir}/journalsystem/Test.para"/> -->
+ 
     </exec>
   </target>
 

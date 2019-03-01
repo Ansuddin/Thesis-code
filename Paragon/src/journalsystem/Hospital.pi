@@ -1,0 +1,15 @@
+public class Hospital
+{
+  private final Matrix<Policy.lowD + Policy.trusted> matrix;
+  private final java.util.HashMap<java.lang.String, java.lang.String> patients;
+  private final Employee[] employees;
+  public Hospital (?Policy.bottom java.util.HashMap<java.lang.String, java.lang.String> patients, ?Policy.bottom Matrix<Policy.lowD + Policy.trusted> matrix, ?Policy.bottom Employee[] employees)
+  {
+  }
+  public PatientJournalD getJournal(?(Policy.lowD + Policy.trusted) java.lang.String ssn)
+  ;
+  !(Policy.lowD + Policy.trusted) public void updateJournal(?(Policy.lowD + Policy.trusted) PatientJournalD journal)
+  ;
+  !(Policy.lowD + Policy.trusted) public void selectPatient(Employee employee)
+  ;
+}

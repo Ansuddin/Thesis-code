@@ -1,0 +1,32 @@
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+public class Manager implements Employee2{
+
+	public Manager(){}
+
+	public void receive(Report report){
+
+	}
+
+	public String objectToJSON(Object object){
+		String json = "";
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			 json = mapper.writeValueAsString(object);
+			return json;
+		} catch (Exception e){
+
+		}
+		return json;
+	}
+
+	public Object JSONToObject(String json) {
+		Object object = new Object();
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			object = mapper.readValue(json, Object.class);
+		} catch (Exception e){
+		}		
+		return object;	
+	}
+}

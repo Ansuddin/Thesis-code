@@ -8,13 +8,12 @@ import java.util.HashMap;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class MatrixApi { //implements Matrix {
+public class MatrixJPY implements Matrix {
 
 	PyObject client;
 	PyObject room;
 
-	public MatrixApi(String homeserver, String user, String pass, String roomId) {
-		// TODO: Enable encryption
+	public MatrixJPY(String homeserver, String user, String pass, String roomId) {
 		
 				PyModule matrix_client = PyModule.importModule("matrix_client.client");
 				this.client = matrix_client.call("MatrixClient", homeserver);
@@ -25,12 +24,12 @@ public class MatrixApi { //implements Matrix {
 
 	}
 
-	private void login(String user, String pass) {
+	public void login(String user, String pass) {
 
 		this.client.callMethod("login_with_password", user, pass);
 	}
 
-	private PyObject join(String roomId){ // TODO:Handle if user is banned from room
+	public PyObject join(String roomId){ // TODO:Handle if user is banned from room
 		PyObject room = this.client.callMethod("join_room", roomId);
 		return room;
 	}

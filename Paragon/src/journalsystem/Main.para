@@ -44,7 +44,7 @@ public class Main {
 		if(!PyLib.isPythonRunning()){
 			PyLib.startPython();
 			try{
-				MatrixApi matrix = new MatrixApi<Policy.lowD+Policy.trusted>("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
+				Matrix<Policy.lowD+Policy.trusted> matrix = new MatrixJPY<Policy.lowD+Policy.trusted>("https://ansuddin.xyz","hospital1","test","!aBCPtniJlmBzUhXFkq:ansuddin.xyz");
 		
 
 				Hospital hospital = new Hospital(map,matrix, employees);

@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class Hospital{
 	
-	private final MatrixApi<Policy.lowD+Policy.trusted> api;
+	private final Matrix<Policy.lowD+Policy.trusted> matrix;
 
 	private final HashMap<String,String> patients;
 
 	private final Employee[] employees;
 
 	public Hospital(?Policy.bottom HashMap<String,String> patients, 
-			?Policy.bottom MatrixApi<Policy.lowD+Policy.trusted> api, ?Policy.bottom Employee[] employees){
-		this.api = api;
+			?Policy.bottom Matrix<Policy.lowD+Policy.trusted> matrix, ?Policy.bottom Employee[] employees){
+		this.matrix = matrix;
 		this.patients = patients;
 		this.employees = employees;
 	}
@@ -21,8 +21,8 @@ public class Hospital{
 
 	public PatientJournalD getJournal(?(Policy.lowD+Policy.trusted)String ssn){
 		String room = patients.get(ssn);
-		String JSON = api.retrieve(room);
-		PatientJournalD journal = api.JSONToObject(JSON);
+		String JSON = matrix.retrieve(room);
+		PatientJournalD journal = matrix.JSONToObject(JSON);
 		return journal;
 		
 
@@ -32,8 +32,8 @@ public class Hospital{
 	!(Policy.lowD+Policy.trusted)
 	public void updateJournal(?(Policy.lowD+Policy.trusted)PatientJournalD journal){
 		String room = patients.get(journal.getSsn());
-		String json = api.objectToJSON(journal);
-		api.send(json,room);
+		String json = matrix.objectToJSON(journal);
+		matrix.send(json,room);
 
 	}
 
